@@ -1,0 +1,40 @@
+<nav class="breadcrumb-holder mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+    <li class="breadcrumb-item active">Categorias</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md">
+    <h1 class="title-page h2 border-left pl-2">
+      Categorias
+    </h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-right">
+      + Nova Categoria
+    </a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of categories">
+      <td>
+        <strong>{{cat.name}}</strong><br>
+        <small>{{cat.description}}</small>
+      </td>
+      <td>
+        <a [routerLink]="[12, edit]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
