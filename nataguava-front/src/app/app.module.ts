@@ -1,22 +1,20 @@
-import { InMemoryDatabase } from './in-memory-database';
-import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    HeaderComponent, MenuComponent
+  ],
+  exports:[
+    HeaderComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
-    
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
