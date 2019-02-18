@@ -4,17 +4,24 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { VacancyFormComponent } from './pages/vacancy/vacancy-form/vacancy-form.component';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    HeaderComponent, MenuComponent
+    HeaderComponent, 
+    MenuComponent,
+    VacancyFormComponent
   ],
   exports:[
-    HeaderComponent
+    HeaderComponent,
+    VacancyFormComponent,
+  
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]
