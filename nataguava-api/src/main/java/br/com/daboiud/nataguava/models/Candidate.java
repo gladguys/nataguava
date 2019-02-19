@@ -12,6 +12,7 @@ public class Candidate {
     private String name;
     private String lastname;
     private Date birthday;
+    private String password;
     private String email;
 
 }

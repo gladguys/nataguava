@@ -15,5 +15,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
+    private String password;
+    private String phone;
     private String description;
 }
