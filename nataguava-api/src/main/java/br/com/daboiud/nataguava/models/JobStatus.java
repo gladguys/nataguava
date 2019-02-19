@@ -1,5 +1,5 @@
 package br.com.daboiud.nataguava.models;
 
-public enum VacancyStatus {
+public enum JobStatus {
     OPEN, CLOSED
 }
