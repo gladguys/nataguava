@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { VacancyFormComponent } from './pages/vacancy/vacancy-form/vacancy-form.component';
 import { routes } from './app.routes';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent, 
     MenuComponent,
-    VacancyFormComponent
+    VacancyFormComponent,
+    SignInComponent
   ],
   exports:[
     HeaderComponent,
