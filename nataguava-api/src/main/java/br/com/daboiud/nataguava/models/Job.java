@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Vacancy {
+public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,12 +15,14 @@ public class Vacancy {
     private int totalChosen;
 
     @ElementCollection(targetClass = Content.class)
-    @CollectionTable(name = "VACANCY_CONTENT",
-            joinColumns = @JoinColumn(name = "VACANCY_ID"))
+    @CollectionTable(name = "JOB_CONTENT",
+            joinColumns = @JoinColumn(name = "JOB_ID"))
     @Column(name = "CONTENT_ID")
     private Set<Content> contents;
 
-    private VacancyStatus status;
+    private Company company;
+
+    private JobStatus status;
     private String location;
 
 
