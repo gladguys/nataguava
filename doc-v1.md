@@ -1,5 +1,7 @@
-CRIAR EMPRESA:
------------------------
+SPRINT 1 (VP1):
+---------------------------
+
+`CRIAR EMPRESA`:
 
 - exibir tela de form empresa (CRIAR TELA FORM EMPRESA NO FRONT - form de new User)
 - Ao preencher, enviar a API como: POST api.com/api/companies passando no body a empresa a ser criada
@@ -9,8 +11,7 @@ CRIAR EMPRESA:
 - API deve retornar 203 para o frontend;
 
 
-CRIAR VAGA:
------------------------
+`CRIAR VAGA`:
 
 - Quando no cenario de uma Empresa, deve ficar disponivel para empresa criar uma nova VAGA.
 - Criar form de VAGA;
@@ -25,17 +26,19 @@ CRIAR VAGA:
 
 
 
-CRIAR CANDIDATO
+`CRIAR CANDIDATO`
+
+
+SPRINT 2 (VP2)
 ----------------------------
 
-
-VISUALIZAR VAGAS
-----------------------------
+`VISUALIZAR VAGAS`
 
 
-REALIZAR INSCRIÇÃO NA VAGA:
------------------------------
+`DETALHAR VAGA`
 
+
+`REALIZAR INSCRIÇÃO NA VAGA:`
 - O CANDIDATO, na tela de DETALHE VAGA, vai poder clicar para aplicar para vaga;
 - Ao clicar no botão de aplicar na tela job-detail.component.html, o FRONT vai enviar um GET api.com/api/jobs/questionary?job=234&candidate=1112
 - na API, criar o QuestionaryController, com requestMapping "api/questionary"
@@ -46,13 +49,28 @@ REALIZAR INSCRIÇÃO NA VAGA:
 - FRONT deve montar um component com o questionario recebido;
 
 
-REALIZANDO O QUESTIONARIO
---------------------------
+`REALIZANDO O QUESTIONARIO`
 - O candidato, na tela de questionario, vai clicar em iniciar
 - Será exibida na tela a primeira pergunta, com um contador de tempo.
 - Ao responder, é incrementado a pontuação do candidato. (por enquanto é 1 ou 0 )
 - no fim do questionario, é enviado para a API um update do questionario com o valor do scores: POST api.com/api/questionary 
 - na API, o metodo no QuestionaryController vai fazer o update do questionary
-   - setar o scores do candidato  
+   - setar o scores do candidato
+ 
+SPRINT 3 (VF)
+------------------------------
+  
+`SALVANDO RESULTADO CANDIDATO QUESTIONARIO`
+ - O frontend vai enviar para o backend o resultado do usuario para um determinado questionario de uma vaga.
+
+
+`TELA DE ACOMPANHAMENTO RESULTADO SUBMISSÕES PARA VAGA (MODO EMPRESA)`
+- A empresa conseguirá ver os resultados dos candidatos, rankiados;
+- A empresa poderá stopar o questionario.
+
+`TELA DE RESULTADO FINAL`
+- A empresa conseguirá visualizar os candidatos selecionaveis de acordo com o numero de candidados escolhidos previamente por ela;
+- A empresa terá informação de email, e outras info do candidato. para então entrar em contato;
+
 
 
