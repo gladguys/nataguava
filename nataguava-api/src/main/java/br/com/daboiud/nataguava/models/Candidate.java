@@ -7,12 +7,9 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Candidate {
+public class Candidate extends User {
 
     private String name;
     private String lastname;
     private Date birthday;
-    private String password;
-    private String email;
-
 }

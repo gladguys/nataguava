@@ -9,13 +9,9 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Company {
+public class Company extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
     private String name;
-    private String password;
     private String phone;
     private String description;
 }
