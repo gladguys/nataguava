@@ -11,6 +11,7 @@ public class User {
     private String id;
     private String email;
     private String password;
+    private ProfileEnum profileEnum;
 
     public User() {
     }
@@ -37,5 +38,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ProfileEnum getProfileEnum() {
+        return profileEnum;
+    }
+
+    public void setProfileEnum(ProfileEnum profileEnum) {
+        this.profileEnum = profileEnum;
     }
 }

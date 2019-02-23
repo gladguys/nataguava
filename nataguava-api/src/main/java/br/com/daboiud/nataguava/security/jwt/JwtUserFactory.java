@@ -1,5 +1,6 @@
 package br.com.daboiud.nataguava.security.jwt;
 
+import br.com.daboiud.nataguava.models.ProfileEnum;
 import br.com.daboiud.nataguava.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,7 +15,7 @@ public class JwtUserFactory {
     }
 
     public static JwtUser create(User user) {
-        return new JwtUser(user.getId(), user.getEmail(), user.getPassword(), mapToGrantedAuthorities(user.getProfile()))
+        return new JwtUser(user.getId(), user.getEmail(), user.getPassword(), mapToGrantedAuthorities(user.getProfileEnum()));
     }
 
     private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum) {
