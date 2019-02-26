@@ -9,6 +9,8 @@ import { routes } from './app.routes';
 import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupCompanyComponent } from './pages/signup/signup-company/signup-company.component';
+import { CompanyComponent } from './pages/company/company.component';
+import { CompanyFormComponent } from './pages/company/company-form/company-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SignupCompanyComponent } from './pages/signup/signup-company/signup-com
     VacancyFormComponent,
     SignupCompanyComponent,
     SignupCandidateComponent,
-    SignInComponent
+    SignInComponent,
+    CompanyComponent,
+    CompanyFormComponent
   ],
   exports:[
     HeaderComponent,
