@@ -11,8 +11,10 @@ public class Job {
     private Long id;
 
     private String title;
+
     private String description;
-    private int totalChosen;
+
+    private int numberOfBestCandidates;
 
     @ElementCollection(targetClass = Content.class)
     @CollectionTable(name = "JOB_CONTENT",
@@ -31,6 +33,7 @@ public class Job {
     private Set<User> candidates;
 
     private JobStatus status;
+
     private String location;
 
 
