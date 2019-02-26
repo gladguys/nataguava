@@ -15,7 +15,7 @@ public class Questionary {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private Candidate candidate;
+    private User candidate;
     private Job job;
     private Set<Question> questions;
     private int scores;

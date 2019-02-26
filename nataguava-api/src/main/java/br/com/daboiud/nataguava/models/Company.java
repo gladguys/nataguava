@@ -9,7 +9,11 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Company extends User {
+public class Company {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private String id;
 
     private String name;
     private String phone;

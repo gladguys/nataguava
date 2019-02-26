@@ -20,7 +20,15 @@ public class Job {
     @Column(name = "CONTENT_ID")
     private Set<Content> contents;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
     private Company company;
+
+    @ElementCollection(targetClass = Content.class)
+    @CollectionTable(name = "CANDIDATE_CONTENT",
+            joinColumns = @JoinColumn(name = "CANDIDATE_ID"))
+    @Column(name = "CONTENT_ID")
+    private Set<User> candidates;
 
     private JobStatus status;
     private String location;

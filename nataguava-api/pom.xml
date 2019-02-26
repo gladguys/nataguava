@@ -28,11 +28,9 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
