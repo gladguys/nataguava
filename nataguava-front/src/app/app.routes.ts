@@ -7,9 +7,10 @@ import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup
 
 export const ROUTES: Routes = [
     {path: 'vacancy-form', component: VacancyFormComponent},
-    {path: 'login', component: SignInComponent},
+    {path: 'login/company', component: SignInComponent},
     {path: 'signup-company', component: SignupCompanyComponent},
     {path: 'signup-candidate', component: SignupCandidateComponent},
+    
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);
