@@ -7,6 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { routes } from './app.routes';
 import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignInModule } from './pages/sign-in/sign-in.module';
 
 @NgModule({
   declarations: [
@@ -14,14 +15,14 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     HeaderComponent, 
     MenuComponent,
     SignupCandidateComponent,
-    SignInComponent
   ],
   exports:[
     HeaderComponent
   ],
   imports: [
     BrowserModule,
-    routes
+    routes,
+    SignInModule
   ],
   providers: [],
   bootstrap: [AppComponent]
