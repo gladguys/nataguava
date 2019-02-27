@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.services.impl;
 
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.Person;
 import br.com.daboiud.nataguava.repositories.UserRepository;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.stereotype.Service;
@@ -17,17 +17,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByEmail(String email) {
+	public Person findByEmail(String email) {
 		return this.userRepository.findByEmail(email);
 	}
 
 	@Override
-	public User createOrUpdate(User user) {
+	public Person createOrUpdate(Person user) {
 		return this.userRepository.save(user);
 	}
 
 	@Override
-	public User findById(String id) {
+	public Person findById(String id) {
 		return this.userRepository.findById(id).get();
 	}
 
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findAll() {
+	public List<Person> findAll() {
 		return this.userRepository.findAll();
 	}
 }

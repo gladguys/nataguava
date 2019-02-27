@@ -2,10 +2,7 @@ package br.com.daboiud.nataguava.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -15,8 +12,22 @@ public class Questionary {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private User candidate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_id")
     private Job job;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE })
+    @JoinTable(name = "questionary_question",
+            joinColumns = @JoinColumn(name = "questionary_id"),
+            inverseJoinColumns = @JoinColumn(name = "question_id"))
     private Set<Question> questions;
+
     private int scores;
 }

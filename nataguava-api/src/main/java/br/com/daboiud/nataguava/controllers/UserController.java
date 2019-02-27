@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.controllers;
 
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.Person;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,8 @@ public class UserController {
 
     @PostMapping
     //@PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<User> create(HttpServletRequest request, @RequestBody User user, BindingResult bindingResult) {
-        User savedUser;
+    public ResponseEntity<Person> create(HttpServletRequest request, @RequestBody Person user, BindingResult bindingResult) {
+        Person savedUser;
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             savedUser = userService.createOrUpdate(user);
@@ -44,8 +44,8 @@ public class UserController {
 
     @PutMapping
     //@PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<User> update(HttpServletRequest request, @RequestBody User user, BindingResult bindingResult) {
-        User updatedUser;
+    public ResponseEntity<Person> update(HttpServletRequest request, @RequestBody Person user, BindingResult bindingResult) {
+        Person updatedUser;
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             updatedUser = userService.createOrUpdate(user);
@@ -104,8 +104,8 @@ public class UserController {
     }*/
 
     @GetMapping()
-    public ResponseEntity<List<User>> allUsers() {
-        List<User> users = new ArrayList<>();
+    public ResponseEntity<List<Person>> allUsers() {
+        List<Person> users = new ArrayList<>();
         try {
             users = userService.findAll();
             return ResponseEntity.ok(users);
@@ -115,4 +115,3 @@ public class UserController {
     }
 }
 
-}

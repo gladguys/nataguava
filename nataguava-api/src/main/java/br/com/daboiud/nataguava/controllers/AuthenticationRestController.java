@@ -1,7 +1,7 @@
 package br.com.daboiud.nataguava.controllers;
 
 import br.com.daboiud.nataguava.models.CurrentUser;
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.Person;
 import br.com.daboiud.nataguava.security.jwt.JwtAuthenticationRequest;
 import br.com.daboiud.nataguava.security.jwt.JwtTokenUtil;
 import br.com.daboiud.nataguava.services.UserService;
@@ -47,7 +47,7 @@ public class AuthenticationRestController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 		final String token = jwtTokenUtil.generateToken(userDetails);
-		final User user = userService.findByEmail(authenticationRequest.getEmail());
+		final Person user = userService.findByEmail(authenticationRequest.getEmail());
 		user.setPassword(null);
 		return ResponseEntity.ok(new CurrentUser(token, user));
 	}

@@ -2,22 +2,31 @@ package br.com.daboiud.nataguava.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class User {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String id;
     private String email;
     private String password;
+
+    @Enumerated(EnumType.STRING)
     private ProfileEnum profileEnum;
 
-    public User() { }
+    @OneToMany(
+            mappedBy = "person",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private Set<Questionary> questionaries;
+
+    @ManyToMany(mappedBy = "persons")
+    private Set<Job> jobs;
+
+    public Person() { }
 
     public String getId() {
         return id;
@@ -49,5 +58,21 @@ public class User {
 
     public void setProfileEnum(ProfileEnum profileEnum) {
         this.profileEnum = profileEnum;
+    }
+
+    public Set<Questionary> getQuestionaries() {
+        return questionaries;
+    }
+
+    public void setQuestionaries(Set<Questionary> questionaries) {
+        this.questionaries = questionaries;
+    }
+
+    public Set<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(Set<Job> jobs) {
+        this.jobs = jobs;
     }
 }

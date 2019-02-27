@@ -1,29 +1,16 @@
 package br.com.daboiud.nataguava.models;
 
+import lombok.Data;
+
+@Data
 public class CurrentUser {
 
 	private String token;
-	private User user;
+	private Person person;
 
-	public CurrentUser(String token, User user) {
+	public CurrentUser(String token, Person person) {
 		this.token = token;
-		this.user = user;
+		this.person = person;
 
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }

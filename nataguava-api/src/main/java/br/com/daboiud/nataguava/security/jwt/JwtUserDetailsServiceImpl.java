@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.security.jwt;
 
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.Person;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +19,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-		User user = userService.findByEmail(email);
+		Person user = userService.findByEmail(email);
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("NO user found."));
 		} else {

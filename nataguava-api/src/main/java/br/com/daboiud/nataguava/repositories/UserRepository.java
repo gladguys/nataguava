@@ -1,9 +1,9 @@
 package br.com.daboiud.nataguava.repositories;
 
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<Person, String> {
 
-	User findByEmail(String email);
+	Person findByEmail(String email);
 }

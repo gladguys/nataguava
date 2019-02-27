@@ -26,15 +26,19 @@ public class Job {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ElementCollection(targetClass = Content.class)
-    @CollectionTable(name = "CANDIDATE_CONTENT",
-            joinColumns = @JoinColumn(name = "CANDIDATE_ID"))
-    @Column(name = "CONTENT_ID")
-    private Set<User> candidates;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "job_person",
+            joinColumns = @JoinColumn(name = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
+    private Set<Person> persons;
 
+    @Enumerated(value = EnumType.STRING)
     private JobStatus status;
 
     private String location;
-
 
 }
