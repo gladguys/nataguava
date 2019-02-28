@@ -16,10 +16,8 @@ public class Job {
 
     private int numberOfBestCandidates;
 
-    @ElementCollection(targetClass = Content.class)
-    @CollectionTable(name = "JOB_CONTENT",
-            joinColumns = @JoinColumn(name = "JOB_ID"))
-    @Column(name = "CONTENT_ID")
+
+    @OneToMany
     private Set<Content> contents;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,11 +28,8 @@ public class Job {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
-    @JoinTable(name = "job_person",
-            joinColumns = @JoinColumn(name = "job_id"),
-            inverseJoinColumns = @JoinColumn(name = "person_id")
-    )
-    private Set<Person> persons;
+
+    private ResultPersonJob resultPersonJob;
 
     @Enumerated(value = EnumType.STRING)
     private JobStatus status;

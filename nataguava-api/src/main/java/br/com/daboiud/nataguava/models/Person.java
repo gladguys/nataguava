@@ -19,9 +19,13 @@ public class Person {
 
     @OneToMany(
             mappedBy = "person",
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Questionary> questionaries;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Company company;
 
     @ManyToMany(mappedBy = "persons")
     private Set<Job> jobs;

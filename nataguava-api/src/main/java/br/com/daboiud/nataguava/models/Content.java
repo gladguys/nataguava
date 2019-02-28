@@ -1,8 +1,12 @@
 package br.com.daboiud.nataguava.models;
 
-public enum Content {
-    JAVA,
-    DATA_STRUCTURE,
-    POSTGRES,
-    ANGULAR
+import lombok.Data;
+
+@Data
+public class Content {
+
+    private String ContentTag;
+    private int qtQuestions;
+
 }
+
