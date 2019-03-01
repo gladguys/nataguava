@@ -26,7 +26,7 @@ public class Question {
     @ManyToMany(mappedBy = "questions")
     private Set<Questionary> questionaries;
 
-    @Enumerated(EnumType.STRING)
-    private Content content;
+
+    private ContentTag tag;
 
 }

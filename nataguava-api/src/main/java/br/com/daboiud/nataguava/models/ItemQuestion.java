@@ -15,11 +15,12 @@ import javax.persistence.ManyToOne;
 public class ItemQuestion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Question question;
 
     private boolean correct;

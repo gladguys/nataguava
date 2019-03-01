@@ -8,6 +8,7 @@ import { routes } from './app.routes';
 import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignInModule } from './pages/sign-in/sign-in.module';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { SignInModule } from './pages/sign-in/sign-in.module';
     routes,
     SignInModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

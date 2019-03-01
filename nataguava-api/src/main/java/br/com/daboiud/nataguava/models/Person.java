@@ -3,6 +3,7 @@ package br.com.daboiud.nataguava.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,12 +20,20 @@ public class Person {
 
     @OneToMany(
             mappedBy = "person",
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<Questionary> questionaries;
 
-    @ManyToMany(mappedBy = "persons")
-    private Set<Job> jobs;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Company company;
+
+    @OneToMany(
+            mappedBy = "person",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<ResultPersonJob> resultPersonJob;
 
     public Person() { }
 
@@ -68,11 +77,19 @@ public class Person {
         this.questionaries = questionaries;
     }
 
-    public Set<Job> getJobs() {
-        return jobs;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setJobs(Set<Job> jobs) {
-        this.jobs = jobs;
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public List<ResultPersonJob> getResultPersonJob() {
+        return resultPersonJob;
+    }
+
+    public void setResultPersonJob(List<ResultPersonJob> resultPersonJob) {
+        this.resultPersonJob = resultPersonJob;
     }
 }

@@ -13,20 +13,16 @@ public class Questionary {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Person person;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Job job;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE })
-    @JoinTable(name = "questionary_question",
-            joinColumns = @JoinColumn(name = "questionary_id"),
-            inverseJoinColumns = @JoinColumn(name = "question_id"))
+    @ManyToMany
+    @JoinTable(name="questionary_question", joinColumns=
+            {@JoinColumn(name="questionary_id")}, inverseJoinColumns=
+            {@JoinColumn(name="question_id")})
     private Set<Question> questions;
 
     private int scores;
