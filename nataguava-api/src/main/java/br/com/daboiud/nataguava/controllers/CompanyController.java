@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.controllers;
 
-import br.com.daboiud.nataguava.models.Company;
+import br.com.daboiud.nataguava.models.UserCompany;
 import br.com.daboiud.nataguava.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,20 +20,20 @@ public class CompanyController {
 	private CompanyService companyService;
 
 	@PostMapping
-	public ResponseEntity<Company> create(@RequestBody Company company) {
-		Company companyCreated;
+	public ResponseEntity<UserCompany> create(@RequestBody UserCompany userCompany) {
+		UserCompany userCompanyCreated;
 		try {
-			companyCreated = this.companyService.createOrUpdate(company);
-			return ResponseEntity.ok(companyCreated);
+			userCompanyCreated = this.companyService.createOrUpdate(userCompany);
+			return ResponseEntity.ok(userCompanyCreated);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(null);
 		}
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Company>> getAll() {
+	public ResponseEntity<List<UserCompany>> getAll() {
 		try {
-			List<Company> companies = this.companyService.findAll();
+			List<UserCompany> companies = this.companyService.findAll();
 			return ResponseEntity.ok(companies);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(null);

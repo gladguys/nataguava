@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.services;
 
-import br.com.daboiud.nataguava.models.Company;
+import br.com.daboiud.nataguava.models.UserCompany;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,6 +8,6 @@ import java.util.List;
 @Component
 public interface CompanyService {
 
-	Company createOrUpdate(Company company);
-	List<Company> findAll();
+	UserCompany createOrUpdate(UserCompany userCompany);
+	List<UserCompany> findAll();
 }

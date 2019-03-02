@@ -6,11 +6,11 @@ import lombok.Data;
 public class CurrentUser {
 
 	private String token;
-	private Person person;
+	private User user;
 
-	public CurrentUser(String token, Person person) {
+	public CurrentUser(String token, User user) {
 		this.token = token;
-		this.person = person;
+		this.user = user;
 
 	}
 }

@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.services;
 
-import br.com.daboiud.nataguava.models.Person;
+import br.com.daboiud.nataguava.models.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.List;
 @Component
 public interface UserService {
 
-	Person findByEmail(String email);
+	User findByEmail(String email);
 
-	Person createOrUpdate(Person person);
+	User createOrUpdate(User user);
 
-	Person findById(String id);
+	User findById(String id);
 
 	void delete(String id);
 
-	List<Person> findAll();
+	List<User> findAll();
 }

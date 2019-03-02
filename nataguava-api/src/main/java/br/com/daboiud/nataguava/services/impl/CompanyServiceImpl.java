@@ -1,6 +1,6 @@
 package br.com.daboiud.nataguava.services.impl;
 
-import br.com.daboiud.nataguava.models.Company;
+import br.com.daboiud.nataguava.models.UserCompany;
 import br.com.daboiud.nataguava.repositories.CompanyRepository;
 import br.com.daboiud.nataguava.services.CompanyService;
 import org.springframework.stereotype.Service;
@@ -17,12 +17,12 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public Company createOrUpdate(Company company) {
-		return this.companyRepository.save(company);
+	public UserCompany createOrUpdate(UserCompany userCompany) {
+		return this.companyRepository.save(userCompany);
 	}
 
 	@Override
-	public List<Company> findAll() {
+	public List<UserCompany> findAll() {
 		return this.companyRepository.findAll();
 	}
 }

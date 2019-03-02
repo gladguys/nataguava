@@ -10,12 +10,12 @@ public class JwtUser implements UserDetails {
 
     private static final long serialVersionUID = -74711774861L;
 
-    private String id;
+    private Long id;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public JwtUser(Long id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -68,11 +68,11 @@ public class JwtUser implements UserDetails {
         return serialVersionUID;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

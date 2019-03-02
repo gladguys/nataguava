@@ -14,7 +14,7 @@ public class Questionary {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Person person;
+    private Candidate candidate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Job job;

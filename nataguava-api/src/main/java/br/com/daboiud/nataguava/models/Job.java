@@ -2,7 +2,6 @@ package br.com.daboiud.nataguava.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Job {
@@ -17,19 +16,17 @@ public class Job {
 
     private int numberOfBestCandidates;
 
-
     @Transient
     private List<Content> contents;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Company company;
+    private UserCompany userCompany;
 
     @OneToMany(
             mappedBy = "job",
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<ResultPersonJob> resultPersonJob;
+    private List<ResultCandidateJob> resultCandidateJob;
 
     @Enumerated(value = EnumType.STRING)
     private JobStatus status;
