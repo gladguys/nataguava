@@ -4,9 +4,9 @@
       <h3 class="box-title">Cadastre, caro Candidato!</h3>
     </div>
     <form 
+      [formGroup]="signupForm"  
       class="form-horizontal" 
-      (submit)="signup()"
-      [formGroup]="signupForm">
+      (submit)="signup()">
       
       <div class="box-body">
         <div class="form-group">
@@ -67,7 +67,7 @@
       
       <div class="box-footer btns-login">
         <button type="submit" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+        <button type="submit" [disabled]="signupForm.invalid" class="btn btn-info pull-right">Sign in</button>
       </div>
     </form>
   </div>

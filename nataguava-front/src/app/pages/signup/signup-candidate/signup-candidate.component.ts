@@ -1,5 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Candidate } from 'src/app/models/candidate.model';
 
 @Component({
   templateUrl: './signup-candidate.component.html',
@@ -12,7 +13,7 @@ export class SignupCandidateComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.fb.group({
+    this.signupForm = this.fb.group({
       'name': ['', Validators.required],
       'email': ['', Validators.compose([Validators.required, Validators.email])],
       'password': ['', Validators.required],
@@ -21,6 +22,7 @@ export class SignupCandidateComponent implements OnInit {
   }
 
   signup() {
-  
+    let candidateToCreate = this.signupForm.getRawValue() as Candidate;
+    console.log(candidateToCreate);
   }
 }

@@ -12,6 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
         CommonModule
     ]
 })
-export class SignInModule {
+export class SignupModule {
 
 }

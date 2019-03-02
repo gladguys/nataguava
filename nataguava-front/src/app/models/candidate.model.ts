@@ -1,7 +1,7 @@
 import { User } from './user.model';
-export class candidate {
-    private id: string;
-    private user: User;
-    private urlRepo: string;
-    private name: string;
+export class Candidate {
+    public id: number;
+    public user: User;
+    public urlRepo: string;
+    public name: string;
 }
