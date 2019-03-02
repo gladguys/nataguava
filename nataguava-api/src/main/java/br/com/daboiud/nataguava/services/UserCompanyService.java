@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public interface CompanyService {
+public interface UserCompanyService {
 
 	UserCompany createOrUpdate(UserCompany userCompany);
 	List<UserCompany> findAll();

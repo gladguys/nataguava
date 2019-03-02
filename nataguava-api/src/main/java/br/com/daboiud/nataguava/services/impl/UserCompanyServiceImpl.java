@@ -2,17 +2,17 @@ package br.com.daboiud.nataguava.services.impl;
 
 import br.com.daboiud.nataguava.models.UserCompany;
 import br.com.daboiud.nataguava.repositories.CompanyRepository;
-import br.com.daboiud.nataguava.services.CompanyService;
+import br.com.daboiud.nataguava.services.UserCompanyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CompanyServiceImpl implements CompanyService {
+public class UserCompanyServiceImpl implements UserCompanyService {
 
 	private CompanyRepository companyRepository;
 
-	public CompanyServiceImpl(CompanyRepository companyRepository) {
+	public UserCompanyServiceImpl(CompanyRepository companyRepository) {
 		this.companyRepository = companyRepository;
 	}
 
