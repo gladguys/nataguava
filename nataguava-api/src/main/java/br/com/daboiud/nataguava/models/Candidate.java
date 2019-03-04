@@ -6,12 +6,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
 public class Candidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name="user_id")
@@ -28,4 +27,35 @@ public class Candidate {
 
     public Candidate() { }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ResultCandidateJob> getResultCandidateJob() {
+        return resultCandidateJob;
+    }
+
+    public void setResultCandidateJob(List<ResultCandidateJob> resultCandidateJob) {
+        this.resultCandidateJob = resultCandidateJob;
+    }
+
+    public String getUrlRepository() {
+        return urlRepository;
+    }
+
+    public void setUrlRepository(String urlRepository) {
+        this.urlRepository = urlRepository;
+    }
 }
