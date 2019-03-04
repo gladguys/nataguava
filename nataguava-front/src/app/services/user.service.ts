@@ -6,7 +6,9 @@ import { User } from "../models/user.model";
 import {environment} from "../../environments/environment";
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
 
   constructor(private http: HttpClient) { }

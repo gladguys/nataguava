@@ -1,6 +1,9 @@
+import { User } from './../../../models/user.model';
+import { UserService } from './../../../services/recruter.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from 'src/app/models/candidate.model';
+import { CandidateService } from 'src/app/services/candidate.service';
 
 @Component({
   templateUrl: './signup-candidate.component.html',
@@ -10,7 +13,9 @@ export class SignupCandidateComponent implements OnInit {
 
   signupForm: FormGroup;
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private candidateService: CandidateService) { }
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -22,7 +27,20 @@ export class SignupCandidateComponent implements OnInit {
   }
 
   signup() {
-    let candidateToCreate = this.signupForm.getRawValue() as Candidate;
-    console.log(candidateToCreate);
+    let user = new User();
+    user.email = this.signupForm.controls['email'].value;
+    user.password = this.signupForm.controls['password'].value;
+
+    let userCandidate = new Candidate();
+    userCandidate.user = user;
+    userCandidate.name = this.signupForm.controls['name'].value;
+    userCandidate.urlRepository = this.signupForm.controls['urlRepo'].value;
+
+  
+    console.log(userCandidate);
+    this.candidateService.createOrUpdate(userCandidate).subscribe((userCreated: User) =>{
+      console.log(userCreated);
+    });
+    
   }
 }

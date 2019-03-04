@@ -1,3 +1,4 @@
+import { User } from './../models/user.model';
 import { Candidate } from './../models/candidate.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -6,17 +7,19 @@ import { Observable } from 'rxjs';
 import {environment} from "../../environments/environment";
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class CandidateService {
 
   constructor(private http: HttpClient) { }
 
-  createOrUpdate(candidate: Candidate): Observable<Candidate> {
+  createOrUpdate(candidate: Candidate): Observable<User> {
     if(candidate.id != null) {
-      return this.http.put<Candidate>(`${environment.API}/candidates`, candidate);
+      return this.http.put<User>(`${environment.API}/candidates`, candidate);
     } else {
       candidate.id = null;
-      return this.http.post<Candidate>(`${environment.API}/candidates`, candidate);
+      return this.http.post<User>(`${environment.API}/candidates`, candidate);
     }
   }
 
