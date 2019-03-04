@@ -22,17 +22,13 @@ public class CandidateController {
 
     @Autowired
     private CandidateService candidateService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody Candidate candidate) {
         User userCandidate;
         try {
-            candidate.getUser().setProfileEnum(ProfileEnum.ROLE_CANDIDATE);
-            candidate.getUser().setPassword(passwordEncoder.encode(candidate.getUser().getPassword()));
-            userCandidate = this.userService.createOrUpdate(candidate.getUser());
-            this.candidateService.createOrUpdate(candidate);
+
+            userCandidate = this.candidateService.createOrUpdate(candidate);
             return ResponseEntity.ok(userCandidate);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
