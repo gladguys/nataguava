@@ -1,0 +1,23 @@
+.card-ng {
+    display:inline-block;
+    margin: 5px;
+}
+
+.section-title {
+    box-sizing: border-box;
+    color: #151b26;
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.cards-andamento {
+    margin-left: 150px;
+}
+
+.item-label-tag {
+    display: inline-block;
+    margin-top: 10px;
+    margin: 5px;
+}
