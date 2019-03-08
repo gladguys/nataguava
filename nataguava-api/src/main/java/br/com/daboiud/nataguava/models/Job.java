@@ -1,7 +1,7 @@
 package br.com.daboiud.nataguava.models;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Job {
@@ -11,19 +11,26 @@ public class Job {
     private Long id;
 
     private String title;
+
     private String description;
-    private int totalChosen;
 
-    @ElementCollection(targetClass = Content.class)
-    @CollectionTable(name = "JOB_CONTENT",
-            joinColumns = @JoinColumn(name = "JOB_ID"))
-    @Column(name = "CONTENT_ID")
-    private Set<Content> contents;
+    private int numberOfBestCandidates;
 
-    private Company company;
+    @Transient
+    private List<Content> contents;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private UserCompany userCompany;
+
+    @OneToMany(
+            mappedBy = "job",
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private List<ResultCandidateJob> resultCandidateJob;
+
+    @Enumerated(value = EnumType.STRING)
     private JobStatus status;
-    private String location;
 
+    private String location;
 
 }

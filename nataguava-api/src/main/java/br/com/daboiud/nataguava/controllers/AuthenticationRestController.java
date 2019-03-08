@@ -1,9 +1,10 @@
 package br.com.daboiud.nataguava.controllers;
 
-import br.com.daboiud.nataguava.models.CurrentUser;
-import br.com.daboiud.nataguava.models.User;
+import br.com.daboiud.nataguava.models.*;
 import br.com.daboiud.nataguava.security.jwt.JwtAuthenticationRequest;
 import br.com.daboiud.nataguava.security.jwt.JwtTokenUtil;
+import br.com.daboiud.nataguava.services.CandidateService;
+import br.com.daboiud.nataguava.services.UserCompanyService;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +37,12 @@ public class AuthenticationRestController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private UserCompanyService userCompanyService;
+
+	@Autowired
+	private CandidateService candidateService;
+
 	@PostMapping(value = "/api/auth")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
 		final Authentication authentication = authenticationManager.authenticate(
@@ -49,6 +56,14 @@ public class AuthenticationRestController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		final User user = userService.findByEmail(authenticationRequest.getEmail());
 		user.setPassword(null);
-		return ResponseEntity.ok(new CurrentUser(token, user));
+
+		if(user.getProfileEnum().equals(ProfileEnum.ROLE_RECRUTER)){
+			UserCompany userCompany = userCompanyService.findByUserId(user.getId());
+			return ResponseEntity.ok(new CurrentUserRecruter(token, userCompany));
+		} else if(user.getProfileEnum().equals(ProfileEnum.ROLE_CANDIDATE)) {
+			Candidate candidate = candidateService.findByUserId(user.getId());
+			return ResponseEntity.ok(new CurrentUserCandidate(token, candidate));
+		}
+			return ResponseEntity.ok(new CurrentUserAdmin(token, user));
 	}
 }

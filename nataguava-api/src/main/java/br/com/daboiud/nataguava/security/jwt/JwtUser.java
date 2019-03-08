@@ -1,6 +1,5 @@
 package br.com.daboiud.nataguava.security.jwt;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,12 +7,11 @@ import java.util.Collection;
 
 public class JwtUser implements UserDetails {
 
-    private static final long serialVersionUID = -74711774861L;
+    private final String id;
+    private final String username;
+    private final String password;
+    private final Collection<? extends GrantedAuthority> authorities;
 
-    private String id;
-    private String username;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
 
     public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
@@ -22,69 +20,39 @@ public class JwtUser implements UserDetails {
         this.authorities = authorities;
     }
 
-    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
-    @JsonIgnore
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
-    @JsonIgnore
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
-    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
-    @JsonIgnore
     @Override
     public boolean isEnabled() {
-        return false;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
+        return true;
     }
 }
+

@@ -17,9 +17,9 @@ public class JwtTokenUtil implements Serializable {
 
     private static final long serialVersionUID = 1l;
 
-    static final String CLAIM_KEY_USERNAME = "sub";
-    static final String CLAIM_KEY_CREATED = "created";
-    static final String CLAIM_KEY_EXPIRED = "exp";
+    static final String CLAIM_KEY_USERNAME ="sub";
+    static final String CLAIM_KEY_CREATED="created";
+    static final String CLAIM_KEY_EXPIRED ="exp";
 
     @Value("${jwt.secret}")
     private String secret;
@@ -27,22 +27,23 @@ public class JwtTokenUtil implements Serializable {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+    private Claims claims;
+
     public String getUsernameFromToken(String token) {
         String username;
+
         try {
-            final Claims claims = getClaimsFromToken(token);
-            username = claims.getSubject();
-        } catch (Exception e) {
+            username = getClaimsFromToken(token).getSubject();
+        }catch (Exception e) {
             username = null;
         }
         return username;
     }
 
-    public Date getExpirationDateFromToken(String token) {
+    private Date getExpirationDateFromToken(String token) {
         Date expiration;
-        try{
-            final Claims claims = getClaimsFromToken(token);
-            expiration = claims.getExpiration();
+        try {
+            expiration = getClaimsFromToken(token).getExpiration();
         } catch (Exception e) {
             expiration = null;
         }
@@ -53,44 +54,48 @@ public class JwtTokenUtil implements Serializable {
         Claims claims;
         try {
             claims = Jwts.parser()
-                        .setSigningKey(secret)
-                        .parseClaimsJws(token)
-                        .getBody();
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            return claims;
+
         } catch (Exception e) {
             claims = null;
         }
         return claims;
     }
 
-    private Boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
+    private boolean isTokenExpired(String token) {
+        return getExpirationDateFromToken(token).before(new Date());
     }
 
     public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
+
+        Map<String,Object> claims = new HashMap<>();
 
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
-
-        final Date createdDate = new Date();
-        claims.put(CLAIM_KEY_CREATED, createdDate);
+        claims.put(CLAIM_KEY_CREATED, new Date());
 
         return doGenerateToken(claims);
     }
 
     private String doGenerateToken(Map<String,Object> claims) {
+
         final Date createdDate = (Date) claims.get(CLAIM_KEY_CREATED);
-        final Date expirationDate = new Date(createdDate.getTime() + expiration *1000);
+        final Date expirationDate = new Date(createdDate.getTime() + expiration * 1000);
+
         return Jwts.builder()
-                    .setClaims(claims)
-                    .setExpiration(expirationDate)
-                    .signWith(SignatureAlgorithm.ES512, secret)
-                    .compact();
+                .setClaims(claims)
+                .setExpiration(expirationDate)
+                .signWith(SignatureAlgorithm.HS512, secret)
+                .compact();
     }
 
-    public Boolean canTokenBeRefreshed(String token) {
+    public boolean canTokenBeRefreshed(String token) {
         return (!isTokenExpired(token));
     }
+
 
     public String refreshToken(String token) {
         String refreshedToken;
@@ -98,17 +103,19 @@ public class JwtTokenUtil implements Serializable {
             final Claims claims = getClaimsFromToken(token);
             claims.put(CLAIM_KEY_CREATED, new Date());
             refreshedToken = doGenerateToken(claims);
+
         } catch (Exception e) {
             refreshedToken = null;
         }
+
         return refreshedToken;
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        JwtUser user = (JwtUser) userDetails;
+    public Boolean validaToken(String token, UserDetails userDetails){
+
+        JwtUser jwtUser = (JwtUser) userDetails;
         final String username = getUsernameFromToken(token);
-        return(
-                username.equals(user.getUsername()) && !isTokenExpired(token));
+        return ( username.equals(jwtUser.getUsername()) && !isTokenExpired(token));
     }
 
 }

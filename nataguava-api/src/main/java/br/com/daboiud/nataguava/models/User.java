@@ -1,25 +1,28 @@
 package br.com.daboiud.nataguava.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "usuario")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String email;
     private String password;
 
-    public User() {
-    }
+    @Enumerated(value = EnumType.STRING)
+    private ProfileEnum profileEnum;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,5 +40,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ProfileEnum getProfileEnum() {
+        return profileEnum;
+    }
+
+    public void setProfileEnum(ProfileEnum profileEnum) {
+        this.profileEnum = profileEnum;
     }
 }
