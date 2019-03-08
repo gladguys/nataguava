@@ -70,7 +70,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new JwtAuthenticationTokenFilter();
 	}
 
-
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
 				.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -88,12 +87,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/**/*.css",
 						"/**/*.js").permitAll()
 				.antMatchers("/api/auth/**").permitAll()
-				.antMatchers(HttpMethod.POST,"/api/candidates").permitAll()
-
+				.antMatchers(HttpMethod.POST, "/api/users").permitAll()
+				.antMatchers("/api/users/username/**").permitAll()
+				.antMatchers("/api/users/email/**").permitAll()
 				.anyRequest().authenticated();
 		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 		httpSecurity.headers().cacheControl();
 
 	}
-
 }

@@ -1,6 +1,5 @@
 package br.com.daboiud.nataguava.security.jwt;
 
-import br.com.daboiud.nataguava.models.Candidate;
 import br.com.daboiud.nataguava.models.User;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,5 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 		} else {
 			return JwtUserFactory.create(user);
 		}
-
 	}
 }

@@ -25,4 +25,9 @@ public class UserCompanyServiceImpl implements UserCompanyService {
 	public List<UserCompany> findAll() {
 		return this.companyRepository.findAll();
 	}
+
+	@Override
+	public UserCompany findByUserId(Long id) {
+		return this.companyRepository.findByUserId(id);
+	}
 }

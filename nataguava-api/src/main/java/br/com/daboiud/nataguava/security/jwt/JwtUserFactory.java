@@ -1,12 +1,12 @@
 package br.com.daboiud.nataguava.security.jwt;
 
-import br.com.daboiud.nataguava.models.Candidate;
 import br.com.daboiud.nataguava.models.ProfileEnum;
 import br.com.daboiud.nataguava.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class JwtUserFactory {
@@ -16,12 +16,16 @@ public class JwtUserFactory {
     }
 
     public static JwtUser create(User user) {
-        return new JwtUser(user.getId(), user.getEmail(), user.getPassword(), mapToGrantedAuthorities(user.getProfileEnum()));
+        return new JwtUser( user.getId().toString(),
+                user.getEmail(),
+                user.getPassword(),
+                mapToGrantedAuthorities(user.getProfileEnum())
+        );
     }
 
-    private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum) {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(profileEnum.toString()));
+    private static Collection<? extends GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profile) {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority(profile.toString()));
         return authorities;
     }
 }

@@ -37,4 +37,9 @@ public class CandidateServiceImpl implements CandidateService {
     public List<Candidate> findAll() {
         return this.candidateRepository.findAll();
     }
+
+    @Override
+    public Candidate findByUserId(Long id) {
+        return this.candidateRepository.findByUserId(id);
+    }
 }

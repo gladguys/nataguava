@@ -10,4 +10,6 @@ public interface UserCompanyService {
 
 	UserCompany createOrUpdate(UserCompany userCompany);
 	List<UserCompany> findAll();
+
+    UserCompany findByUserId(Long id);
 }

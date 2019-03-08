@@ -3,14 +3,13 @@ package br.com.daboiud.nataguava.models;
 import lombok.Data;
 
 @Data
-public class CurrentUser {
+public class CurrentUserCandidate {
 
 	private String token;
-	private User user;
+	private Candidate user;
 
-	public CurrentUser(String token, User user) {
+	public CurrentUserCandidate(String token, Candidate user) {
 		this.token = token;
 		this.user = user;
-
 	}
 }
