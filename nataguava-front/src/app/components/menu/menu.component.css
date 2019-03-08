@@ -1,0 +1,8 @@
+.ui-button  {
+    margin-top: 25px;
+    color: #ffffff;
+    background-color: darkgreen;
+    border: darkgreen;
+    font-size: 18px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
