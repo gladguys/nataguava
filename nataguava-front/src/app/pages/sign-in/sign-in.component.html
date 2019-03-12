@@ -5,7 +5,7 @@
     <div class="login-box-body">
       <p class="login-box-msg">Faça login para iniciar a seção</p>
   
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="loginForm" (ngSubmit)="loginCompany()">
         <div class="form-group has-feedback">
           <input type="email" formControlName="email" class="form-control" placeholder="Email">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

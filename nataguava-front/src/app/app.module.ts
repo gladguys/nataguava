@@ -1,3 +1,4 @@
+import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,14 +15,14 @@ import { SignupModule } from './pages/signup/signup.module';
 import { UserService } from './services/recruter.service';
 import { CandidateService } from './services/candidate.service';
 import { HomeCompanyComponent } from './pages/company/home-company/home-company.component';
+import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    HeaderComponent, 
-    SignupCandidateComponent,
-    SignInComponent,
-    HomeCompanyComponent
+    HeaderComponent,
+    MenuComponent, 
+    HomeCompanyComponent, CardVagaComponent
   ],
   exports:[
     HeaderComponent
