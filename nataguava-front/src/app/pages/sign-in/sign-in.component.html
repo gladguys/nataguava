@@ -1,8 +1,8 @@
 <div class="login-box">
     <div class="login-logo">
-      <a href="#"><b>Nata</b>GUAVA</a>
+      <a href="#" class="login-logo-color"><b>Nata</b>GUAVA</a>
     </div>
-    <div class="login-box-body">
+    <div class="login-box-body card-login">
       <p class="login-box-msg">Faça login para iniciar a seção</p>
   
       <form [formGroup]="loginForm" (ngSubmit)="loginCompany()">
@@ -30,14 +30,13 @@
       </form>
   
       <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-          Facebook</a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-          Google+</a>
+        <p>- Acesse com a conta do seu Repositório -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-github"></i> Sign in
+          Github</a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-gitlab"></i> Sign in 
+          Gitlab</a>
       </div>
-      <a href="#">I forgot my password</a><br>
-      <a href="register.html" class="text-center">Register a new membership</a>
+      <a href="#" class="forgot-pwd-link">Esqueci minha senha!</a><br>
   
     </div>
   </div>
