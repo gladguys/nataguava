@@ -45,7 +45,7 @@ export class SignInComponent implements OnInit {
           }
         );
 
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl("/home-company");
          
        }, err => {
          console.log(err);
