@@ -1,7 +1,10 @@
+import { CurrentUserCompany } from './../../models/current-user-company.model';
+import { User } from './../../models/user.model';
+import { SharedService } from './../../services/shared.service';
+import { CurrentUserCandidate } from './../../models/current-user-candidate.model';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { CurrentUser } from 'src/app/models/current-user.model';
 import { Router } from '@angular/router';
 
 
@@ -14,8 +17,9 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router) { }
+              private authService: AuthService,
+              private sharedService: SharedService,
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -24,18 +28,32 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  login(): void {
-    let email: string = this.loginForm.get('email').value;
-    let password: string = this.loginForm.get('password').value;
+  loginCompany() {
+      let email: string = this.loginForm.get('email').value;
+      let password: string = this.loginForm.get('password').value;
 
-    console.log(email, password);
+     console.log(email, password);
 
-    this.authService.login(email, password)
-      .subscribe((authenticatedUser: CurrentUser) => {
+     this.authService.login(email, password)
+       .subscribe((authenticatedUser: CurrentUserCompany) => {
+         console.log(authenticatedUser.user);
+        
+         this.sharedService.saveUserOnLocalStorage(
+          {
+            user: authenticatedUser.user.user,
+            token: authenticatedUser.token
+          }
+        );
+
         this.router.navigateByUrl("/");
-      }, err => {
-        console.log(err);
-      });
+         
+       }, err => {
+         console.log(err);
+       });
+  }
+
+  loginCandidate() {
+
   }
 
 }

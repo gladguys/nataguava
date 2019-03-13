@@ -10,3 +10,17 @@
 .signin-card {
     margin-left: 20%;
 }
+
+.card-login {
+    padding:30px;
+    border-radius: 10px;
+}
+
+.login-logo-color {
+    color: white;
+}
+
+.forgot-pwd-link {
+    text-align: center;
+    margin-top: 10px;
+}

@@ -1,3 +1,13 @@
-header {
-    background: darkorange;
+.info-user {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.new-action-btn-header {
+    height: 45px;
+    margin-top: 10px;
+}
+
+.name-app {
+    margin-top:10px;
 }

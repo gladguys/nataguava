@@ -9,4 +9,3 @@ public class Content {
     private int qtQuestions;
 
 }
-

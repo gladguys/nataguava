@@ -26,7 +26,7 @@ public class Job {
             mappedBy = "job",
             fetch = FetchType.LAZY,
             orphanRemoval = true)
-    private List<ResultCandidateJob> resultCandidateJob;
+    private List<ResultCandidateJob> resultsCandidateJob;
 
     @Enumerated(value = EnumType.STRING)
     private JobStatus status;
