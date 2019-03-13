@@ -23,6 +23,10 @@ export class SharedService {
 		return JSON.parse(window.localStorage.getItem('user-ng'));
     }
     
+    isUserLoggedIn(): boolean {
+		return this.userIsLoggedIn$.getValue();
+	}
+
     notifyUserIsLoggedIn(): void {
 		this.userIsLoggedIn$.next(true);
 	}
