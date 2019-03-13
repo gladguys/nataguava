@@ -1,3 +1,4 @@
+import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,7 +38,8 @@ import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.compo
     AuthService,
     UserService,
     CandidateService,
-    ButtonModule
+    ButtonModule,
+    LoginAuthGuard
   ],
   bootstrap: [AppComponent]
 })
