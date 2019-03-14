@@ -8,8 +8,6 @@ import {ButtonModule} from 'primeng/button';
  
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignInModule } from './pages/sign-in/sign-in.module';
 import { AuthService } from './services/auth.service';
 import { SignupModule } from './pages/signup/signup.module';

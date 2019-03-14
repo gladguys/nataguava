@@ -1,156 +1,96 @@
-<div class="row">
-  <h4>Vagas em Endamento</h4>
-  <div class="col-md-3" style="display">
-    <guava-card-vaga></guava-card-vaga>
-  </div>
-  <div class="col-md-3" style="display">
-    <div class="box box-warning">
-      <div class="box-header with-border">
-        <h3 class="box-title">PHP</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-        </div>
+<div class="vagas-andamento-container">
+  <h3 class="title-vagas-andamento">Vagas em Endamento</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <guava-card-vaga [title]="['PHP']" [localidadeVaga]="['Fortaleza - Ce']"
+          [image]="['https://hipsters.jobs/files/pictures/icon-512x512.png']"></guava-card-vaga>
       </div>
-      <div class="box-body">
-        <div>
-          IVIA
-        </div>
-        <div>
-          Iniciada em: 12/01/2019
-        </div>
-        <div>
-          <i class="fa fa-map-marker"></i> Natal - RN
-        </div>
-        <div>
-          <ul>
-            <li class="item-label-tag">
-              <span class="label label-info">Laravel</span>
-            </li>
-            <li class="item-label-tag">
-              <span class="label label-success">PHP</span>
-            </li>
-            <li class="item-label-tag">
-              <span class="label label-primary">MySQL</span>
-            </li>
-            <li class="item-label-tag">
-              <span class="label label-primary">HTML</span>
-            </li>
-          </ul>
-        </div>
+      <div class="col-sm-3">
+        <guava-card-vaga [title]="['Java Pleno']" [localidadeVaga]="['Fortaleza - Ce']"
+          [image]="['https://hipsters.jobs/files/pictures/30850431_191742181549754_1153403168_o.png']">
+        </guava-card-vaga>
+      </div>
+      <div class="col-sm-3">
+        <guava-card-vaga [title]="['Estágio']" [localidadeVaga]="['Fortaleza - Ce']"
+          [image]="['https://pbs.twimg.com/profile_images/996111598212321280/-zpB5IN3_400x400.jpg']"></guava-card-vaga>
+      </div>
+
+      <div class="col-sm-3">
+        <guava-card-vaga [title]="['Javascript']" [localidadeVaga]="['Fortaleza - Ce']"
+          [image]="['https://hipsters.jobs/files/pictures/HST_Logo_wTag_Web.jpg']"></guava-card-vaga>
       </div>
     </div>
-  </div>
 
-<div class="col-md-3" style="display">
-    <div class="box box-warning">
-      <div class="box-header with-border">
-        <h3 class="box-title">Java Backend - Senior</h3>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
+    <div class="row">
+      <h4 class="title-vagas-andamento">Histórico de Vagas</h4>
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Latest Orders</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
         </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                <tr>
+                  <th>Título Vaga</th>
+                  <th>Localidade</th>
+                  <th>Candidatos Selecionados</th>
+                  <th>Data de Abertura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Java Junior</td>
+                  <td>Fortaleza - CE</td>
+                  <td>3</td>
+                  <td>
+                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Java Junior</td>
+                  <td>Fortaleza - CE</td>
+                  <td>3</td>
+                  <td>
+                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Java Junior</td>
+                  <td>Fortaleza - CE</td>
+                  <td>3</td>
+                  <td>
+                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Java Junior</td>
+                  <td>Fortaleza - CE</td>
+                  <td>3</td>
+                  <td>
+                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Criar Nova Vaga</a>
+        </div>
+        <!-- /.box-footer -->
       </div>
-      <div class="box-body">
-        <div>
-          IVIA
-        </div>
-        <div>
-          Iniciada em: 12/01/2019
-        </div>
-        <div>
-          <i class="fa fa-map-marker"></i> Fortaleza - CE
-        </div>
-        <div>
-          <ul>
-            <li class="item-label-tag">
-              <span class="label label-info">PHP</span>
-            </li>
-            <li class="item-label-tag">
-              <span class="label label-success">JS</span>
-            </li>
-            <li class="item-label-tag">
-              <span class="label label-primary">SQL Server</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+
     </div>
-  </div>
-
-</div>
-
-
-<div class="row">
-  <h4>Histórico de Vagas</h4>
-  <div class="box box-info">
-    <div class="box-header with-border">
-      <h3 class="box-title">Latest Orders</h3>
-
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-      </div>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <div class="table-responsive">
-        <table class="table no-margin">
-          <thead>
-            <tr>
-              <th>Título Vaga</th>
-              <th>Localidade</th>
-              <th>Candidatos Selecionados</th>
-              <th>Data de Abertura</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Java Junior</td>
-              <td>Fortaleza - CE</td>
-              <td>3</td>
-              <td>
-                <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-              </td>
-            </tr>
-            <tr>
-              <td>Java Junior</td>
-              <td>Fortaleza - CE</td>
-              <td>3</td>
-              <td>
-                <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-              </td>
-            </tr>
-            <tr>
-              <td>Java Junior</td>
-              <td>Fortaleza - CE</td>
-              <td>3</td>
-              <td>
-                <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-              </td>
-            </tr>
-            <tr>
-              <td>Java Junior</td>
-              <td>Fortaleza - CE</td>
-              <td>3</td>
-              <td>
-                <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-      <!-- /.table-responsive -->
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer clearfix">
-      <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Criar Nova Vaga</a>
-    </div>
-    <!-- /.box-footer -->
-  </div>
-
-</div>
