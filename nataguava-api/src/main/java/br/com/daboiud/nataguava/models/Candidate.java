@@ -25,6 +25,8 @@ public class Candidate {
 
     private String urlRepository;
 
+    private List<Job> subscribedJobs;
+
     public Candidate() { }
 
     public Long getId() {

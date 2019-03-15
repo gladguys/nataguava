@@ -1,9 +1,12 @@
 package br.com.daboiud.nataguava.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
 public class Job {
 
     @Id
@@ -32,5 +35,7 @@ public class Job {
     private JobStatus status;
 
     private String location;
+
+    private List<Candidate> registeredCandidates;
 
 }
