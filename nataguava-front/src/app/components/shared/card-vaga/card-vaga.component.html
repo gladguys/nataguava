@@ -1,17 +1,15 @@
 
   <div class="card card-nataguava">
     <h3 class="card-header titulo-card">
-        {{title}}
+        {{job.title}}
     </h3>
-    <img class="card-img-top img-fluid logo-empresa" [src]="image" [alt]="title">
+    <img class="card-img-top img-fluid logo-empresa" [src]="https://www.logolynx.com/images/logolynx/25/25d2bb203fe4b2fce58d049f588f3336.jpeg" [alt]="job.title">
     <div class="card-block">
-      <h4 class="local-empresa-vaga">{{localidadeVaga}}</h4>
+      <h4 class="local-empresa-vaga">{{job.location}}</h4>
       <p class="card-text"></p>
     </div>
     <ul class="tags">
-      <li class="list-group-item-1">Java</li>
-      <li class="list-group-item-2">JS</li>
-      <li class="list-group-item-3">MySQL</li>
+      <li class="list-group-item-1" *ngFor="let content of job.contents">content.contentTag</li>
     </ul>
   </div>
 
