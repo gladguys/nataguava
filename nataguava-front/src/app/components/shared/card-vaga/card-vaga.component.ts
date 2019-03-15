@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'guava-card-vaga',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-vaga.component.css']
 })
 export class CardVagaComponent implements OnInit {
+
+
+  @Input() title: string = '';
+  @Input() localidadeVaga: string = '';
+  @Input() image: string = '';
 
   constructor() { }
 

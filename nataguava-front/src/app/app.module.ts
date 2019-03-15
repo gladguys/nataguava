@@ -1,3 +1,4 @@
+import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,8 +8,6 @@ import {ButtonModule} from 'primeng/button';
  
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignInModule } from './pages/sign-in/sign-in.module';
 import { AuthService } from './services/auth.service';
 import { SignupModule } from './pages/signup/signup.module';
@@ -37,7 +36,8 @@ import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.compo
     AuthService,
     UserService,
     CandidateService,
-    ButtonModule
+    ButtonModule,
+    LoginAuthGuard
   ],
   bootstrap: [AppComponent]
 })
