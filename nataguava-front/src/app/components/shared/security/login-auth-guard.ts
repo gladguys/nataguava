@@ -16,7 +16,7 @@ export class LoginAuthGuard implements CanActivate {
         if(this.sharedService.isUserInLocalStorage() || this.sharedService.isUserLoggedIn()) {
             this.router.navigate(['/home-company']);
         }
-        console.log("teste");
+
         return true;
     }
 }
