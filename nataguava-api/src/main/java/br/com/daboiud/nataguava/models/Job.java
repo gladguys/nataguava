@@ -36,6 +36,7 @@ public class Job {
 
     private String location;
 
+    @ManyToMany(mappedBy = "jobs")
     private List<Candidate> registeredCandidates;
 
 }
