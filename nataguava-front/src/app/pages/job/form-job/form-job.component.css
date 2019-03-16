@@ -1,0 +1,26 @@
+.form-job-container {
+    background: lightgray;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.item-question-qtd {
+    width: 55px;
+}
+
+.btn-form-job {
+    margin-left: 15px;
+    border-radius: 15px;
+}
+
+.item-question-tema {
+    margin-right: 5px;
+}
+
+.num-selecionaveis-form-job-input {
+    width: 80px;
+}
+
+.btn-submit-job {
+    width: 100%;
+}

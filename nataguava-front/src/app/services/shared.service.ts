@@ -32,7 +32,7 @@ export class SharedService {
 	}
 
 	getUserLogged(): User {
-		let user: CurrentUser = JSON.parse(window.localStorage.getItem('use-ng'));
+		let user: CurrentUser = JSON.parse(window.localStorage.getItem('user-ng'));
 		return user != null ? user.user : null;
 	}
 

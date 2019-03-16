@@ -1,3 +1,5 @@
+import { UserService } from './services/user.service';
+import { JobModule } from './pages/job/job.module';
 import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,9 +13,7 @@ import { routes } from './app.routes';
 import { SignInModule } from './pages/sign-in/sign-in.module';
 import { AuthService } from './services/auth.service';
 import { SignupModule } from './pages/signup/signup.module';
-import { UserService } from './services/recruter.service';
 import { CandidateService } from './services/candidate.service';
-import { HomeCompanyComponent } from './pages/company/home-company/home-company.component';
 import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.component';
 import { CompanyModule } from './pages/company/company.module';
 
@@ -21,8 +21,7 @@ import { CompanyModule } from './pages/company/company.module';
   declarations: [
     AppComponent, 
     HeaderComponent,
-    MenuComponent, 
-    CardVagaComponent
+    MenuComponent
   ],
   exports:[
     HeaderComponent
@@ -32,7 +31,8 @@ import { CompanyModule } from './pages/company/company.module';
     routes,
     SignInModule,
     SignupModule,
-    CompanyModule
+    CompanyModule,
+    JobModule
   ],
   providers: [
     AuthService,
