@@ -31,7 +31,7 @@ public class Candidate {
             joinColumns = @JoinColumn(name = "candidate_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id")
     )
-    private Set<Job> subscribedJobs;
+    private Set<Job> jobs;
 
     public Candidate() { }
 

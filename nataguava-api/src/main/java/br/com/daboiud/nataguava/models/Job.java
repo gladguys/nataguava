@@ -3,6 +3,7 @@ package br.com.daboiud.nataguava.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -37,6 +38,8 @@ public class Job {
     private String location;
 
     @ManyToMany(mappedBy = "jobs")
-    private List<Candidate> registeredCandidates;
+    private List<Candidate> candidates;
+
+    private Date deadline;
 
 }
