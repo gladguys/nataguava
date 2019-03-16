@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createOrUpdate(user: User): Observable<User> {
-    if(user.id != null && user.id != '') {
+    if(user.id != null) {
       return this.http.put<User>(`${environment.API}/users`, user);
     } else {
       user.id = null;

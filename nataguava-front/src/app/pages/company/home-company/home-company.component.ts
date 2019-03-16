@@ -16,12 +16,10 @@ export class HomeCompanyComponent implements OnInit {
   constructor(private jobService: JobService,
               private sharedService: SharedService) { }
 
-
   ngOnInit() {
     this.jobService.findAllByUserCompanyId(this.sharedService.user.id).subscribe(
-      jobs => this.jobs = jobs;
-    )    
-
+      jobs => this.jobs = jobs
+    );    
   }
 
 }

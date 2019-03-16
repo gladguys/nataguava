@@ -15,13 +15,14 @@ import { UserService } from './services/recruter.service';
 import { CandidateService } from './services/candidate.service';
 import { HomeCompanyComponent } from './pages/company/home-company/home-company.component';
 import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.component';
+import { CompanyModule } from './pages/company/company.module';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent,
     MenuComponent, 
-    HomeCompanyComponent, CardVagaComponent
+    CardVagaComponent
   ],
   exports:[
     HeaderComponent
@@ -30,7 +31,8 @@ import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.compo
     BrowserModule,
     routes,
     SignInModule,
-    SignupModule
+    SignupModule,
+    CompanyModule
   ],
   providers: [
     AuthService,
