@@ -26,8 +26,9 @@ export class JobService {
     return this.http.get(`${environment.API}/jobs/${id}`);
   }
 
-  findAllByUserCompanyId(userCompanyId: number) {
-    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userCompanyId}`)
+  findAllByUserCompanyId(userId: number) {
+    console.log("no service" + userId);
+    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`)
   }
 
   findAll() {
