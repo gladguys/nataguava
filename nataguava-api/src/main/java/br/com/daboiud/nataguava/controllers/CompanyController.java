@@ -39,8 +39,7 @@ public class CompanyController {
 	@GetMapping(value = "/user/{userId}")
 	public ResponseEntity<UserCompany> getUserCompanyByUser(@PathVariable("userId") Long userId) {
 		try {
-			UserCompany userCompany = this.userCompanyService.findByUserId(userId);
-			return ResponseEntity.ok(userCompany);
+			UserCompany userCompany = this.userCompanyService.findByUserId(userId);return ResponseEntity.ok(userCompany);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(null);
 		}

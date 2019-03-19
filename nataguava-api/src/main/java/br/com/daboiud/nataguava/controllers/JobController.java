@@ -2,12 +2,10 @@ package br.com.daboiud.nataguava.controllers;
 
 import br.com.daboiud.nataguava.models.Job;
 import br.com.daboiud.nataguava.services.JobService;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/jobs")
@@ -34,8 +32,7 @@ public class JobController {
     }
 
     @GetMapping(value = "/company/{companyId}")
-    public ResponseEntity<List<Job>> getJobsByCompany(Long companyId) {
-        List<Job> jobs;
+    public ResponseEntity<List<Job>> getJobsByCompany(Long companyId) { List<Job> jobs;
         try {
             jobs = this.jobService.findAllByCompanyId(companyId);
             return ResponseEntity.ok(jobs);
