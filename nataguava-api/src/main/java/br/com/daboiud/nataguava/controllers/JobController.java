@@ -1,7 +1,9 @@
 package br.com.daboiud.nataguava.controllers;
 
 import br.com.daboiud.nataguava.models.Job;
+import br.com.daboiud.nataguava.models.UserCompany;
 import br.com.daboiud.nataguava.services.JobService;
+import br.com.daboiud.nataguava.services.UserCompanyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +15,11 @@ public class JobController {
 
 
     private JobService jobService;
+    private UserCompanyService userCompanyService;
 
-    public JobController(JobService jobService) {
+    public JobController(JobService jobService, UserCompanyService userCompanyService) {
         this.jobService = jobService;
+        this.userCompanyService = userCompanyService;
     }
 
     @PostMapping
@@ -31,10 +35,11 @@ public class JobController {
         }
     }
 
-    @GetMapping(value = "/company/{companyId}")
-    public ResponseEntity<List<Job>> getJobsByCompany(Long companyId) { List<Job> jobs;
+    @GetMapping(value = "/company/{userId}")
+    public ResponseEntity<List<Job>> getJobsByCompany(@PathVariable("userId") Long userId) { List<Job> jobs;
         try {
-            jobs = this.jobService.findAllByCompanyId(companyId);
+            UserCompany userCompany = this.userCompanyService.findByUserId(userId);
+            jobs = this.jobService.findAllByCompanyId(userCompany.getId());
             return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
