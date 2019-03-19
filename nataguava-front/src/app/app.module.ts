@@ -1,3 +1,5 @@
+import { AuthGuard } from './components/shared/security/auth-guard';
+import { AuthInterceptor } from './../interceptor';
 import { UserService } from './services/user.service';
 import { JobModule } from './pages/job/job.module';
 import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
@@ -16,12 +18,15 @@ import { SignupModule } from './pages/signup/signup.module';
 import { CandidateService } from './services/candidate.service';
 import { CardVagaComponent } from './components/shared/card-vaga/card-vaga.component';
 import { CompanyModule } from './pages/company/company.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent
   ],
   exports:[
     HeaderComponent
@@ -39,7 +44,14 @@ import { CompanyModule } from './pages/company/company.module';
     UserService,
     CandidateService,
     ButtonModule,
-    LoginAuthGuard
+    LoginAuthGuard,
+    AuthGuard,
+    {
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true
+		},
+
   ],
   bootstrap: [AppComponent]
 })

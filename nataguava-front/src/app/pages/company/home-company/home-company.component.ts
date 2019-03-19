@@ -17,7 +17,7 @@ export class HomeCompanyComponent implements OnInit {
               private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.jobService.findAllByUserCompanyId(this.sharedService.user.id).subscribe(
+    this.jobService.findAllByUserCompanyId(this.sharedService.getUserLogged().id).subscribe(
       jobs => this.jobs = jobs
     );    
   }

@@ -56,15 +56,18 @@ export class FormJobComponent implements OnInit {
 
   save() {
    if(this.jobForm.valid) {
-    const jobToSave = this.jobForm.getRawValue() as Job;
+    let jobToSave = this.jobForm.getRawValue() as Job;
     jobToSave.contents = this.contents;
+    jobToSave.status = "CREATED";
 
     let userId = this.sharedService.getUserLogged().id;
+    console.log(userId);
     this.recruterService.getByUserId(userId).subscribe((userCompany: UserCompany) => {
-      this.job.userCompany = userCompany;
+      jobToSave.userCompany = userCompany;
+      console.log(this.job);
       
       this.jobService.createOrUpdate(jobToSave).subscribe(jobSaved => {
-        console.log(`Job #{jobSaved.title} created with success`);
+        console.log(`Job ${jobSaved.title} created with success`);
         this.router.navigate(['/home-company']);
       },
         err => {
