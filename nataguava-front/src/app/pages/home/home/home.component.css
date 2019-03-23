@@ -1,0 +1,15 @@
+::ng-deep .card-nata:hover {
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    transform: scale(1.02, 1.02);
+}
+
+.logo-empresa {
+    height: 150px;
+    width: 150px;
+}
+
+.nata-search {
+    margin-bottom: 46px;
+    margin-top: 148px;
+    border-radius: 35px;
+}

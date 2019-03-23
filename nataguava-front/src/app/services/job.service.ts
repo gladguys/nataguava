@@ -31,8 +31,8 @@ export class JobService {
     return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`)
   }
 
-  findAll() {
-    return this.http.get(`${environment.API}/jobs`);
+  findAll(): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/jobs/home`);
   }
 
 }
