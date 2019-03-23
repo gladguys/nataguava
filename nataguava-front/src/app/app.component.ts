@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from './services/shared.service';
 
@@ -10,7 +10,7 @@ import { SharedService } from './services/shared.service';
 export class AppComponent implements OnInit {
   title = 'nataguava-front';
 
-  userIsLoggedIn$ = new BehaviorSubject<boolean>(null);
+  userIsLoggedIn$ = new Observable<boolean>(null);
 
   constructor(private sharedService: SharedService,){}
 
