@@ -36,10 +36,22 @@ public class JobController {
     }
 
     @GetMapping(value = "/company/{userId}")
-    public ResponseEntity<List<Job>> getJobsByCompany(@PathVariable("userId") Long userId) { List<Job> jobs;
+    public ResponseEntity<List<Job>> getJobsByCompany(@PathVariable("userId") Long userId) {
+        List<Job> jobs;
         try {
             UserCompany userCompany = this.userCompanyService.findByUserId(userId);
             jobs = this.jobService.findAllByCompanyId(userCompany.getId());
+            return ResponseEntity.ok(jobs);
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping(value = "/home")
+    public ResponseEntity<List<Job>> getJobsAvaliable() {
+        List<Job> jobs;
+        try {
+            jobs = this.jobService.findAll();
             return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
