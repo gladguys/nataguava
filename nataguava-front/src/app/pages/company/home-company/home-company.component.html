@@ -2,26 +2,9 @@
   <h3 class="title-vagas-andamento">Vagas em Endamento</h3>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3">
-        <guava-card-vaga [title]="['PHP']" [localidadeVaga]="['Fortaleza - Ce']"
-          [image]="['https://hipsters.jobs/files/pictures/icon-512x512.png']"></guava-card-vaga>
-      </div>
-      <div class="col-sm-3">
-        <guava-card-vaga [title]="['Java Pleno']" [localidadeVaga]="['Fortaleza - Ce']"
-          [image]="['https://hipsters.jobs/files/pictures/30850431_191742181549754_1153403168_o.png']">
-        </guava-card-vaga>
-      </div>
-      <div class="col-sm-3">
-        <guava-card-vaga [title]="['Estágio']" [localidadeVaga]="['Fortaleza - Ce']"
-          [image]="['https://pbs.twimg.com/profile_images/996111598212321280/-zpB5IN3_400x400.jpg']"></guava-card-vaga>
-      </div>
-
-      <div class="col-sm-3">
-        <guava-card-vaga [title]="['Javascript']" [localidadeVaga]="['Fortaleza - Ce']"
-          [image]="['https://hipsters.jobs/files/pictures/HST_Logo_wTag_Web.jpg']"></guava-card-vaga>
-      </div>
+      
+        <guava-card-vaga *ngFor="let job of jobs" [job]="job"></guava-card-vaga>
     </div>
-
 
     <div class="row">
       <h4 class="title-vagas-andamento">Histórico de Vagas</h4>

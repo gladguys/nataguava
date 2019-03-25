@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Job } from 'src/app/models/job.model';
 
 @Component({
   selector: 'guava-card-vaga',
@@ -8,9 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardVagaComponent implements OnInit {
 
 
-  @Input() title: string = '';
-  @Input() localidadeVaga: string = '';
-  @Input() image: string = '';
+  @Input() job: Job;
 
   constructor() { }
 

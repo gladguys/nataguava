@@ -1,9 +1,13 @@
 package br.com.daboiud.nataguava.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class Job {
 
     @Id
@@ -32,5 +36,10 @@ public class Job {
     private JobStatus status;
 
     private String location;
+
+    @ManyToMany(mappedBy = "jobs")
+    private List<Candidate> candidates;
+
+    private Date deadline;
 
 }

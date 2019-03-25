@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Candidate {
@@ -24,6 +25,13 @@ public class Candidate {
     private List<ResultCandidateJob> resultCandidateJob;
 
     private String urlRepository;
+
+    @ManyToMany
+    @JoinTable(name = "job_candidate",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
+    private Set<Job> jobs;
 
     public Candidate() { }
 

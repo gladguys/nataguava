@@ -3,10 +3,14 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <button class="btn btn-primary new-action-btn-header">+ PUBLICAR VAGA</button>
+      <button *ngIf="user?.profileEnum == 'ROLE_RECRUTER'" class="btn btn-primary new-action-btn-header" routerLink="form-job">+ PUBLICAR VAGA</button>
+      <button *ngIf="user?.profileEnum == 'ROLE_CANDIDATE'" class="btn btn-primary new-action-btn-header" routerLink="form-job">SIMULADO</button>
     </ul>
    <div class="navbar-right info-user">
-    <label>IVIA <i class="fa fa-user-circle"></i></label>
-   </div>
+    <label *ngIf="user; else noUser">{{user?.email}} <i class="fa fa-user-circle"></i></label>
+    <ng-template #noUser>
+      <label [routerLink]="['/login']">Login</label>
+    </ng-template>
+  </div>
   </div>
 </nav>

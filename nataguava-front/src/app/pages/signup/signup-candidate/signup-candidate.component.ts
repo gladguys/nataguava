@@ -1,9 +1,9 @@
 import { User } from './../../../models/user.model';
-import { UserService } from './../../../services/recruter.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from 'src/app/models/candidate.model';
 import { CandidateService } from 'src/app/services/candidate.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   templateUrl: './signup-candidate.component.html',

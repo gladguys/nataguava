@@ -1,16 +1,21 @@
+import { AuthGuard } from './components/shared/security/auth-guard';
+import { FormJobComponent } from './pages/job/form-job/form-job.component';
 import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
 import { HomeCompanyComponent } from './pages/company/home-company/home-company.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
+import { HomeComponent } from './pages/home/home/home.component';
 
 export const ROUTES: Routes = [
-    {path: 'login', canActivate: [LoginAuthGuard], component: SignInComponent},
+    { path: '', component: HomeComponent },
+    {path: 'login', canActivate: [LoginAuthGuard], component: SignInComponent },
     {path: 'signup-candidate', component: SignupCandidateComponent},
-    {path: 'login', component: SignInComponent},
-    {path: 'home-company', component: HomeCompanyComponent},
-    {path: 'signup-candidate', component: SignupCandidateComponent}
+    {path: 'home-company', canActivate: [AuthGuard], component: HomeCompanyComponent},
+    {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
+    {path: 'form-job', canActivate: [AuthGuard], component: FormJobComponent}
+
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);
