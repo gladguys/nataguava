@@ -15,7 +15,8 @@ import { NgModule } from '@angular/core';
         CommonModule,
         mySharedModule,
         CardModule,
-        ButtonModule
+        ButtonModule,
+        
     ],
     exports: [
         HomeComponent

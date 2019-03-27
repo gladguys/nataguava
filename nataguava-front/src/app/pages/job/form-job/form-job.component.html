@@ -2,7 +2,7 @@
   <form [formGroup]="jobForm" (submit)="save()">
   
     <div class="form-group">
-      <label for="inputTitle">Título</label>
+      <label class="labels-form" for="inputTitle">Título</label>
       <input 
         type="text" 
         formControlName="title"
@@ -15,7 +15,7 @@
     </div>
   
    <div class="form-group">
-      <label for="inputDesc">Descrição da Vaga</label>
+      <label class="labels-form" for="inputDesc">Descrição da Vaga</label>
       <textarea 
         rows="4" cols="50"
         type="textarea" 
@@ -28,7 +28,7 @@
     </div>
     
     <div class="form-group">
-      <label for="inputDesc">Questões por Temas</label>
+      <label class="labels-form" for="inputDesc">Questões por Temas</label>
       <div class="item-question">
         <input type="text" [(ngModel)]="contentTag" [ngModelOptions]="{standalone: true}" class="item-question-tema" placeholder="escolha um tema">
         <input type="number" [(ngModel)]="qtdQuestions" [ngModelOptions]="{standalone: true}" class="item-question-qtd">
@@ -47,7 +47,7 @@
     </div>
 
     <div class="form-group">
-      <label for="inputLocalizacao">Localização</label>
+      <label class="labels-form" for="inputLocalizacao">Localização</label>
       <input 
         type="text"
         formControlName="location"
@@ -58,7 +58,7 @@
     </div>
 
     <div class="form-group">
-      <label for="inputNumCandidatos">Nº Selecionáveis</label>
+      <label class="labels-form" for="inputNumCandidatos">Nº Selecionáveis</label>
       <input 
         type="number" 
         formControlName="numberOfBestCandidates"
