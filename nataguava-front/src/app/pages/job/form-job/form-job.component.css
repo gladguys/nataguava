@@ -1,7 +1,17 @@
 .form-job-container {
-    background: lightgray;
+    background: white;
     padding: 25px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    box-shadow: 15px 11px #888888;
+    width: 910px;
+    margin: 0 auto;
+}
+
+.labels-form {
+    color: #3c8dbc;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: sans-serif;
 }
 
 .item-question-qtd {
