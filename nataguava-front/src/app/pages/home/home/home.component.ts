@@ -3,6 +3,7 @@ import { JobService } from './../../../services/job.service';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './home.component.html',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   jobs: Array<Job> = [];
 
-  constructor(private jobService: JobService) { }
+  constructor(private jobService: JobService,
+              public router: Router) { }
 
   ngOnInit() {
     this.jobService.findAll().subscribe( jobs => {
@@ -20,4 +22,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  goToDetail(job: Job) {
+    this.router.navigate[`/job-detail/${job.id}`];
+  }
 }

@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       
-        <guava-card-vaga *ngFor="let job of jobs" [job]="job"></guava-card-vaga>
+        <guava-card-vaga *ngFor="let job of jobs" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
     </div>
 
     <div class="row">
