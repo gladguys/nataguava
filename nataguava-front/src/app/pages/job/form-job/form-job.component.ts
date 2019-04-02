@@ -22,6 +22,8 @@ export class FormJobComponent implements OnInit {
   qtdQuestions: number = 0;
   contentTag: string = '';
 
+  submittingForm: boolean = false;
+
 
   constructor(public formBuilder: FormBuilder,
     public jobService: JobService,
@@ -55,6 +57,7 @@ export class FormJobComponent implements OnInit {
   }
 
   save() {
+    this.submittingForm = true;
    if(this.jobForm.valid) {
     let jobToSave = this.jobForm.getRawValue() as Job;
     jobToSave.contents = this.contents;
@@ -68,7 +71,9 @@ export class FormJobComponent implements OnInit {
       
       this.jobService.createOrUpdate(jobToSave).subscribe(jobSaved => {
         console.log(`Job ${jobSaved.title} created with success`);
+        this.submittingForm = false;
         this.router.navigate(['/home-company']);
+        
       },
         err => {
           console.error(err);
