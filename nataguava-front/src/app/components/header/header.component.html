@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand name-app" href="#">NataGUAVA</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -7,7 +7,7 @@
       <button *ngIf="user?.profileEnum == 'ROLE_CANDIDATE'" class="btn btn-primary new-action-btn-header" routerLink="form-job">SIMULADO</button>
     </ul>
    <div class="navbar-right info-user">
-    <label [routerLink]="['/home-company']" *ngIf="user; else noUser">{{user?.email}} <i class="fa fa-user-circle"></i></label>
+    <label [routerLink]="['/home-company']" *ngIf="user; else noUser">{{user?.email}} <i class="fa fa-user-circle label-name-user"></i></label>
     <ng-template #noUser>
       <label [routerLink]="['/login']">Login</label>
     </ng-template>
