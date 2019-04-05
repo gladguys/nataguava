@@ -3,5 +3,13 @@
 }
 
 .subtitle-job-detail {
-    color: darkgray;
+    color: dodgerblue;
+}
+
+.tag-conteudo {
+    border-radius: 10px;
+    background: tomato; 
+    color: white;
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    transform: scale(1.02, 1.02);   
 }

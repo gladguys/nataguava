@@ -1,19 +1,26 @@
 <div class="jumbotron">
-  <div class=" text-center title-job-detail">{{job.title}}</div>
+  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-success">(Em Andamento)</span></div>
   <div class="subtitle-job-detail text-center">{{job.userCompany.name}} - {{job.location}}</div>
 </div>
 
-<div class="row">
-  <div class="col-md-6 ml-5 mr-5">
-    <h3>Descrição</h3>
-    <div class="descricao">
-      {{job.description}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h3>Descrição</h3>
+      <div class="descricao">
+        {{job.description}}
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <h3>Tags</h3>
+      <label class="ml-1 mr-1 p-1 tag-conteudo" *ngFor="let c of fakecontents">{{c}}</label>
+
     </div>
   </div>
-
-  <div class="col-md-3">
-    <h3>Tags</h3>
-    <label class="ml-1 mr-1 p-1" style="background: tomato; color: white" *ngFor="let c of fakecontents">{{c}}</label>
-    
-  </div>
+  <div class="row">
+      <div class="col-md-12 mt-5 text-center">
+          <button type="submit" class="btn btn-primary col-md-10">Enviar</button>
+      </div>
+  </div>  
 </div>
