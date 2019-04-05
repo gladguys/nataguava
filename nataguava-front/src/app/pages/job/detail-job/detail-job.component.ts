@@ -12,6 +12,10 @@ export class DetailJobComponent implements OnInit {
 
   public job: Job = new Job();
 
+  public fakecontents = [
+    "JAVA", "JAVASCRIPT", "SQL", "SPRING MVC"
+  ]
+
   constructor(public route: ActivatedRoute, 
               public router: Router,
               public jobService: JobService) { }
