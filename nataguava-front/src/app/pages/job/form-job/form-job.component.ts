@@ -33,6 +33,11 @@ export class FormJobComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadJobForm();
+  }
+
+
+  loadJobForm() {
     this.jobForm = this.formBuilder.group({
       'title': ['', Validators.required],
       'description': ['', Validators.required],
