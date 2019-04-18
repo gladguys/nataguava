@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { User } from './../../models/user.model';
 import { SharedService } from './../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +15,18 @@ export class HeaderComponent implements OnInit {
   constructor(private sharedService: SharedService,
               private router: Router) {}
   
-  user: User; 
+  user$ = new Observable<User>(null);
 
   ngOnInit(): void {
-    this.user = this.sharedService.getUserLogged();
+    this.user$ = this.sharedService.userAsObservable();
   }
 
   goToHomePageCompanyLogged() {
     this.router.navigate["/home-company"];
   }
 
+  logout() {
+    this.sharedService.logout();
+    this.router.navigateByUrl('/');
+  }
 }

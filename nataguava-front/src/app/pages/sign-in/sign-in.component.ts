@@ -36,7 +36,6 @@ export class SignInComponent implements OnInit {
 
      this.authService.login(email, password)
        .subscribe((authenticatedUser: CurrentUserCompany) => {
-         console.log(authenticatedUser.user);
         
          this.sharedService.saveUserOnLocalStorage(
           {
