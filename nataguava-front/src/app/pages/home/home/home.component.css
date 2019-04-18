@@ -1,0 +1,29 @@
+::ng-deep .card-nata:hover {
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    transform: scale(1.02, 1.02);
+}
+
+.logo-empresa {
+    height: 150px;
+    width: 150px;
+}
+
+.nata-search {
+    margin-bottom: 46px;
+    border-radius: 35px;
+}
+
+.logo {
+    color: deeppink;
+    text-align: center;
+    font-size: 122px;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-image: url("../../../../assets/home-bg.jpg");
+    background-size: 70%;
+    background-position-y: 50%;
+    opacity: 0.5;
+  }

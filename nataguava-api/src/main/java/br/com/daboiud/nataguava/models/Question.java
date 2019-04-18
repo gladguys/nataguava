@@ -2,14 +2,12 @@ package br.com.daboiud.nataguava.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Data
+@Table(name = "question")
 public class Question {
 
     @Id
@@ -17,9 +15,18 @@ public class Question {
     private Long id;
 
     private String textQuestion;
+
+    @OneToMany(
+            mappedBy = "question",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private Set<ItemQuestion> itens;
-    private Content content;
+
+    @ManyToMany(mappedBy = "questions")
+    private Set<Questionary> questionaries;
 
 
+    private ContentTag tag;
 
 }
