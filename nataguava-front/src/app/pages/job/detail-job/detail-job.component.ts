@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/services/shared.service';
 import { Job } from './../../../models/job.model';
 import { JobService } from './../../../services/job.service';
 import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
@@ -18,6 +19,7 @@ export class DetailJobComponent implements OnInit {
 
   constructor(public route: ActivatedRoute, 
               public router: Router,
+              public sharedService: SharedService,
               public jobService: JobService) { }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class DetailJobComponent implements OnInit {
     if(jobId) {
       this.jobService.findById(jobId).subscribe( (job:Job) => this.job = job);
     }
+  }
+
+  isCandidate() {
+    return this.sharedService.getUserLogged().profileEnum == "ROLE_CANDIDATE";
   }
 
 }

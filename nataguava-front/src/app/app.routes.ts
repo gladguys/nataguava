@@ -1,3 +1,4 @@
+import { CompanyGuard } from './components/shared/security/company-guard';
 import { SignupCompanyComponent } from './pages/signup/signup-company/signup-company.component';
 import { AuthGuard } from './components/shared/security/auth-guard';
 import { FormJobComponent } from './pages/job/form-job/form-job.component';
@@ -15,7 +16,7 @@ export const ROUTES: Routes = [
     {path: 'login', canActivate: [LoginAuthGuard], component: SignInComponent },
     {path: 'signup-candidate', component: SignupCandidateComponent},
     {path: 'signup-company', component: SignupCompanyComponent},
-    {path: 'home-company', canActivate: [AuthGuard], component: HomeCompanyComponent},
+    {path: 'home-company', canActivate: [AuthGuard, CompanyGuard], component: HomeCompanyComponent},
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
     {path: 'form-job', canActivate: [AuthGuard], component: FormJobComponent},
     {path: 'job-detail/:jobId', component: DetailJobComponent }

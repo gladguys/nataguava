@@ -1,3 +1,4 @@
+import { CompanyGuard } from './components/shared/security/company-guard';
 import { HomeModule } from './pages/home/home/home.module';
 import { AuthGuard } from './components/shared/security/auth-guard';
 import { AuthInterceptor } from './../interceptor';
@@ -44,6 +45,7 @@ import { RouterModule } from '@angular/router';
     CandidateService,
     ButtonModule,
     LoginAuthGuard,
+    CompanyGuard,
     AuthGuard,
     {
 			provide: HTTP_INTERCEPTORS,

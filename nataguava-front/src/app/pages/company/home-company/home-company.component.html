@@ -2,8 +2,7 @@
   <h4 class="title-vagas-andamento">Vagas em Endamento</h4>
   <div class="container-fluid">
     <div class="row">
-      
-        <guava-card-vaga *ngFor="let job of jobs" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
+      <guava-card-vaga *ngFor="let job of jobs" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
     </div>
 
     <div class="row">
@@ -19,57 +18,7 @@
           </div>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-          <div class="table-responsive">
-            <table class="table no-margin">
-              <thead>
-                <tr>
-                  <th>Título Vaga</th>
-                  <th>Localidade</th>
-                  <th>Candidatos Selecionados</th>
-                  <th>Data de Abertura</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Java Junior</td>
-                  <td>Fortaleza - CE</td>
-                  <td>3</td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Java Junior</td>
-                  <td>Fortaleza - CE</td>
-                  <td>3</td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Java Junior</td>
-                  <td>Fortaleza - CE</td>
-                  <td>3</td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Java Junior</td>
-                  <td>Fortaleza - CE</td>
-                  <td>3</td>
-                  <td>
-                    <div class="sparkbar" data-color="#00a65a" data-height="20">12/11/2018</div>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-          <!-- /.table-responsive -->
-        </div>
-        <!-- /.box-body -->
+        
         <div class="box-footer clearfix">
           <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Criar Nova Vaga</a>
         </div>
