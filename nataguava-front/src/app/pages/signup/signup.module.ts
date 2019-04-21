@@ -3,15 +3,20 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { CandidateService } from 'src/app/services/candidate.service';
-import { UserService } from 'src/app/services/user.service';
+import { SignupCompanyComponent } from './signup-company/signup-company.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [SignupCandidateComponent],
+    declarations: [
+        SignupCandidateComponent,
+        SignupCompanyComponent
+        
+    ],
     imports: [
+        CommonModule,
+        RouterModule,
         HttpClientModule,
-        ReactiveFormsModule,
-        CommonModule
+        ReactiveFormsModule
     ]
 })
 export class SignupModule {

@@ -1,3 +1,4 @@
+import { CompanyGuard } from './components/shared/security/company-guard';
 import { HomeModule } from './pages/home/home/home.module';
 import { AuthGuard } from './components/shared/security/auth-guard';
 import { AuthInterceptor } from './../interceptor';
@@ -18,6 +19,7 @@ import { SignupModule } from './pages/signup/signup.module';
 import { CandidateService } from './services/candidate.service';
 import { CompanyModule } from './pages/company/company.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     SignupModule,
     CompanyModule,
     JobModule,
-    HomeModule
-    
+    HomeModule,
+    RouterModule
   ],
   providers: [
     AuthService,
@@ -43,6 +45,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     CandidateService,
     ButtonModule,
     LoginAuthGuard,
+    CompanyGuard,
     AuthGuard,
     {
 			provide: HTTP_INTERCEPTORS,
