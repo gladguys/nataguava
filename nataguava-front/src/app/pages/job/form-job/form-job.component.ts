@@ -18,7 +18,7 @@ export class FormJobComponent implements OnInit {
   job: Job = new Job();
   jobForm: FormGroup;
 
-  contents: Array<Content> = [];
+  contents: Content[] = [];
   qtdQuestions: number = 0;
   contentTag: string = '';
 

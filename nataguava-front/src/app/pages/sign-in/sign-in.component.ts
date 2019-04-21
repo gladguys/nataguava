@@ -56,4 +56,12 @@ export class SignInComponent implements OnInit {
 
   }
 
+  signupCandidate() {
+    this.router.navigateByUrl("/signup-candidate");
+  }
+
+  signupCompany() {
+    this.router.navigateByUrl("/signup-company");
+  }
+  
 }

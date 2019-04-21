@@ -35,12 +35,12 @@ export class SignupCandidateComponent implements OnInit {
     userCandidate.user = user;
     userCandidate.name = this.signupForm.controls['name'].value;
     userCandidate.urlRepository = this.signupForm.controls['urlRepo'].value;
-
-  
-    console.log(userCandidate);
-    this.candidateService.createOrUpdate(userCandidate).subscribe((userCreated: User) =>{
-      console.log(userCreated);
-    });
+    
+    this.candidateService
+            .createOrUpdate(userCandidate)
+            .subscribe((userCreated: User) =>{
+              console.log(userCreated);
+            });
     
   }
 }

@@ -8,7 +8,7 @@ export class Job {
     public description: string;
     public numberOfBestCandidates: number;
     public deadline: Date;
-    public contents: Array<Content>;
+    public contents: Content[];
     public userCompany: UserCompany;
     public status: string;
     public location: string;

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { HomeCompanyComponent } from './home-company/home-company.component';
 import { NgModule } from '@angular/core';
+import { SignupCompanyComponent } from '../signup/signup-company/signup-company.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { NgModule } from '@angular/core';
     ],
     exports: [
         HomeCompanyComponent,
-        CompanyFormComponent
+        CompanyFormComponent,
+
     ]
 })
 export class CompanyModule {

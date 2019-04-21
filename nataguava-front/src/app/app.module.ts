@@ -18,6 +18,7 @@ import { SignupModule } from './pages/signup/signup.module';
 import { CandidateService } from './services/candidate.service';
 import { CompanyModule } from './pages/company/company.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     SignupModule,
     CompanyModule,
     JobModule,
-    HomeModule
-    
+    HomeModule,
+    RouterModule
   ],
   providers: [
     AuthService,
