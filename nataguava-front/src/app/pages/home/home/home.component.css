@@ -20,3 +20,10 @@
     font-family: serif;
     font-weight: bold;
 }
+
+.jumbotron {
+    background-image: url("../../../../assets/home-bg.jpg");
+    background-size: 70%;
+    background-position-y: 50%;
+    opacity: 0.5;
+  }

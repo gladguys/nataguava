@@ -1,71 +1,96 @@
-<div class="offset-md-3 col-md-6 offset-md-3 form-job-container">
+<div class="mr-2 ml-2">
+  <div class="row">
+    <div class="col-md">
+      <h1 class="title-page h2 border-left pl-2">Nova Vaga</h1>
+    </div>
+    <div class="col-md">
+      <a routerLink="/home-company" class="btn btn-light float-right">Voltar</a>
+    </div>
+  </div>
+
   <form [formGroup]="jobForm" (submit)="save()">
-  
-    <div class="form-group">
-      <label class="labels-form" for="inputTitle">Título</label>
-      <input 
-        type="text" 
-        formControlName="title"
-        class="form-control" 
-        id="inputTitle" 
-        aria-describedby="titleHelp" 
-        placeholder="Título da vaga">
-      <small id="titleHelp" class="form-text text-muted">Crie um título que descreva o cargo e a vaga</small>
-      <small *ngIf="jobForm.controls['title'].errors?.required && !jobForm.controls['title'].pristine">Campo obrigatório!</small>
-    </div>
-  
-   <div class="form-group">
-      <label class="labels-form" for="inputDesc">Descrição da Vaga</label>
-      <textarea 
-        rows="4" cols="50"
-        type="textarea" 
-        formControlName="description"
-        class="form-control" 
-        id="inputDesc" 
-        aria-describedby="descHelp"></textarea>
-      <small id="descHelp" class="form-text text-muted">Informe competências desejafas para vaga, assim como requisitos</small>
-      <small *ngIf="jobForm.controls['description'].errors?.required && !jobForm.controls['description'].pristine">Campo obrigatório!</small>
-    </div>
-    
-    <div class="form-group">
-      <label class="labels-form" for="inputDesc">Questões por Temas</label>
-      <div class="item-question">
-        <input type="text" [(ngModel)]="contentTag" [ngModelOptions]="{standalone: true}" class="item-question-tema" placeholder="escolha um tema">
-        <input type="number" [(ngModel)]="qtdQuestions" [ngModelOptions]="{standalone: true}" class="item-question-qtd">
-        <button class="btn btn-primary btn-form-job" type="button" (click)="addContent()">Adicionar Questões</button>
+    <div class="card">
+      <div class="card-header">
+        Crie uma Nova Vaga
       </div>
-      <small *ngIf="this.contents.length == 0">Obrigatório ao menos 1 questão</small>
-    </div>
 
-    <div class="list-contents">
-      <ul>
-        <li *ngFor="let content of contents">
-          {{content.contentTag}} - {{content.qtQuestions}}
-          <button class="btn btn-danger" type="button" (click)="removeContent(content)">x</button>
-        </li>
-      </ul>
-    </div>
+      <div class="card-body">
 
-    <div class="form-group">
-      <label class="labels-form" for="inputLocalizacao">Localização</label>
-      <input 
-        type="text"
-        formControlName="location"
-        class="form-control" 
-        id="inputLocalizacao" 
-        placeholder="Localidade da vaga">
-        <small *ngIf="jobForm.controls['location'].errors?.required && !jobForm.controls['location'].pristine">Campo obrigatório!</small>
-    </div>
+        <div class="form-row">
+          <div class="form-group col-md-9 mr-2">
+            <label for="title" class="labels-form">Título</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div class="text-danger" *ngIf="jobForm.get('title').invalid && jobForm.get('title').touched">
+              <div *ngIf="!!jobForm.get('title').errors.required">Título da vaga é obrigatório</div>
+            </div>
+          </div>
+          
+          <div class="form-group col-md-2">
+            <label class="labels-form" for="inputNumCandidatos">Nº Selecionáveis</label>
+            <input 
+            type="number" 
+            formControlName="numberOfBestCandidates"
+            class="form-control num-selecionaveis-form-job-input" 
+            id="inputNumCandidatos">
+          </div> 
+          
+        </div>
 
-    <div class="form-group">
-      <label class="labels-form" for="inputNumCandidatos">Nº Selecionáveis</label>
-      <input 
-        type="number" 
-        formControlName="numberOfBestCandidates"
-        class="form-control num-selecionaveis-form-job-input" 
-        id="inputNumCandidatos">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="description" class="labels-form">Descrição</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+            <small id="descHelp" class="form-text text-muted">Informe competências desejafas para vaga, assim como
+              requisitos</small>
+            <div class="text-danger" *ngIf="jobForm.get('description').invalid && jobForm.get('description').touched">
+              <div *ngIf="!!jobForm.get('description').errors.required">Descrição da vaga é obrigatório</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label class="labels-form" for="inputDesc">Questões por Temas</label>
+            <div class="input-group">
+              <input type="text" [(ngModel)]="contentTag" [ngModelOptions]="{standalone: true}"
+                class="form-control input-group mr-1" placeholder="escolha um tema">
+              <input type="number" [(ngModel)]="qtdQuestions" [ngModelOptions]="{standalone: true}" class="form-control col-md-1 mr-1">
+              <button class="btn btn-primary" type="button" (click)="addContent()">Adicionar
+                Questões</button>
+            </div>
+            <small *ngIf="this.contents.length == 0">Obrigatório ao menos 1 questão</small>
+          </div>
+        </div>
+
+        <div class="form-row ml-2 mb-3">
+          <ul class="list-group col-md-6">
+            <li *ngFor="let content of contents"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              {{content.contentTag}}
+              <span class="badge badge-primary badge-pill text-right  mr-2">{{content.qtQuestions}}</span>
+              <button class="btn btn-danger" type="button" (click)="removeContent(content)">x</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="location" class="labels-form">Localização da Vaga</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
+                  <input type="text" class="form-control" id="location"
+                    formControlName="location">
+                </div>
+              </div>
+        </div>
+            
+      </div>
+      <div class="form-row pb-3 mr-1 ml-1">
+        <div class="col-md-12 text-center">
+            <button [disabled]="submittingForm || jobForm?.invalid" type="submit"
+            class="btn btn-primary col-md-12">Enviar</button>
+        </div>
+      </div>
     </div>
-  
-    <button type="button" (click)="save()" class="btn btn-success btn-submit-job">Criar Vaga</button>
   </form>
 </div>

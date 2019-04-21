@@ -24,7 +24,6 @@ public class JobController {
 
     @PostMapping
     public ResponseEntity<Job> save(@RequestBody Job job) {
-
         Job savedJob;
         try {
             savedJob = this.jobService.createOrUpdate(job);
@@ -56,5 +55,10 @@ public class JobController {
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getById(@PathVariable("id") Long id) throws Throwable {
+           return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));
     }
 }

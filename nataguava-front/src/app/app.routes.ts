@@ -8,6 +8,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup-candidate.component';
 import { HomeComponent } from './pages/home/home/home.component';
+import { DetailJobComponent } from './pages/job/detail-job/detail-job.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -16,7 +17,8 @@ export const ROUTES: Routes = [
     {path: 'signup-company', component: SignupCompanyComponent},
     {path: 'home-company', canActivate: [AuthGuard], component: HomeCompanyComponent},
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
-    {path: 'form-job', canActivate: [AuthGuard], component: FormJobComponent}
+    {path: 'form-job', canActivate: [AuthGuard], component: FormJobComponent},
+    {path: 'job-detail/:jobId', component: DetailJobComponent }
 
 ]
 
