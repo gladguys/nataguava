@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CandidateController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private CandidateService candidateService;
 
     @PostMapping
