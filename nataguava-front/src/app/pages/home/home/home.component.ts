@@ -2,7 +2,6 @@ import { SharedService } from './../../../services/shared.service';
 import { JobService } from './../../../services/job.service';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
-import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './home.component.html',

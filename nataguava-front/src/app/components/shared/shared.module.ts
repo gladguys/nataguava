@@ -1,6 +1,8 @@
+import { CardVagaComponent } from './../../components/shared/card-vaga/card-vaga.component';
+import { ListCardVagaComponent } from './list-card-vaga/list-card-vaga.component';
+
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { CardVagaComponent } from './../../components/shared/card-vaga/card-vaga.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +16,8 @@ import { NgModule } from '@angular/core';
         ButtonModule
     ],
     exports: [
-        CardVagaComponent
+        CardVagaComponent,
+        ListCardVagaComponent
     ]
 })
 export class SharedModule {
