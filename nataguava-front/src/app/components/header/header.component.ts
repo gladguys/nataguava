@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title = 'nataguava-front';
+  title =  'nataguava-front';
   
   constructor(private sharedService: SharedService,
               private router: Router) {}
