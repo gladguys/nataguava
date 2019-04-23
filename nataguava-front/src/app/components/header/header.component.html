@@ -8,9 +8,15 @@
         <button *ngIf="user?.profileEnum == 'ROLE_CANDIDATE'" class="btn btn-primary new-action-btn-header" routerLink="form-job">SIMULADO</button>
       </div>
     </ul>
+
    <div class="navbar-right info-user ">
-    <label [routerLink]="['/home-company']" *ngIf="(user$ | async) as user; else noUser">{{user?.email}} <i class="fa fa-user-circle label-name-user"></i></label>
-    <label *ngIf="(user$ | async)" (click)="logout()">Logout</label>
+    <label 
+      [routerLink]="['/home-company']" 
+      *ngIf="(user$ | async) as user; else noUser">
+            {{user?.email}} <i class="fa fa-user-circle label-name-user"></i>
+    </label>
+
+    <label *ngIf="(user$ | async)" class="logout-btn" (click)="logout()">Logout</label>
     <ng-template #noUser>
       <label [routerLink]="['/login']">Login</label>
     </ng-template>

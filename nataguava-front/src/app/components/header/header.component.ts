@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   
   user$ = new Observable<User>(null);
 
+  
   ngOnInit(): void {
     this.user$ = this.sharedService.userAsObservable();
   }
