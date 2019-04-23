@@ -48,7 +48,7 @@ export class FormJobComponent implements OnInit {
   }
 
   addContent() {
-    console.log(this.contentTag);
+
     this.contents.push({ contentTag: this.contentTag, qtQuestions: this.qtdQuestions });
     this.qtdQuestions = 0;
     this.contentTag = '';
@@ -69,13 +69,10 @@ export class FormJobComponent implements OnInit {
     jobToSave.status = "CREATED";
 
     let userId = this.sharedService.getUserLogged().id;
-    console.log(userId);
     this.recruterService.getByUserId(userId).subscribe((userCompany: UserCompany) => {
       jobToSave.userCompany = userCompany;
-      console.log(this.job);
       
       this.jobService.createOrUpdate(jobToSave).subscribe(jobSaved => {
-        console.log(`Job ${jobSaved.title} created with success`);
         this.submittingForm = false;
         this.router.navigate(['/home-company']);
         
