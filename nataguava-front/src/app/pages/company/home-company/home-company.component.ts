@@ -26,7 +26,6 @@ export class HomeCompanyComponent implements OnInit {
   }
 
   goToDetail(job:Job) {
-    console.log("teste");
     this.router.navigate([`/job-detail/${job.id}`]);  
   }
 

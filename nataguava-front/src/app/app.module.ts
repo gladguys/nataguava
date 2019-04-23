@@ -1,3 +1,4 @@
+import { CandidateGuard } from './components/shared/security/candidate-guard';
 import { CompanyGuard } from './components/shared/security/company-guard';
 import { HomeModule } from './pages/home/home/home.module';
 import { AuthGuard } from './components/shared/security/auth-guard';
@@ -20,11 +21,12 @@ import { CandidateService } from './services/candidate.service';
 import { CompanyModule } from './pages/company/company.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { QuestionaryComponent } from './pages/questionary/questionary.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    HeaderComponent
+    HeaderComponent, QuestionaryComponent
   ],
   exports:[
     HeaderComponent
@@ -46,6 +48,7 @@ import { RouterModule } from '@angular/router';
     ButtonModule,
     LoginAuthGuard,
     CompanyGuard,
+    CandidateGuard,
     AuthGuard,
     {
 			provide: HTTP_INTERCEPTORS,

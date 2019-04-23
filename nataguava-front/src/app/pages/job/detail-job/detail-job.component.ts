@@ -30,6 +30,7 @@ export class DetailJobComponent implements OnInit {
   }
 
   isCandidate() {
+    if(!this.sharedService.getUserLogged()) return true;
     return this.sharedService.getUserLogged().profileEnum == "ROLE_CANDIDATE";
   }
 

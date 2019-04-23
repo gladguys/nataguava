@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToDetail(job: Job) {
-    this.router.navigate[`/job-detail/${job.id}`];
+  goToDetail(job:Job) {
+    this.router.navigate([`/job-detail/${job.id}`]);  
   }
 }
