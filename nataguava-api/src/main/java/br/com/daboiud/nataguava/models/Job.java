@@ -11,7 +11,7 @@ import java.util.List;
 public class Job {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private String title;
@@ -20,7 +20,8 @@ public class Job {
 
     private int numberOfBestCandidates;
 
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="job_id", referencedColumnName="id")
     private List<Content> contents;
 
     @ManyToOne(fetch = FetchType.EAGER)
