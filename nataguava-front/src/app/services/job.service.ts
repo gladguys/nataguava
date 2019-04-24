@@ -22,12 +22,11 @@ export class JobService {
     }
   }
 
-  findById(id: string) {
-    return this.http.get(`${environment.API}/jobs/${id}`);
+  findById(id: string): Observable<Job> {
+    return this.http.get<Job>(`${environment.API}/jobs/${id}`);
   }
 
-  findAllByUserCompanyId(userId: number) {
-    console.log("no service" + userId);
+  findAllByUserCompanyId(userId: number): Observable<Array<Job>> {
     return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`)
   }
 
