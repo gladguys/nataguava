@@ -9,6 +9,7 @@ import { LoginAuthGuard } from './components/shared/security/login-auth-guard';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ButtonModule} from 'primeng/button';
  
@@ -39,7 +40,8 @@ import { QuestionaryComponent } from './pages/questionary/questionary.component'
     CompanyModule,
     JobModule,
     HomeModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   providers: [
     AuthService,

@@ -28,10 +28,11 @@
           <div class="form-group col-md-2">
             <label class="labels-form" for="inputNumCandidatos">Nº Selecionáveis</label>
             <input 
-            type="number" 
-            formControlName="numberOfBestCandidates"
-            class="form-control num-selecionaveis-form-job-input" 
-            id="inputNumCandidatos">
+              type="number" 
+              min=1
+              formControlName="numberOfBestCandidates"
+              class="form-control num-selecionaveis-form-job-input" 
+              id="inputNumCandidatos">
           </div> 
           
         </div>
@@ -52,12 +53,24 @@
           <div class="form-group col-md-12">
             <label class="labels-form" for="inputDesc">Questões por Temas</label>
             <div class="input-group">
-              <input type="text" [(ngModel)]="contentTag" [ngModelOptions]="{standalone: true}"
-                class="form-control input-group mr-1" placeholder="escolha um tema">
-              <input type="number" [(ngModel)]="qtdQuestions" [ngModelOptions]="{standalone: true}" class="form-control col-md-1 mr-1">
+              <input 
+                  type="text" 
+                  [(ngModel)]="contentTag"
+                  [ngbTypeahead]="search" 
+                  [ngModelOptions]="{standalone: true}"
+                  class="form-control input-group mr-1" 
+                  placeholder="escolha um tema">
+              <input 
+                  type="number"
+                  min="1" 
+                  [(ngModel)]="qtdQuestions" 
+                  [ngModelOptions]="{standalone: true}" 
+                  class="form-control col-md-1 mr-1">
+
               <button class="btn btn-primary" type="button" (click)="addContent()">Adicionar
                 Questões</button>
             </div>
+
             <small *ngIf="this.contents.length == 0">Obrigatório ao menos 1 questão</small>
           </div>
         </div>
@@ -65,7 +78,7 @@
         <div class="form-row ml-2 mb-3">
           <ul class="list-group col-md-6">
             <li *ngFor="let content of contents"
-              class="list-group-item d-flex justify-content-between align-items-center">
+              class="list-group-item content-item d-flex justify-content-between align-items-center">
               {{content.contentTag}}
               <span class="badge badge-primary badge-pill text-right  mr-2">{{content.qtQuestions}}</span>
               <button class="btn btn-danger" type="button" (click)="removeContent(content)">x</button>
