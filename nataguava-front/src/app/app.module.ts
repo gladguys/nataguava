@@ -23,11 +23,15 @@ import { CompanyModule } from './pages/company/company.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { QuestionaryComponent } from './pages/questionary/questionary.component';
+import { SharedModule } from './components/shared/shared.module';
+import { AlertModule } from './components/shared/alert/alert.module';
+import { AlertService } from './components/shared/alert/alert.service';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    HeaderComponent, QuestionaryComponent
+    HeaderComponent, 
+    QuestionaryComponent
   ],
   exports:[
     HeaderComponent
@@ -41,12 +45,14 @@ import { QuestionaryComponent } from './pages/questionary/questionary.component'
     JobModule,
     HomeModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ],
   providers: [
     AuthService,
     UserService,
     CandidateService,
+    AlertService,
     ButtonModule,
     LoginAuthGuard,
     CompanyGuard,
