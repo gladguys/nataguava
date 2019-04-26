@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
 import { Router } from '@angular/router';
 import { RecruterService } from 'src/app/services/recruter.service';
+import { Observable } from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
   templateUrl: './form-job.component.html',
@@ -24,6 +26,16 @@ export class FormJobComponent implements OnInit {
 
   submittingForm: boolean = false;
 
+  tags = ["ANDROID", "ANGULAR","CSS", "DESIGN PATTERN","GWT", "HTML", "JAVA", "JAVASCRIPT","JDBC","JPA", "MYSQL", "PHP",
+          "POSTGRESQL", "PYTHON","RUBY", "RAILS", "REACT","SPRING FRAMEWORK","SQL" ,"SQL SERVER", "SWIFT", "TYPESCRIPT"];
+
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.tags.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
 
   constructor(public formBuilder: FormBuilder,
     public jobService: JobService,
@@ -34,6 +46,8 @@ export class FormJobComponent implements OnInit {
 
   ngOnInit() {
     this.loadJobForm();
+
+    
   }
 
 

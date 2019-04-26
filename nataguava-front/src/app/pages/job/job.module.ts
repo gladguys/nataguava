@@ -4,6 +4,7 @@ import { FormJobComponent } from "./form-job/form-job.component";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailJobComponent } from './detail-job/detail-job.component';
 import { RouterModule } from '@angular/router';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        NgbTypeaheadModule
     ],
     exports: [
         FormJobComponent,
