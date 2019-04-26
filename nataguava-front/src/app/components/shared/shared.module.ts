@@ -1,3 +1,5 @@
+import { AlertModule } from './alert/alert.module';
+import { AlertComponent } from './alert/alert.component';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CardVagaComponent } from './../../components/shared/card-vaga/card-vaga.component';
@@ -14,7 +16,8 @@ import { NgModule } from '@angular/core';
         ButtonModule
     ],
     exports: [
-        CardVagaComponent
+        CardVagaComponent,
+        AlertModule
     ]
 })
 export class SharedModule {

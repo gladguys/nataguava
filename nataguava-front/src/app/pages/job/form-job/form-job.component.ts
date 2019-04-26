@@ -1,3 +1,4 @@
+import { AlertService } from './../../../components/shared/alert/alert.service';
 import { UserCompany } from './../../../models/user-company.model';
 import { SharedService } from './../../../services/shared.service';
 import { JobService } from './../../../services/job.service';
@@ -29,6 +30,7 @@ export class FormJobComponent implements OnInit {
   tags = ["ANDROID", "ANGULAR","CSS", "DESIGN PATTERN","GWT", "HTML", "JAVA", "JAVASCRIPT","JDBC","JPA", "MYSQL", "PHP",
           "POSTGRESQL", "PYTHON","RUBY", "RAILS", "REACT","SPRING FRAMEWORK","SQL" ,"SQL SERVER", "SWIFT", "TYPESCRIPT"];
 
+
   search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
@@ -41,13 +43,12 @@ export class FormJobComponent implements OnInit {
     public jobService: JobService,
     public router: Router,
     public sharedService: SharedService,
+    public alertService: AlertService,
     public recruterService: RecruterService) {
   }
 
   ngOnInit() {
     this.loadJobForm();
-
-    
   }
 
 
@@ -88,11 +89,12 @@ export class FormJobComponent implements OnInit {
       
       this.jobService.createOrUpdate(jobToSave).subscribe(jobSaved => {
         this.submittingForm = false;
+        this.alertService.success("Vaga publicada com sucesso.");
         this.router.navigate(['/home-company']);
         
       },
         err => {
-          console.error(err);
+          this.alertService.danger("Erro ao criar vaga: " + err);
         })
      });
     }
