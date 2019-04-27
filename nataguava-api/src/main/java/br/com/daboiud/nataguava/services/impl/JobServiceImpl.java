@@ -41,9 +41,4 @@ public class JobServiceImpl implements JobService {
     public List<Job> findAllByCompanyId(Long companyId) {
         return this.jobRepository.findByUserCompanyId(companyId);
     }
-
-    @Override
-    public List<Job> findAllByRegistedCandidate(Long candidateId) {
-        return null;
-    }
 }

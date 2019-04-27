@@ -1,3 +1,4 @@
+import { ProfileEnum } from './../../models/enums/profileEnum';
 import { Observable } from 'rxjs';
 import { User } from './../../models/user.model';
 import { SharedService } from './../../services/shared.service';
@@ -22,8 +23,12 @@ export class HeaderComponent implements OnInit {
     this.user$ = this.sharedService.userAsObservable();
   }
 
-  goToHomePageCompanyLogged() {
-    this.router.navigate["/home-company"];
+  goHome() {
+    if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
+      this.router.navigate["/home-company"];
+    } else {
+      this.router.navigateByUrl("/home-candidate");
+    }
   }
 
   logout() {

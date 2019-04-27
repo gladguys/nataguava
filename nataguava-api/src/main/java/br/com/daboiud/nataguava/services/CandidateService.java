@@ -1,6 +1,7 @@
 package br.com.daboiud.nataguava.services;
 
 import br.com.daboiud.nataguava.models.Candidate;
+import br.com.daboiud.nataguava.models.Job;
 import br.com.daboiud.nataguava.models.User;
 import br.com.daboiud.nataguava.models.UserCompany;
 import org.springframework.stereotype.Component;
@@ -14,4 +15,5 @@ public interface CandidateService {
     List<Candidate> findAll();
 
     Candidate findByUserId(Long id);
+
 }
