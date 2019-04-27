@@ -18,7 +18,6 @@ export class HomeCandidadeComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
-    console.log(this.sharedService.getUserLogged());
     this.jobService.findAllByCandidadeId(this.sharedService.getUserLogged().id)
                     .subscribe( jobs => this.jobs = jobs);
 

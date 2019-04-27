@@ -24,11 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
   goHome() {
-    console.log("dwde");
     if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
       this.router.navigate["/home-company"];
     } else {
-      console.log("dede");
       this.router.navigateByUrl("/home-candidate");
     }
   }

@@ -25,7 +25,7 @@ export class DetailJobComponent implements OnInit {
     if (jobId) {
       this.jobService
         .findById(jobId)
-        .subscribe((job) => { this.job = job; console.log(this.job) });
+        .subscribe((job) => { this.job = job; });
     }
   }
 
