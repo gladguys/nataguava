@@ -1,3 +1,5 @@
+import { CandidateGuard } from './components/shared/security/candidate-guard';
+import { HomeCandidadeComponent } from './pages/candidate/home-candidate/home-candidate.component';
 import { CompanyGuard } from './components/shared/security/company-guard';
 import { SignupCompanyComponent } from './pages/signup/signup-company/signup-company.component';
 import { AuthGuard } from './components/shared/security/auth-guard';
@@ -18,11 +20,11 @@ export const ROUTES: Routes = [
     {path: 'signup-candidate', component: SignupCandidateComponent},
     {path: 'signup-company', component: SignupCompanyComponent},
     {path: 'home-company', canActivate: [AuthGuard, CompanyGuard], component: HomeCompanyComponent},
+    {path: 'home-candidate', canActivate: [AuthGuard, CandidateGuard], component: HomeCandidadeComponent},
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
     {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
     {path: 'job-detail/:jobId', component: DetailJobComponent },
     {path: 'questionary/:jobId', canActivate: [AuthGuard], component: QuestionaryComponent },
-
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);
