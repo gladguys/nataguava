@@ -10,9 +10,9 @@
         </div>
       </ul>
   
-     <div class="navbar-right info-user ">
+     <div class="navbar-right info-user">
       <label 
-        [routerLink]="['/home-company']" 
+        (click)="goHome()" 
         *ngIf="(user$ | async) as user; else noUser">
               {{user?.email}} <i class="fa fa-user-circle label-name-user"></i>
       </label>
