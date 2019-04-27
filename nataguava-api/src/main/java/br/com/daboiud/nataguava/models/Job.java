@@ -38,9 +38,16 @@ public class Job {
 
     private String location;
 
-    @ManyToMany(mappedBy = "jobs")
+    @ManyToMany( targetEntity = Candidate.class, cascade = CascadeType.ALL)
+    @JoinTable(name = "candidate_jobs",
+            joinColumns = @JoinColumn(name = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+    )
     private List<Candidate> candidates;
 
     private Date deadline;
 
+    public void addCandidate(Candidate candidade) {
+        this.candidates.add(candidade);
+    }
 }
