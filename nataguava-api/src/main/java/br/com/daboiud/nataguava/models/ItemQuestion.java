@@ -15,8 +15,5 @@ public class ItemQuestion {
 
     private String text;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Question question;
-
     private boolean correct;
 }

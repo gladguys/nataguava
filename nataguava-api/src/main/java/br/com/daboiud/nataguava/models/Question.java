@@ -17,15 +17,10 @@ public class Question {
     private String textQuestion;
 
     @OneToMany(
-            mappedBy = "question",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private Set<ItemQuestion> itens;
-
-    @ManyToMany(mappedBy = "questions")
-    private Set<Questionary> questionaries;
-
 
     private ContentTag tag;
 
