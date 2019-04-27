@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.jobService.findAll().subscribe( jobs => {
       this.jobs = jobs;
+      console.log("")
     });
   }
 

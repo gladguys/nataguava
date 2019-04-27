@@ -27,11 +27,20 @@ export class JobService {
   }
 
   findAllByUserCompanyId(userId: number): Observable<Array<Job>> {
-    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`)
+    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`);
+  }
+
+
+  findAllByCandidadeId(userId: number): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/jobs/candidate/${userId}`);
   }
 
   findAll(): Observable<Array<Job>> {
     return this.http.get<Array<Job>>(`${environment.API}/jobs/home`);
+  }
+
+  addCandidate(userId: number, jobId: number) {
+    return this.http.get(`${environment.API}/jobs/${jobId}/add-candidate/${userId}`);
   }
 
 }
