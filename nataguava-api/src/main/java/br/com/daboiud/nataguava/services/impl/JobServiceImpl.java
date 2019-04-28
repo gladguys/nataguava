@@ -1,6 +1,7 @@
 package br.com.daboiud.nataguava.services.impl;
 
 import br.com.daboiud.nataguava.models.Job;
+import br.com.daboiud.nataguava.models.JobStatus;
 import br.com.daboiud.nataguava.repositories.JobRepository;
 import br.com.daboiud.nataguava.services.JobService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,13 +33,17 @@ public class JobServiceImpl implements JobService {
         return this.jobRepository.findAll();
     }
 
+    public List<Job> findAllActive() {
+        return this.jobRepository.findAllByStatus(JobStatus.CREATED);
+    }
+
     @Override
     public Optional<Job> findById(Long id) {
         return this.jobRepository.findById(id);
     }
 
     @Override
-    public List<Job> findAllByCompanyId(Long companyId) {
-        return this.jobRepository.findByUserCompanyId(companyId);
+    public List<Job> findAllByCompanyIdAndStatus(Long companyId) {
+        return this.jobRepository.findByUserCompanyIdAndStatus(companyId, JobStatus.CREATED);
     }
 }
