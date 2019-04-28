@@ -13,6 +13,7 @@ import { SignupCandidateComponent } from './pages/signup/signup-candidate/signup
 import { HomeComponent } from './pages/home/home/home.component';
 import { DetailJobComponent } from './pages/job/detail-job/detail-job.component';
 import { QuestionaryComponent } from './pages/questionary/questionary.component';
+import { QuestionFormComponent } from './pages/admin/question-form/question-form.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
     {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
     {path: 'job-detail/:jobId', component: DetailJobComponent },
     {path: 'questionary/:jobId', canActivate: [AuthGuard], component: QuestionaryComponent },
+    {path: 'form-question', component: QuestionFormComponent }
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);
