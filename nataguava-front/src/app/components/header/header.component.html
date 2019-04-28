@@ -5,8 +5,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <div *ngIf="(user$ | async) as user">
-          <button *ngIf="user?.profileEnum == 'ROLE_RECRUTER'" class="btn btn-primary new-action-btn-header" routerLink="form-job">+ PUBLICAR VAGA</button>
-          <button *ngIf="user?.profileEnum == 'ROLE_CANDIDATE'" class="btn btn-primary new-action-btn-header" routerLink="form-job">SIMULADO</button>
+          <button showIfCompany class="btn btn-primary new-action-btn-header" routerLink="form-job">+ PUBLICAR VAGA</button>
+          <button showIfCandidate class="btn btn-primary new-action-btn-header" routerLink="form-job">SIMULADO</button>
         </div>
       </ul>
   

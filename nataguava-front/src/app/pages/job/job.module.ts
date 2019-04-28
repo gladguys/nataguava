@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailJobComponent } from './detail-job/detail-job.component';
 import { RouterModule } from '@angular/router';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show-if-candidate.module';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        NgbTypeaheadModule
+        NgbTypeaheadModule,
+        ShowIfCandidateModule
     ],
     exports: [
         FormJobComponent,
