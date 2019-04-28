@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h3>Cadastro de questões</h3>
+  </div>
+
+  <form 
+    [formGroup]="questionForm"  
+    class="form-horizontal" 
+    (submit)="submit()">
+
+      <div class="form-group">
+        <label for="title">Enunciado</label>
+        <div class="col-sm-10">
+        <input 
+          formControlName="title"  
+          type="text" 
+          class="form-control" 
+          id="title" 
+          placeholder="Enunciado">
+        </div>
+      </div>
+
+      <div class="box-body">
+        <div class="form-group">
+        <label for="item1">a)</label>
+        <div class="col-sm-10">
+          <input 
+            formControlName="item1" 
+            type="text" 
+            class="form-control" 
+            id="item1">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="item1">b)</label>
+        <div class="col-sm-10">
+          <input 
+            formControlName="item2" 
+            type="text" 
+            class="form-control" 
+            id="item2">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="item1">c)</label>
+        <div class="col-sm-10">
+          <input 
+            formControlName="item3" 
+            type="text" 
+            class="form-control" 
+            id="item3">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="item1">d)</label>
+        <div class="col-sm-10">
+        <input 
+          formControlName="item4" 
+          type="text" 
+          class="form-control" 
+          id="item4">
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rightAnswer">Resposta Correta</label>
+          <div class="col-sm-10">
+          <input 
+          formControlName="rightAnswer" 
+          type="text" 
+          class="form-control" 
+          id="rightAnswer">
+          </div>  
+        </div>
+    </div>
+
+
+    <div>
+      <button type="submit" class="btn btn-default">Cancelar</button>
+      <button type="submit" class="btn btn-info pull-right">Cadastrar Questão</button>
+    </div>
+  </form>
+</div>
