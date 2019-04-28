@@ -14,5 +14,6 @@ public interface JobService {
     createOrUpdate(Job job);
     List<Job> findAll();
     Optional<Job> findById(Long id);
-    List<Job> findAllByCompanyId(Long companyId);
+    List<Job> findAllByCompanyIdAndStatus(Long companyId);
+    List<Job> findAllActive();
 }

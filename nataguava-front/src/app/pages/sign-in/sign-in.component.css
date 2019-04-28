@@ -2,11 +2,6 @@
     height:300px;
 }
 
-.link-signup {
-    padding-top:5px;
-    text-align: center;
-}
-
 .signin-card {
     margin-left: 20%;
 }
@@ -14,13 +9,26 @@
 .card-login {
     padding:30px;
     border-radius: 10px;
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+}
+.btn-logar{
+    display: block;
 }
 
 .login-logo-color {
     color: white;
 }
 
+.input-login {
+    border-radius: 20px;
+}
+
 .forgot-pwd-link {
     text-align: center;
     margin-top: 10px;
 }
+
+.links-signup {
+    margin-top: 30px;
+}
+

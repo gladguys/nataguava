@@ -50,4 +50,8 @@ public class Job {
     public void addCandidate(Candidate candidade) {
         this.candidates.add(candidade);
     }
+
+    @Override
+    public String toString() { return "";}
+
 }

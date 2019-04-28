@@ -32,7 +32,7 @@ export class JobService {
 
 
   findAllByCandidadeId(userId: number): Observable<Array<Job>> {
-    return this.http.get<Array<Job>>(`${environment.API}/jobs/candidate/${userId}`);
+    return this.http.get<Array<Job>>(`${environment.API}/candidates/${userId}/jobs`);
   }
 
   findAll(): Observable<Array<Job>> {
@@ -41,6 +41,10 @@ export class JobService {
 
   addCandidate(userId: number, jobId: number) {
     return this.http.get(`${environment.API}/jobs/${jobId}/add-candidate/${userId}`);
+  }
+
+  close(jobId: number) {
+    return this.http.get(`${environment.API}/jobs/${jobId}/close`);
   }
 
 }

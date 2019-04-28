@@ -1,47 +1,43 @@
-<div class="login-box">
-    <div class="login-logo">
-      <a href="#" class="login-logo-color"><b>Nata</b>GUAVA</a>
-    </div>
-    <div class="login-box-body card-login">
-      <p class="login-box-msg">Faça login para iniciar a seção</p>
-  
-      <form [formGroup]="loginForm" (ngSubmit)="loginCompany()">
-        <div class="form-group has-feedback">
-          <input type="email" formControlName="email" class="form-control" placeholder="Email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
+<div class="login-box mt-2">
+  <div class="login-logo">
+    <a href="#" class="text text-info"><b>Nata</b>GUAVA</a>
+  </div>
+  <div class="login-box-body card-login">
+    <p class="login-box-msg">Faça login para iniciar a seção</p>
 
-        <div class="form-group has-feedback">
-          <input type="password" formControlName="password" class="form-control" placeholder="Password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="row">
-          <div class="col-xs-8">
-            <div class="checkbox icheck">
-              <label>
-                <input type="checkbox"> Remember Me
-              </label>
-            </div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginCompany()">
+      <div class="form-group has-feedback">
+        <input type="email" formControlName="email" class="form-control input-login" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <input type="password" formControlName="password" class="form-control input-login" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row btn-logar">
+        <div class="col-xs-4">
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Entrar</button>
           </div>
-          <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-          </div>
         </div>
-      </form>
-  
-      <!--<div class="social-auth-links text-center">
+      </div>
+    </form>
+
+    <!--<div class="social-auth-links text-center">
         <p>- Acesse com a conta do seu Repositório -</p>
         <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-github"></i> Sign in
           Github</a>
         <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-gitlab"></i> Sign in 
           Gitlab</a>
       </div> -->
+    <div class="text-center mt-2">
       <a href="#" class="forgot-pwd-link">Esqueci minha senha!</a><br>
-      
-      <div class="link-signup text-center">
-        <p>- Não possui conta ainda ? -</p>
-        <a (click)="signupCandidate()"><button class="btn btn-link"> Criar Conta Candidato</button></a>
-        <a (click)="signupCompany()"><button class="btn btn-link"> Criar Conta Empresa</button></a>
-      </div>
-    </div>  
+    </div>
+    <div class="text-center links-signup">
+      <a (click)="signupCandidate()"><div class="text text-link"> Criar Conta Candidato</div></a>
+      <a (click)="signupCompany()"><div class="text text-link "> Criar Conta Empresa</div></a>
+    </div>
   </div>
+
+</div>
