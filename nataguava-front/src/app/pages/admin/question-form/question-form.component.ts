@@ -28,19 +28,19 @@ export class QuestionFormComponent implements OnInit {
 
     submit() {
         let question = new Question();
-        question.title = this.questionForm.controls['title'].value;
+        question.textQuestion = this.questionForm.controls['title'].value;
 
         let item1  = new ItemQuestion();
-        item1.title = this.questionForm.controls['item1'].value;
+        item1.text = this.questionForm.controls['item1'].value;
 
         let item2  = new ItemQuestion();
-        item2.title = this.questionForm.controls['item2'].value;
+        item2.text = this.questionForm.controls['item2'].value;
 
         let item3  = new ItemQuestion();
-        item3.title = this.questionForm.controls['item3'].value;
+        item3.text = this.questionForm.controls['item3'].value;
 
         let item4  = new ItemQuestion();
-        item4.title = this.questionForm.controls['item4'].value;
+        item4.text = this.questionForm.controls['item4'].value;
 
         let itemCerto : string = this.questionForm.controls['rightAnswer'].value;
 
