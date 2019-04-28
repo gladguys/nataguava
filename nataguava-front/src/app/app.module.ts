@@ -26,6 +26,8 @@ import { RouterModule } from '@angular/router';
 import { QuestionaryComponent } from './pages/questionary/questionary.component';
 import { SharedModule } from './components/shared/shared.module';
 import { AlertService } from './components/shared/alert/alert.service';
+import { ShowIfUserCompanyModule } from './directives/show-if-user-company/show-if-user-company.module';
+import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-candidate.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AlertService } from './components/shared/alert/alert.service';
     RouterModule,
     NgbModule,
     SharedModule,
-    CandidateModule
+    CandidateModule,
+    ShowIfUserCompanyModule,
+    ShowIfCandidateModule
     
 
   ],
