@@ -1,6 +1,9 @@
 <div class="jumbotron">
-  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-success">(Em Andamento)</span></div>
+  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info">{{statusJobLabel}}</span></div>
   <div class="subtitle-job-detail text-center">{{job.userCompany?.name}} - {{job.location}}</div>
+  <div *ngIf="isOwner" class="text-center">
+    <button *ngIf="job.status != 'CLOSED'" class="btn btn-info" (click)="cancelJob()">Encerrar Vaga</button>
+  </div>
 </div>
 
 <div class="container">

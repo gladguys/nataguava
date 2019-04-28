@@ -27,6 +27,10 @@ export class CompanyService {
     return this.http.get(`${environment.API}/companies/${id}`);
   }
 
+  findByUserId(id: number):Observable<UserCompany> {
+    return this.http.get<UserCompany>(`${environment.API}/companies/user/${id}`);
+  }
+
   findByEmail(email: string) {
     return this.http.get<UserCompany>(`${environment.API}/companies/email/${email}/`);
   }
