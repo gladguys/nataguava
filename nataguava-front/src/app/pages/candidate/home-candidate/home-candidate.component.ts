@@ -11,20 +11,31 @@ import { Router } from '@angular/router';
 export class HomeCandidadeComponent implements OnInit {
 
 
-  jobs: Array<Job> = [];
+  jobsAndamento: Array<Job> = [];
+  jobsHistorico: Array<Job> = [];
+
 
   constructor(private jobService: JobService,
-              private sharedService: SharedService,
-              public router: Router) { }
+    private sharedService: SharedService,
+    public router: Router) { }
 
   ngOnInit() {
     this.jobService.findAllByCandidadeId(this.sharedService.getUserLogged().id)
-                    .subscribe( jobs => this.jobs = jobs);
+      .subscribe(jobs => {
+        jobs.forEach((j: Job) => {
+          if (j.status == "CLOSED") {
+            this.jobsHistorico.push(j);
+          } else if (j.status == "CREATED") {
+            this.jobsAndamento.push(j);
+          }
+        })
+      }
+      );
 
   }
 
-  goToDetail(job:Job) {
-    this.router.navigate([`/job-detail/${job.id}`]);  
+  goToDetail(job: Job) {
+    this.router.navigate([`/job-detail/${job.id}`]);
   }
 
 }

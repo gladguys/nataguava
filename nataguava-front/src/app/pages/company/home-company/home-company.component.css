@@ -1,41 +1,10 @@
-.card-ng {
-    display:inline-block;
-    margin: 5px;
+
+.card-historico {
+    width: 100%;
 }
 
-.section-title {
-    box-sizing: border-box;
-    color: #151b26;
-    display: flex;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 20px;
-}
+.container-historico {
+    margin-top: 20px;
+    margin-bottom: 10px;
 
-.cards-andamento {
-    margin-left: 150px;
-}
-
-.item-label-tag {
-    display: inline-block;
-    margin-top: 10px;
-    margin: 5px;
-}
-
-.vagas-andamento-container {
-    margin-left: 15px;
-}
-.title-vagas-andamento {
-    color: rgba(0, 0, 0, 0.612);
-    margin-left: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.divisor-line {
-    border: 1px dashed #000;
-    width: 50%;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
