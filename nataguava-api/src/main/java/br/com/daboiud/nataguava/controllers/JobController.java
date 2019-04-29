@@ -78,7 +78,7 @@ public class JobController {
         List<Job> jobs;
         try {
             UserCompany userCompany = this.userCompanyService.findByUserId(userId);
-            jobs = this.jobService.findAllByCompanyIdAndStatus(userCompany.getId());
+            jobs = this.jobService.findAllByCompanyId(userCompany.getId());
             return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);

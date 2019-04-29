@@ -15,5 +15,6 @@ public interface JobService {
     List<Job> findAll();
     Optional<Job> findById(Long id);
     List<Job> findAllByCompanyIdAndStatus(Long companyId);
+    List<Job> findAllByCompanyId(Long companyId);
     List<Job> findAllActive();
 }
