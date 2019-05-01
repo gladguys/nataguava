@@ -38,6 +38,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<Job> findAllByFilter(String content, String place) {
+        return jobRepository.findAllByFilters(content,place);
+    }
+
+    @Override
     public Optional<Job> findById(Long id) {
         return this.jobRepository.findById(id);
     }

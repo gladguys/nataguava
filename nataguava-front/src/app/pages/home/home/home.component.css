@@ -10,7 +10,22 @@
 
 .nata-search {
     margin-bottom: 46px;
-    border-radius: 35px;
+    margin-right: 10px;
+    width: 400px;
+    height: 42px;
+    border-radius: 15px;  
+    padding: 10px;
+    outline: none;
+}
+
+.nata-search-local {
+    margin-bottom: 46px;
+    margin-right: 10px;
+    width: 300px;
+    border-radius: 15px;
+    height: 42px;  
+    padding: 10px;
+    outline: none;
 }
 
 .logo {
@@ -26,4 +41,11 @@
     background-size: 70%;
     background-position-y: 50%;
     opacity: 0.5;
+  }
+
+  .btn-lupa {
+    background: white;
+    height: 46px;
+    border-radius: 50px;
+    border: 1px solid gray;
   }
