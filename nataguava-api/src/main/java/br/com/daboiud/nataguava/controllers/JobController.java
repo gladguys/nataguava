@@ -96,6 +96,17 @@ public class JobController {
         }
     }
 
+    @GetMapping()
+    public ResponseEntity<List<Job>> getByFilter(@RequestParam("content") String content,
+                                                 @RequestParam("place") String place) {
+        List<Job> jobs;
+        try {
+            jobs = this.jobService.findAllByFilter(content, place);return ResponseEntity.ok(jobs);
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getById(@PathVariable("id") Long id) throws Throwable {
            return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));

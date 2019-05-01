@@ -17,4 +17,6 @@ public interface JobService {
     List<Job> findAllByCompanyIdAndStatus(Long companyId);
     List<Job> findAllByCompanyId(Long companyId);
     List<Job> findAllActive();
+
+    List<Job> findAllByFilter(String content, String place);
 }
