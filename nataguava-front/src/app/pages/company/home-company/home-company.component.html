@@ -2,27 +2,31 @@
   <h4 class="title-vagas-andamento">Vagas em Endamento</h4>
   <div class="container-fluid">
     <div class="row">
-      <guava-card-vaga *ngFor="let job of jobs" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
+      <guava-card-vaga *ngFor="let job of jobsAndamento" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
     </div>
 
-    <div class="row">
-      <h4 class="title-vagas-andamento">Histórico de Vagas</h4>
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">Latest Orders</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-          </div>
-        </div>
-        <!-- /.box-header -->
-        
-        <div class="box-footer clearfix">
-          <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Criar Nova Vaga</a>
-        </div>
-        <!-- /.box-footer -->
+    <div class="row container-historico">
+        <h4 class="title-vagas-andamento">Histórico de Vagas</h4>
+      <div class="card card-historico">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">Criação</th>
+              <th scope="col">Encerramento</th>
+              <th scope="col">Nº Selecionáveis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let jh of jobsHistorico">
+              <td scope="row">{{jh.title}}</td>
+              <td>12/04/2019</td>
+              <td>22/04/2019</td>
+              <td>{{jh.numberOfBestCandidates}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
     </div>
+  </div>
+</div>

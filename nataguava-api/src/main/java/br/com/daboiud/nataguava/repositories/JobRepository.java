@@ -11,5 +11,5 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
     List<Job> findByUserCompanyIdAndStatus(Long companyId, JobStatus jobStatus);
     List<Job> findAllByStatus(JobStatus jobStatus);
-
+    List<Job> findByUserCompanyId(Long companyId);
 }
