@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CandidateModule } from './pages/candidate/candidate.module';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
 import { CompanyGuard } from './components/shared/security/company-guard';
@@ -51,7 +52,8 @@ import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-ca
     SharedModule,
     CandidateModule,
     ShowIfUserCompanyModule,
-    ShowIfCandidateModule
+    ShowIfCandidateModule,
+    FormsModule
     
 
   ],

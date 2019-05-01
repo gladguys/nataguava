@@ -1,8 +1,25 @@
 <div class="jumbotron" style="background-image: https://www.thoughtco.com/thmb/I92hfGFxomX_hFtcRXQC35N07hg=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-537436868-58e097d93df78c5162fcf65e.jpg">
   <div class="container-home">
     <h1 class="logo"><i class="fa fa-glide"></i></h1>
-    <input class="ui-g-offset-2 ui-g-8 ui-g-offset-2 nata-search" type="text" placeholder="Procure vagas aqui..."
-      pinputText>
+    <div class="text-center mt-3 mb-3">
+      <form>
+          <input 
+              #contentInput
+              class="nata-search" 
+              type="search" 
+              placeholder="procure por vagas..." 
+              autofocus
+              [value]="content"
+              >
+              <input
+                #placeInput
+                class="nata-search-local" 
+                type="search" 
+                placeholder="Localidade" 
+                autofocus>
+              <button type="button" (click)="search()" class="btn btn-lupa"><i class="fa fa-search"></i></button>
+      </form>
+  </div>
   </div>
 </div>
 
