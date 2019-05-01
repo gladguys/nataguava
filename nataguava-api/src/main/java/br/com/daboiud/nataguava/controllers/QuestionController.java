@@ -1,5 +1,6 @@
 package br.com.daboiud.nataguava.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,9 +11,10 @@ import br.com.daboiud.nataguava.models.Question;
 import br.com.daboiud.nataguava.services.QuestionService;
 
 @RestController
-@RequestMapping(value = "/api/question")
+@RequestMapping(value = "/api/questions")
 public class QuestionController {
 
+	@Autowired
 	private QuestionService questionService;
 
 	@PostMapping
