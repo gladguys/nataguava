@@ -6,7 +6,6 @@
 
 .new-action-btn-header {
     height: 45px;
-    margin-top: 10px;
 }
 
 .name-app {
@@ -23,4 +22,13 @@
 
 .dropdown {
     display: inline-block;
+}
+
+.dropdown-minhas-vagas {
+    background: #3c8dbc;
+    color: white;
+}
+
+.header {
+    height: 60px;
 }

@@ -1,5 +1,5 @@
 import { JobService } from './../../../services/job.service';
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { SearchDTO } from 'src/app/models/dto/search-dto';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   jobs: Array<Job> = [];
   
@@ -26,8 +26,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.jobService.findAll().subscribe( jobs => {
       this.jobs = jobs;
-      this.clearInputs();
     });
+  }
+  ngAfterViewInit() {
+    this.clearInputs();
   }
 
   goToDetail(job:Job) {

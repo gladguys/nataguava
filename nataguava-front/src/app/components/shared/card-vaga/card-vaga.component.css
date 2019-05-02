@@ -13,3 +13,25 @@
     margin-top: 148px;
     border-radius: 35px;
 }
+
+.card-nata {
+    margin: 10px;
+}
+
+.label-company {
+    text-align: center;
+    color: gray;
+}
+
+.label-location {
+    text-align: center;
+}
+
+.label-title {
+    text-align: center;
+    background: white;
+    color: #343a40;
+    font-weight: bold;
+    font-size: 15px;
+    
+}
