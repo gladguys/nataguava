@@ -1,0 +1,42 @@
+.card-question {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.card-answer {
+
+    margin: 15px;
+}
+
+.card-answer:hover {
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    transform: scale(1.02, 1.02);
+}
+
+.time-question {
+    margin-right: 35px;
+    margin-left: 35px;
+}
+
+.labels-questionary {
+    text-align: center;
+}
+
+.btn-arrow {
+    width: 60px;
+}
+
+.btn-answer {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.label-titulo {
+    margin-top: 15px;
+}
+
+.label-empresa {
+    margin-top: -15px;
+    color: gray;
+}
