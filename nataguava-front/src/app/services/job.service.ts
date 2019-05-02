@@ -49,7 +49,6 @@ export class JobService {
   }
 
   findByFilter(searchDTO: SearchDTO): Observable<Array<Job>> {
-    console.log(searchDTO);
     return this.http.get<Array<Job>>(`${environment.API}/jobs?content=${searchDTO.content}&place=${searchDTO.place}`);
   }
 

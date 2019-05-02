@@ -1,8 +1,8 @@
 <div class="vagas-andamento-container">
     <h4 class="title-vagas-andamento">Vagas Inscritas</h4>
     <div class="container-fluid">
-      <div class="row">
-        <guava-card-vaga *ngFor="let job of jobsAndamento" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
+      <div class="mx-auto">
+        <guava-card-vaga style="margin-left:70px;" *ngFor="let job of jobsAndamento" (click)="goToDetail(job)" [job]="job"></guava-card-vaga>
       </div>
   
       <div class="row container-historico">
