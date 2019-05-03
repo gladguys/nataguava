@@ -1,69 +1,80 @@
-<div class="row justify-content-md-center header-questionary">
-  <div class="btn btn-primary"><i class="fa fa-arrow-left btn-arrow"></i></div>
-  <p class="time-question">03:00</p>
-  <div class="btn btn-primary"><i class="fa fa-arrow-right btn-arrow"></i></div>
-</div>
-<div class="labels-questionary" style="text-align:center">
-  <div class="label-titulo">
-    <p>Título da Vaga: Javascript Sênior</p>
+<div class="card card-content-questionario">
+  <div class="row justify-content-md-center header-questionary">
+    <div class="btn btn-primary"><i class="fa fa-arrow-left btn-arrow"></i></div>
+    <p class="time-question">03:00</p>
+    <div class="btn btn-primary"><i class="fa fa-arrow-right btn-arrow"></i></div>
   </div>
-  <div class="label-empresa">
-    <p>Geosales Tecnologia</p>
+  <div class="labels-questionary" style="text-align:center">
+    <div class="label-titulo">
+      <p>Título da Vaga: Javascript Sênior</p>
+    </div>
+    <div class="label-empresa">
+      <p>Geosales Tecnologia</p>
+    </div>
   </div>
-</div>
-<div class="card card-question">
-  <div class="card-body">
-    <h5 class="card-title">Questão 1</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <div class="card card-question">
+    <div class="card-body">
+      <h5 class="card-title">Questão 1</h5>
+      <p class="card-text">
+        Spring Framework é uma plataforma Java completa que fornece suporte de infraestrutura para o desenvolvimento de
+        aplicações Java. Acerca das características do framework Spring 3.0, assinale a opção correta.
+      </p>
+    </div>
   </div>
-</div>
-<div class="card card-answer">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <div #q1 (click)="q1Clicked()" class="card card-answer">
+    <div class="card-body">
+      <p class="card-text">Na arquitetura Spring MVC Web, o Validator é uma classe opcional que pode ser invocada para
+        validar dados de formulários.
+      </p>
+    </div>
   </div>
-</div>
-<div class="card card-answer">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <div #q2 (click)="q2Clicked()" class="card card-answer">
+    <div class="card-body">
+      <p class="card-text">A injeção de dependência é feita após a criação do objeto, por meio dos métodos set de uma
+        classe no estilo JavaBean, e não no momento da criação do objeto, tendo-se em vista que passar muitos argumentos
+        no construtor pode tornar-se dispendioso.
+      </p>
+    </div>
   </div>
-</div>
-<div class="card card-answer">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <div #q3 (click)="q3Clicked()" class="card card-answer">
+    <div class="card-body">
+      <p class="card-text">A interface BeanFactory gerencia beans definidos em arquivos XML e trata recursos de
+        mensagens.
+      </p>
+    </div>
   </div>
-</div>
-<div class="card card-answer">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+  <div #q4 (click)="q4Clicked()" class="card card-answer">
+    <div class="card-body">
+      <p class="card-text">O controlador AbstractWizardFormController, do módulo Spring MVC, permite suporte para o
+        preenchimento de formulários a partir de determinada solicitação.
+      </p>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <button type="submit" class="btn btn-success btn-answer">Confirmar Resposta</button>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-success btn-answer">Confirmar Resposta</button>
+    </div>
   </div>
-</div>  
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

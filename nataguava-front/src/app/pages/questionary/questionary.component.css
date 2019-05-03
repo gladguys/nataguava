@@ -1,11 +1,11 @@
 .card-question {
-    margin-top: 25px;
-    margin-bottom: 20px;
+    margin: 25px 15px 20px 15px;
 }
 
 .card-answer {
 
-    margin: 15px;
+    margin: 10px 50px 10px 50px;
+    cursor: pointer;
 }
 
 .card-answer:hover {
@@ -39,4 +39,10 @@
 .label-empresa {
     margin-top: -15px;
     color: gray;
+}
+
+.card-content-questionario {
+    margin: 60px;
+    padding: 50px;
+    margin-top: 15px;
 }
