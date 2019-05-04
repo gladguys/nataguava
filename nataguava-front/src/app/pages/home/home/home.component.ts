@@ -45,11 +45,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.searchDTO.content = this.content.nativeElement.value;
     this.searchDTO.place = this.place.nativeElement.value;
 
-    this.jobService.findByFilter(this.searchDTO).subscribe( jobs => this.jobs = jobs);
-
-
-
-    
+    this.jobService.findByFilter(this.searchDTO).subscribe( jobs => this.jobs = jobs); 
   }
 
 }

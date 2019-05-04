@@ -10,8 +10,7 @@ import java.util.Set;
 @Service
 public interface JobService {
 
-    Job
-    createOrUpdate(Job job);
+    Job createOrUpdate(Job job);
     List<Job> findAll();
     Optional<Job> findById(Long id);
     List<Job> findAllByCompanyIdAndStatus(Long companyId);
