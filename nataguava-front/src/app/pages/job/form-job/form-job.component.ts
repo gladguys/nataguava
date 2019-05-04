@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { RecruterService } from 'src/app/services/recruter.service';
 import { Observable } from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import { InternalFormsSharedModule } from '@angular/forms/src/directives';
 
 @Component({
   templateUrl: './form-job.component.html',
