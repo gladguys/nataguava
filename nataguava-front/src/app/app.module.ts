@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CandidateModule } from './pages/candidate/candidate.module';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
 import { CompanyGuard } from './components/shared/security/company-guard';
@@ -54,6 +55,7 @@ import { AdminModule } from './pages/admin/admin.module';
     ShowIfUserCompanyModule,
     ShowIfCandidateModule,
     AdminModule
+    FormsModule
   ],
   providers: [
     AuthService,

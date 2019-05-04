@@ -78,7 +78,7 @@ public class JobController {
         List<Job> jobs;
         try {
             UserCompany userCompany = this.userCompanyService.findByUserId(userId);
-            jobs = this.jobService.findAllByCompanyIdAndStatus(userCompany.getId());
+            jobs = this.jobService.findAllByCompanyId(userCompany.getId());
             return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
@@ -91,6 +91,17 @@ public class JobController {
         try {
             jobs = this.jobService.findAllActive();
             return ResponseEntity.ok(jobs);
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Job>> getByFilter(@RequestParam("content") String content,
+                                                 @RequestParam("place") String place) {
+        List<Job> jobs;
+        try {
+            jobs = this.jobService.findAllByFilter(content, place);return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }

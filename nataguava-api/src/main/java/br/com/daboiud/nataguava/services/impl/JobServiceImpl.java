@@ -37,6 +37,11 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<Job> findAllByFilter(String content, String place) {
+        return jobRepository.findAllByFilters(content,place);
+    }
+
+    @Override
     public Optional<Job> findById(Long id) {
         return this.jobRepository.findById(id);
     }
@@ -45,4 +50,10 @@ public class JobServiceImpl implements JobService {
     public List<Job> findAllByCompanyIdAndStatus(Long companyId) {
         return this.jobRepository.findByUserCompanyIdAndStatus(companyId, JobStatus.CREATED);
     }
+
+    @Override
+    public List<Job> findAllByCompanyId(Long companyId) {
+        return this.jobRepository.findByUserCompanyId(companyId);
+    }
+
 }

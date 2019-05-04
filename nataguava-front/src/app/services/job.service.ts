@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import {environment} from "../../environments/environment";
+import { SearchDTO } from '../models/dto/search-dto';
 
 
 @Injectable({
@@ -45,6 +46,10 @@ export class JobService {
 
   close(jobId: number) {
     return this.http.get(`${environment.API}/jobs/${jobId}/close`);
+  }
+
+  findByFilter(searchDTO: SearchDTO): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/jobs?content=${searchDTO.content}&place=${searchDTO.place}`);
   }
 
 }
