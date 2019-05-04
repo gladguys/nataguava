@@ -1,7 +1,5 @@
 package br.com.daboiud.nataguava.models;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity

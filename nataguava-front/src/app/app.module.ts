@@ -29,6 +29,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { AlertService } from './components/shared/alert/alert.service';
 import { ShowIfUserCompanyModule } from './directives/show-if-user-company/show-if-user-company.module';
 import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-candidate.module';
+import { AdminModule } from './pages/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -53,9 +54,8 @@ import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-ca
     CandidateModule,
     ShowIfUserCompanyModule,
     ShowIfCandidateModule,
+    AdminModule
     FormsModule
-    
-
   ],
   providers: [
     AuthService,
