@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ItemQuestion } from "src/app/models/item-question.model";
 import { Question } from "src/app/models/question.model";
 import { QuestionService } from "src/app/services/question.service";
+import { Observable } from "rxjs";
+import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
+import { Content } from "@angular/compiler/src/render3/r3_ast";
 
 @Component({
   templateUrl: './question-form.component.html',
@@ -11,6 +14,18 @@ import { QuestionService } from "src/app/services/question.service";
 export class QuestionFormComponent implements OnInit {
 
     questionForm: FormGroup;
+    tag: string = '';
+
+    tags = ["ANDROID", "ANGULAR","CSS", "DESIGN PATTERN","GWT", "HTML", "JAVA", "JAVASCRIPT","JDBC","JPA", "MYSQL", "PHP",
+          "POSTGRESQL", "PYTHON","RUBY", "RAILS", "REACT","SPRING FRAMEWORK","SQL" ,"SQL SERVER", "SWIFT", "TYPESCRIPT"];
+
+    search = (text$: Observable<string>) =>
+      text$.pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        map(term => term.length < 2 ? []
+          : this.tags.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
 
     constructor(private formBuilder: FormBuilder,
                 private questionService: QuestionService) { }
@@ -22,13 +37,14 @@ export class QuestionFormComponent implements OnInit {
         'item2': ['', Validators.required],
         'item3': ['', Validators.required],
         'item4': ['', Validators.required],
-        'rightAnswer' : ['', Validators.required]
+        'rightAnswer': ['', Validators.required]
       });
     }
 
     submit() {
         let question = new Question();
         question.textQuestion = this.questionForm.controls['title'].value;
+        question.tag = this.tag;
 
         let item1  = new ItemQuestion();
         item1.text = this.questionForm.controls['item1'].value;
