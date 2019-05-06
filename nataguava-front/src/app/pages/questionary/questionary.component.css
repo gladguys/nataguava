@@ -1,5 +1,7 @@
 .card-question {
     margin: 25px 15px 20px 15px;
+    color: white;
+    background: gray;
 }
 
 .card-answer {
@@ -24,6 +26,7 @@
 
 .btn-arrow {
     width: 60px;
+    cursor: pointer;
 }
 
 .btn-answer {
@@ -42,7 +45,7 @@
 }
 
 .card-content-questionario {
-    margin: 60px;
+    margin: 160px;
     padding: 50px;
     margin-top: 15px;
 }
