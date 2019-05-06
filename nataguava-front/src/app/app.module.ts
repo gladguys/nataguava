@@ -54,7 +54,7 @@ import { AdminModule } from './pages/admin/admin.module';
     CandidateModule,
     ShowIfUserCompanyModule,
     ShowIfCandidateModule,
-    AdminModule
+    AdminModule,
     FormsModule
   ],
   providers: [
