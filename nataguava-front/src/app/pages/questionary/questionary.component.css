@@ -2,10 +2,10 @@
     margin: 25px 15px 20px 15px;
     color: white;
     background: gray;
+    border-radius: 25px;
 }
 
 .card-answer {
-
     margin: 10px 50px 10px 50px;
     cursor: pointer;
 }
@@ -18,6 +18,7 @@
 .time-question {
     margin-right: 35px;
     margin-left: 35px;
+    font-size: 35px;
 }
 
 .labels-questionary {
@@ -32,6 +33,7 @@
 .btn-answer {
     width: 100%;
     height: 50px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -44,8 +46,12 @@
     color: gray;
 }
 
-.card-content-questionario {
-    margin: 160px;
-    padding: 50px;
-    margin-top: 15px;
+.card-question-answers {
+    margin: 20px 150px 20px 150px;
+    border-radius: 15px;
+    padding: 17px;
+}
+
+.btn-finalizar {
+    margin-top: 30px;
 }
