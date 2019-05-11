@@ -1,0 +1,27 @@
+<div class="card card-vagas-inscritas mb-3 offset-md-1 col-md-10">
+    <div class="job-history-container">
+      <h4 class="card-title title-jobs-running">Histórico de Vagas</h4>
+      <div class="card card-historico">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="text-align: center" scope="col">Título</th>
+              <th style="text-align: center" scope="col">Criação</th>
+              <th style="text-align: center" scope="col">Encerramento</th>
+              <th style="text-align: center" scope="col">Nº Selecionáveis</th>
+              <th *ngIf="isCompany" style="text-align: center" scope="col">Sua Posição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-old-job" *ngFor="let jh of jobs">
+              <td style="text-align: center" scope="row" class="label-table-value">{{jh.title}}</td>
+              <td style="text-align: center" class="label-table-value">12/04/2019</td>
+              <td style="text-align: center" class="label-table-value">22/04/2019</td>
+              <td style="text-align: center" class="label-table-value">{{jh.numberOfBestCandidates}}</td>
+              <td *ngIf="isCompany" style="text-align: center" class="label-table-value">4°</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
