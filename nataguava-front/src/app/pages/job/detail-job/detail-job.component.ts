@@ -79,4 +79,9 @@ export class DetailJobComponent implements OnInit{
     } 
     else this.statusJobLabel = "(ENCERRADO)";
   }
+
+  startQuiz() {
+    console.log("teste");
+    this.router.navigateByUrl(`/questionary/${this.job.id}`);
+  }
 }

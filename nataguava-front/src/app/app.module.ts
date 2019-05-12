@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import {ButtonModule} from 'primeng/button';
  
@@ -55,7 +56,8 @@ import { AdminModule } from './pages/admin/admin.module';
     ShowIfUserCompanyModule,
     ShowIfCandidateModule,
     AdminModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     AuthService,
