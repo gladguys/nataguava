@@ -58,19 +58,19 @@ export class QuestionFormComponent implements OnInit {
         let item4  = new ItemQuestion();
         item4.text = this.questionForm.controls['item4'].value;
 
-        let itemCerto : string = this.questionForm.controls['rightAnswer'].value;
+        let itemCerto : number = this.questionForm.controls['rightAnswer'].value;
 
         switch(itemCerto) {
-          case '1':
+          case 1:
             item1.correct = true;
             break;
-          case '2':
+          case 2:
             item2.correct = true;
             break;
-          case '3':
+          case 3:
             item3.correct = true;
             break;
-          case '4':
+          case 4:
             item4.correct = true;
             break;
         }

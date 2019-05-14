@@ -1,10 +1,12 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Questionary } from './../../models/questionary.model';
-import { Question } from './../../models/question.model';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { ItemQuestion } from 'src/app/models/item-question.model';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CountdownComponent } from 'ngx-countdown';
+import { ItemQuestion } from 'src/app/models/item-question.model';
+import { Question } from 'src/app/models/question.model';
 
 @Component({
   selector: 'app-questionary',
@@ -13,46 +15,68 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class QuestionaryComponent implements OnInit {
 
-
   questionary: Questionary;
   loaded: boolean = false;
+  @ViewChild("content") content: ElementRef;
+  @ViewChild(CountdownComponent) countdown: CountdownComponent;
 
   constructor(public questionaryService: QuestionaryService,
-              public route: ActivatedRoute,
-              public spinner: NgxSpinnerService
-              ) { }
+    public route: ActivatedRoute,
+    public spinner: NgxSpinnerService,
+    public modalService: NgbModal,
+    public router: Router,
+
+  ) {
+   }
 
   ngOnInit() {
-    const jobId = this.route.snapshot.paramMap.get('jobId');
     
+    const jobId = this.route.snapshot.paramMap.get('jobId');
+
     this.spinner.show();
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-      this.loaded=  true;
+      this.loaded = true;
       this.questionaryService.generate(jobId).subscribe(q => {
         this.questionary = q;
-        console.log(this.questionary);
         this.spinner.hide();
-      } );
-  }, 3000);
-   
-
+        this.openVerticallyCentered(this.content);
+      });
+    }, 3000);
   }
 
-  q1Clicked() {
- 
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
   }
 
-  q2Clicked() {
-
-  }
-  q3Clicked() {
-   
+  cancelar() {
+    this.router.navigateByUrl("/");
   }
 
-  q4Clicked() {
-   
+  start() {
+    this.countdown.begin();
+  }
+
+  finishTest() {
+    this.router.navigateByUrl("/");
+  }
+
+  onItemClicked(item: ItemQuestion, question: Question) {
+    question.itemChosen = item;
+  }
+
+  onBtnConfirmarClicked(questao) {
+    console.log(questao);
+  }
+
+  finishQuestionary(){
+    console.log(this.questionary);
+    let counter = 0;
+    this.questionary.questions.forEach(q => {
+      if(q.itemChosen.correct) counter++;
+    })
+    console.log(counter);
   }
 
 }

@@ -1,3 +1,4 @@
+import { MinuteSecondsPipe } from './pipes/minute-seconds.pipe';
 import { AlertModule } from './alert/alert.module';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -11,7 +12,8 @@ import { CardHistoryJobsComponent } from './card-history-jobs/card-history-jobs.
     declarations: [
        CardVagaComponent,
        CardVagasComponent,
-       CardHistoryJobsComponent
+       CardHistoryJobsComponent,
+       MinuteSecondsPipe
     ],
     imports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { CardHistoryJobsComponent } from './card-history-jobs/card-history-jobs.
         CardVagaComponent,
         CardVagasComponent,
         CardHistoryJobsComponent,
-        AlertModule
+        AlertModule,
+        MinuteSecondsPipe
     ]
 })
 export class SharedModule {

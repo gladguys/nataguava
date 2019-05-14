@@ -37,8 +37,13 @@
     margin-bottom: 20px;
 }
 
-.label-titulo {
-    margin-top: 15px;
+
+.item-not-chosen {
+    opacity: 0.5;
+}
+
+.item-chosen {
+    opacity: 1.0;
 }
 
 .label-empresa {
@@ -47,11 +52,18 @@
 }
 
 .card-question-answers {
-    margin: 20px 150px 20px 150px;
+    margin-bottom: 20px;
     border-radius: 15px;
     padding: 17px;
 }
 
 .btn-finalizar {
     margin-top: 30px;
+}
+
+.scrolled-container {
+    overflow-y: scroll;
+    height: 500px;
+    box-shadow: 0 15px 25px lightgray;
+    
 }

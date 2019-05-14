@@ -5,4 +5,5 @@ export class Question {
     public textQuestion: string;
     public tag: string;
     public itens: Array<ItemQuestion>;
+    public itemChosen: ItemQuestion;
 }

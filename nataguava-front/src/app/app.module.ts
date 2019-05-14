@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CountdownModule } from 'ngx-countdown';
 
 import {ButtonModule} from 'primeng/button';
  
@@ -57,7 +58,8 @@ import { AdminModule } from './pages/admin/admin.module';
     ShowIfCandidateModule,
     AdminModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    CountdownModule
   ],
   providers: [
     AuthService,
