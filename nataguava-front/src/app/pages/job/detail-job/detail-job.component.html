@@ -23,11 +23,11 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <div class="offset-md-1 col-md-8">
       <h3>Descrição</h3>
-      <div class="descricao">
+      <div class="descricao" style="white-space: pre-line">
         {{job.description}}
       </div>
     </div>
@@ -46,7 +46,7 @@
 </div>
 
 
-<div class="container">
+<div *ngIf="isOwner" class="container">
   <div class="offset-md-1 col-md-8">
     <div class="row">
       <h3>Resultado em Tempo Real</h3>
