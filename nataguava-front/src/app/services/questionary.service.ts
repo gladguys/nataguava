@@ -11,8 +11,11 @@ export class QuestionaryService {
 
   constructor(private http: HttpClient) { }
 
-  generate(jobId: string): Observable<Questionary> {
+  generate(jobId: number): Observable<Questionary> {
       return this.http.get<Questionary>(`${environment.API}/questionaries/${jobId}`);
   }
 
+  hasTaken(jobId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${environment.API}/questionaries/${jobId}/hasTaken`);
+}
 }

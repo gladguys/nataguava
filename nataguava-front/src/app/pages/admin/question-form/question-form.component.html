@@ -68,8 +68,10 @@
       <div>
         <input 
           type="text"
-          [(ngModel)]="tag" 
-          [ngbTypeahead]="search" 
+          [(ngModel)]="tag"
+          [value]="tag.tagname"
+          [ngbTypeahead]="search"
+          [resultFormatter]="formatter" 
           [ngModelOptions]="{standalone: true}"
           class="form-control input-group mr-1" 
           placeholder="Tema da questão"
