@@ -19,13 +19,6 @@ public class Candidate {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(
-            mappedBy = "candidate",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<ResultCandidateJob> resultCandidateJob;
-
     private String urlRepository;
 
     @ManyToMany(mappedBy = "candidates")

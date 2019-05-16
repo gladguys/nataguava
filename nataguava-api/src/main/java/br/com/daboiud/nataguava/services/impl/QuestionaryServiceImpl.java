@@ -50,4 +50,9 @@ public class QuestionaryServiceImpl implements QuestionaryService {
 
         return this.questionaryRepository.save(questionary);
     }
+
+    @Override
+    public boolean hasTakenQuestionary(Long userId, Long jobId) {
+        return this.questionaryRepository.hasTaken(userId, jobId) > 0;
+    }
 }

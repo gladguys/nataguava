@@ -16,6 +16,8 @@ public class Job {
 
     private String title;
 
+    @Lob
+    @Column(columnDefinition = "text")
     private String description;
 
     private int numberOfBestCandidates;
@@ -26,12 +28,6 @@ public class Job {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private UserCompany userCompany;
-
-    @OneToMany(
-            mappedBy = "job",
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
-    private List<ResultCandidateJob> resultsCandidateJob;
 
     @Enumerated(value = EnumType.STRING)
     private JobStatus status;

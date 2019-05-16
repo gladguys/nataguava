@@ -6,5 +6,7 @@ import org.springframework.stereotype.Service;
 
 public interface QuestionaryService {
 
-    public Questionary generateByJobId(User user, Long jobId) throws Exception;
+    Questionary generateByJobId(User user, Long jobId) throws Exception;
+
+    boolean hasTakenQuestionary(Long id, Long jobId);
 }
