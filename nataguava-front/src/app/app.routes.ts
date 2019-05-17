@@ -25,7 +25,8 @@ export const ROUTES: Routes = [
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
     {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
     {path: 'job-detail/:jobId', component: DetailJobComponent },
-    {path: 'questionary/:jobId', canActivate: [AuthGuard], component: QuestionaryComponent },
+    {path: 'questionary/:jobId', canActivate: [CandidateGuard, AuthGuard], component: QuestionaryComponent },
+    {path: 'simulado/:jobId', canActivate: [CandidateGuard, AuthGuard], component: QuestionaryComponent },
     {path: 'form-question', component: QuestionFormComponent }
 ]
 

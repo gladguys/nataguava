@@ -26,4 +26,8 @@ public class Candidate {
     private Set<Job> jobs;
 
     public Candidate() { }
+
+    public void addJob(Job job) {
+        this.jobs.add(job);
+    }
 }

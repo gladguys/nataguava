@@ -29,7 +29,7 @@
 
     <div class="row justify-content-md-center header-questionary">
       <p class="time-question"> 
-        <countdown #countdown  [config]="{leftTime: 90, demand:true}" (finished)="finishTest()">$!m!:$!s!</countdown> | {{questionary.job.title}} -
+        <countdown #countdown  [config]="{leftTime: 90, demand:true}" (finished)="finishTest()">$!m!:$!s!</countdown> | {{questionary?.job.title}} -
         {{questionary.job.userCompany.name}}</p>
     </div>  
 
@@ -51,11 +51,6 @@
             <p class="card-text">
               {{item.text}}
             </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <button type="submit" (click)="onBtnConfirmarClicked(question)" class="btn btn-success btn-answer">Confirmar Resposta</button>
           </div>
         </div>
       </div>
