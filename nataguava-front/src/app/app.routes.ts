@@ -16,17 +16,89 @@ import { QuestionaryComponent } from './pages/questionary/questionary.component'
 import { QuestionFormComponent } from './pages/admin/question-form/question-form.component';
 
 export const ROUTES: Routes = [
-    { path: '', component: HomeComponent },
-    {path: 'login', canActivate: [LoginAuthGuard], component: SignInComponent },
-    {path: 'signup-candidate', component: SignupCandidateComponent},
-    {path: 'signup-company', component: SignupCompanyComponent},
-    {path: 'home-company', canActivate: [AuthGuard, CompanyGuard], component: HomeCompanyComponent},
-    {path: 'home-candidate', canActivate: [AuthGuard, CandidateGuard], component: HomeCandidadeComponent},
-    {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
-    {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
-    {path: 'job-detail/:jobId', component: DetailJobComponent },
-    {path: 'questionary/:jobId', canActivate: [AuthGuard], component: QuestionaryComponent },
-    {path: 'form-question', component: QuestionFormComponent }
+    {
+        path: '', 
+        component: HomeComponent,
+        data: {
+            title: 'Nataguava'
+        } 
+    },
+    {
+        path: 'login', 
+        canActivate: [LoginAuthGuard], 
+        component: SignInComponent, 
+        data: {
+            title: 'Entrar'
+        }
+    },
+    {
+        path: 'signup-candidate', 
+        component: SignupCandidateComponent,
+        data: {
+            title: 'Cadatrar-se'
+        }
+    },
+    {
+        path: 'signup-company', 
+        component: SignupCompanyComponent,
+        data: {
+            title: 'Entrar'
+        }
+    },
+    {
+        path: 'home-company', 
+        canActivate: [AuthGuard, CompanyGuard], 
+        component: HomeCompanyComponent,
+        data: {
+            title: 'Home'
+        }
+    },
+    {
+        path: 'home-candidate', 
+        canActivate: [AuthGuard, CandidateGuard], 
+        component: HomeCandidadeComponent,
+        data: {
+            title: 'Home'
+        }
+    },
+    {
+        path: 'signup-candidate', 
+        canActivate: [LoginAuthGuard], 
+        component: SignupCandidateComponent,
+        data: {
+            title: 'Entrar'
+        }
+    },
+    {
+        path: 'form-job', 
+        canActivate: [AuthGuard, CompanyGuard], 
+        component: FormJobComponent,
+        data: {
+            title: 'Cadastrar Vaga'
+        }
+    },
+    {
+        path: 'job-detail/:jobId', 
+        component: DetailJobComponent,
+        data: {
+            title: 'Detalhes da Vaga'
+        } 
+    },
+    {
+        path: 'questionary/:jobId', 
+        canActivate: [AuthGuard], 
+        component: QuestionaryComponent,
+        data: {
+            title: 'Questionário'
+        }
+     },
+    {
+        path: 'form-question', 
+        component: QuestionFormComponent,
+        data: {
+            title: 'Cadastro de questões'
+        }
+    }
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);
