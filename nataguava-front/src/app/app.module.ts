@@ -30,6 +30,7 @@ import { AlertService } from './components/shared/alert/alert.service';
 import { ShowIfUserCompanyModule } from './directives/show-if-user-company/show-if-user-company.module';
 import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-candidate.module';
 import { AdminModule } from './pages/admin/admin.module';
+import { ErrorsModule } from './errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AdminModule } from './pages/admin/admin.module';
     ShowIfUserCompanyModule,
     ShowIfCandidateModule,
     AdminModule,
-    FormsModule
+    FormsModule,
+    ErrorsModule
   ],
   providers: [
     AuthService,
