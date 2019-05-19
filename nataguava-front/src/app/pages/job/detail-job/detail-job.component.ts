@@ -1,14 +1,13 @@
 import { UserCompany } from './../../../models/user-company.model';
-import { UserService } from './../../../services/user.service';
-import { map } from 'rxjs/operators';
 import { ProfileEnum } from './../../../models/enums/profileEnum';
 import { AlertService } from './../../../components/shared/alert/alert.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { Job } from './../../../models/job.model';
 import { JobService } from './../../../services/job.service';
-import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail-job',
@@ -41,10 +40,15 @@ export class DetailJobComponent implements OnInit{
             this.userCompany = company;
             this.isOwner = company.id === this.job.userCompany.id ? true : false;
           })
+        },
+
+        err => {
+          if (err instanceof HttpErrorResponse) {
+            this.router.navigateByUrl("/**");
+          }
         })   
     }
   }
-
 
   isCandidate() {
     if (!this.sharedService.getUserLogged()) return true;
