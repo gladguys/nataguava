@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -109,7 +110,14 @@ public class JobController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getById(@PathVariable("id") Long id) throws Throwable {
-           return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));
+    	Optional<Job> job;
+    	job = this.jobService.findById(id);
+
+    	if (job != null && !job.isEmpty()) {
+    		return ResponseEntity.ok(job);
+    	} else {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    	}
     }
 
     private boolean isTheOwnerOfTheJob(String usernameFromToken, Job jobToClose) {
