@@ -11,35 +11,43 @@ import java.util.List;
 public class Job {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private String title;
 
+    @Lob
+    @Column(columnDefinition = "text")
     private String description;
 
     private int numberOfBestCandidates;
 
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="job_id", referencedColumnName="id")
     private List<Content> contents;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private UserCompany userCompany;
-
-    @OneToMany(
-            mappedBy = "job",
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
-    private List<ResultCandidateJob> resultsCandidateJob;
 
     @Enumerated(value = EnumType.STRING)
     private JobStatus status;
 
     private String location;
 
-    @ManyToMany(mappedBy = "jobs")
+    @ManyToMany( targetEntity = Candidate.class, cascade = CascadeType.ALL)
+    @JoinTable(name = "candidate_jobs",
+            joinColumns = @JoinColumn(name = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "candidate_id")
+    )
     private List<Candidate> candidates;
 
     private Date deadline;
+
+    public void addCandidate(Candidate candidade) {
+        this.candidates.add(candidade);
+    }
+
+    @Override
+    public String toString() { return "";}
 
 }

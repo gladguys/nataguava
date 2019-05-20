@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import {environment} from "../../environments/environment";
+import { SearchDTO } from '../models/dto/search-dto';
 
 
 @Injectable({
@@ -22,17 +23,33 @@ export class JobService {
     }
   }
 
-  findById(id: string) {
-    return this.http.get(`${environment.API}/jobs/${id}`);
+  findById(id: string): Observable<Job> {
+    return this.http.get<Job>(`${environment.API}/jobs/${id}`);
   }
 
-  findAllByUserCompanyId(userId: number) {
-    console.log("no service" + userId);
-    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`)
+  findAllByUserCompanyId(userId: number): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/jobs/company/${userId}`);
+  }
+
+
+  findAllByCandidadeId(userId: number): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/candidates/${userId}/jobs`);
   }
 
   findAll(): Observable<Array<Job>> {
     return this.http.get<Array<Job>>(`${environment.API}/jobs/home`);
+  }
+
+  addCandidate(userId: number, jobId: number) {
+    return this.http.get(`${environment.API}/jobs/${jobId}/add-candidate/${userId}`);
+  }
+
+  close(jobId: number) {
+    return this.http.get(`${environment.API}/jobs/${jobId}/close`);
+  }
+
+  findByFilter(searchDTO: SearchDTO): Observable<Array<Job>> {
+    return this.http.get<Array<Job>>(`${environment.API}/jobs?content=${searchDTO.content}&place=${searchDTO.place}`);
   }
 
 }

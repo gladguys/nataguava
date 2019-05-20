@@ -12,7 +12,10 @@ public interface JobService {
 
     Job createOrUpdate(Job job);
     List<Job> findAll();
-    Optional findById(Long id);
+    Optional<Job> findById(Long id);
+    List<Job> findAllByCompanyIdAndStatus(Long companyId);
     List<Job> findAllByCompanyId(Long companyId);
-    List<Job> findAllByRegistedCandidate(Long candidateId);
+    List<Job> findAllActive();
+
+    List<Job> findAllByFilter(String content, String place);
 }

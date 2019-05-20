@@ -1,3 +1,4 @@
+import { AlertService } from './../../components/shared/alert/alert.service';
 import { CurrentUserCompany } from './../../models/current-user-company.model';
 import { User } from './../../models/user.model';
 import { SharedService } from './../../services/shared.service';
@@ -18,6 +19,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private alertService: AlertService,
               private sharedService: SharedService,
               private router: Router) { }
 
@@ -32,11 +34,8 @@ export class SignInComponent implements OnInit {
       let email: string = this.loginForm.get('email').value;
       let password: string = this.loginForm.get('password').value;
 
-     console.log(email, password);
-
      this.authService.login(email, password)
        .subscribe((authenticatedUser: CurrentUserCompany) => {
-         console.log(authenticatedUser.user);
         
          this.sharedService.saveUserOnLocalStorage(
           {
@@ -48,12 +47,16 @@ export class SignInComponent implements OnInit {
         this.router.navigateByUrl("/home-company");
          
        }, err => {
-         console.log(err);
+         this.alertService.danger("login ou senha inválido.");
        });
   }
 
-  loginCandidate() {
-
+  signupCandidate() {
+    this.router.navigateByUrl("/signup-candidate");
   }
 
+  signupCompany() {
+    this.router.navigateByUrl("/signup-company");
+  }
+  
 }

@@ -1,5 +1,6 @@
 package br.com.daboiud.nataguava.controllers;
 
+import br.com.daboiud.nataguava.models.User;
 import br.com.daboiud.nataguava.models.UserCompany;
 import br.com.daboiud.nataguava.services.UserCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ public class CompanyController {
 	private UserCompanyService userCompanyService;
 
 	@PostMapping
-	public ResponseEntity<UserCompany> create(@RequestBody UserCompany userCompany) {
-		UserCompany userCompanyCreated;
+	public ResponseEntity<User> create(@RequestBody UserCompany userCompany) {
+		User user;
 		try {
-			userCompanyCreated = this.userCompanyService.createOrUpdate(userCompany);
-			return ResponseEntity.ok(userCompanyCreated);
+			user = this.userCompanyService.createOrUpdate(userCompany);
+			return ResponseEntity.ok(user);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(null);
 		}

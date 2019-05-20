@@ -1,15 +1,35 @@
 ::ng-deep .card-nata:hover {
-    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 5px #acd2e8;
     transform: scale(1.02, 1.02);
-}
-
-.logo-empresa {
-    height: 150px;
-    width: 150px;
 }
 
 .nata-search {
     margin-bottom: 46px;
     margin-top: 148px;
     border-radius: 35px;
+}
+
+.card-nata {
+    margin: 10px;
+    cursor: pointer;
+    
+}
+
+.label-company {
+    text-align: center;
+    color: gray;
+}
+
+.label-location {
+    text-align: center;
+    color: #3c8dbc;
+}
+
+.label-title {
+    text-align: center;
+    background: white;
+    color: #2d8f24;
+    font-weight: bold;
+    font-size: 15px;
+    
 }

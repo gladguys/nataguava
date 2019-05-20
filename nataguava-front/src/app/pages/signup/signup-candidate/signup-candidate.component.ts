@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../../models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +16,7 @@ export class SignupCandidateComponent implements OnInit {
   
   constructor(private fb: FormBuilder,
               private userService: UserService,
+              private router: Router,
               private candidateService: CandidateService) { }
 
   ngOnInit() {
@@ -35,12 +37,12 @@ export class SignupCandidateComponent implements OnInit {
     userCandidate.user = user;
     userCandidate.name = this.signupForm.controls['name'].value;
     userCandidate.urlRepository = this.signupForm.controls['urlRepo'].value;
-
-  
-    console.log(userCandidate);
-    this.candidateService.createOrUpdate(userCandidate).subscribe((userCreated: User) =>{
-      console.log(userCreated);
-    });
+    
+    this.candidateService
+            .createOrUpdate(userCandidate)
+            .subscribe((userCreated: User) =>{
+              this.router.navigateByUrl("/");
+            });
     
   }
 }

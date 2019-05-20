@@ -1,13 +1,39 @@
 .info-user {
     margin-top: 15px;
     margin-right: 10px;
+    color: white;
 }
 
 .new-action-btn-header {
     height: 45px;
-    margin-top: 10px;
 }
 
 .name-app {
     margin-top:10px;
+}
+
+.label-user {
+    display: flex;
+    align-items: center;
+}
+
+.label-name-user {
+    color: white;
+}
+
+.logout-btn {
+    margin-left: 6px;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-minhas-vagas {
+    background: #3c8dbc;
+    color: white;
+}
+
+.header {
+    height: 60px;
 }

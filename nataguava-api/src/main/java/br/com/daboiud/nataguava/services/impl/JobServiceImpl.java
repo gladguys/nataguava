@@ -1,6 +1,7 @@
 package br.com.daboiud.nataguava.services.impl;
 
 import br.com.daboiud.nataguava.models.Job;
+import br.com.daboiud.nataguava.models.JobStatus;
 import br.com.daboiud.nataguava.repositories.JobRepository;
 import br.com.daboiud.nataguava.services.JobService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Component
 @Primary
@@ -32,9 +32,23 @@ public class JobServiceImpl implements JobService {
         return this.jobRepository.findAll();
     }
 
+    public List<Job> findAllActive() {
+        return this.jobRepository.findAllByStatus(JobStatus.CREATED);
+    }
+
+    @Override
+    public List<Job> findAllByFilter(String content, String place) {
+        return jobRepository.findAllByFilters(content,place);
+    }
+
     @Override
     public Optional<Job> findById(Long id) {
         return this.jobRepository.findById(id);
+    }
+
+    @Override
+    public List<Job> findAllByCompanyIdAndStatus(Long companyId) {
+        return this.jobRepository.findByUserCompanyIdAndStatus(companyId, JobStatus.CREATED);
     }
 
     @Override
@@ -42,8 +56,4 @@ public class JobServiceImpl implements JobService {
         return this.jobRepository.findByUserCompanyId(companyId);
     }
 
-    @Override
-    public List<Job> findAllByRegistedCandidate(Long candidateId) {
-        return null;
-    }
 }

@@ -1,0 +1,101 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Opa! Você já submeteu questionário para essa vaga.</h4>
+    <button type="button" class="close" aria-label="Voltar" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Atenção</p>
+    <ul>
+      <li>Procure pelo seu resultado em seu <span class="btn btn-link"
+          (click)="modal.close('Close click'); gotohome()">Histórico de Vagas</span>.</li>
+    </ul>
+  </div>
+</ng-template>
+
+<div class="jumbotron">
+  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info">{{statusJobLabel}}</span>
+  </div>
+  <div class="subtitle-job-detail text-center">{{job.userCompany?.name}} - {{job.location}}</div>
+  <div *ngIf="isOwner" class="text-center">
+    <button *ngIf="job.status != 'CLOSED'" class="btn btn-info" (click)="cancelJob()">Encerrar Vaga</button>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="offset-md-1 col-md-8">
+      <h3>Descrição</h3>
+      <div class="descricao" style="white-space: pre-line">
+        {{job.description}}
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <h3>Tags</h3>
+      <label class="ml-1 mr-1 p-1 tag-conteudo" *ngFor="let c of job.contents">{{c.contentTag.tagname}}</label>
+
+    </div>
+  </div>
+  <div showIfCandidate class="row">
+    <div class="col-md-12 mt-5 mb-4">
+      <button type="submit" (click)="startQuiz()" class="btn btn-primary offset-md-1 col-md-8">Candidatar-se</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isOwner" class="container">
+  <div class="offset-md-1 col-md-8">
+    <div class="row">
+      <h3>Resultado em Tempo Real</h3>
+    </div>
+
+    <div class="card card-historico mb-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="text-align: center; width: 20px" scope="col">Situação</th>
+            <th style="text-align: center" scope="col">Candidato</th>
+            <th style="text-align: center" scope="col">Email</th>
+            <th style="text-align: center" scope="col">Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-candidates">
+            <td style="text-align: center" class="label-table-value">
+              <fa style="color:goldenrod" name="trophy"></fa>
+            </td>
+            <td style="text-align: center" scope="row" class="label-table-value">João</td>
+            <td style="text-align: center" class="label-table-value">joao@gmail.com</td>
+            <td style="text-align: center" class="label-table-value">12/15</td>
+          </tr>
+
+          <tr class="row-candidates">
+            <td style="text-align: center" class="label-table-value">
+              <fa style="color:goldenrod" name="trophy"></fa>
+            </td>
+            <td style="text-align: center" scope="row" class="label-table-value">Gustavo</td>
+            <td style="text-align: center" class="label-table-value">gugu@gmail.com</td>
+            <td style="text-align: center" class="label-table-value">10/15</td>
+          </tr>
+
+          <tr class="row-candidates">
+            <td style="text-align: center" class="label-table-value">-</td>
+            <td style="text-align: center" scope="row" class="label-table-value">Wesley</td>
+            <td style="text-align: center" class="label-table-value">ws@gmail.com</td>
+            <td style="text-align: center" class="label-table-value">4/15</td>
+          </tr>
+          <tr class="row-candidates">
+            <td style="text-align: center" class="label-table-value">-</td>
+            <td style="text-align: center" scope="row" class="label-table-value">Denis</td>
+            <td style="text-align: center" class="label-table-value">denis@gmail.com</td>
+            <td style="text-align: center" class="label-table-value">3/15</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

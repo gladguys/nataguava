@@ -18,6 +18,11 @@
     width: 55px;
 }
 
+.content-item {
+    max-width: 250px;
+}
+
+
 .btn-form-job {
     margin-left: 15px;
     border-radius: 15px;
@@ -33,4 +38,8 @@
 
 .btn-submit-job {
     width: 100%;
+}
+
+.card-historico {
+    width: 90%;
 }

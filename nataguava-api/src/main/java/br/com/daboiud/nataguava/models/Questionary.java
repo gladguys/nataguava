@@ -19,7 +19,7 @@ public class Questionary {
     @ManyToOne(fetch = FetchType.EAGER)
     private Job job;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="questionary_question", joinColumns=
             {@JoinColumn(name="questionary_id")}, inverseJoinColumns=
             {@JoinColumn(name="question_id")})

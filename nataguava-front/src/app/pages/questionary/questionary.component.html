@@ -1,0 +1,72 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Preparando Questões...</p>
+</ngx-spinner>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Questionario Pronto!</h4>
+    <button type="button" class="close" aria-label="Voltar" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Atenção</p> 
+    <ul>
+      <li>Fique de olho no tempo, pois o questionario será interrompido assim que o tempo acabar.</li>
+      <li>Para confirmar resposta da questão, selecione o ítem e clique em 'confirmar resposta'</li>
+      <li>Cada resposta só será salva se clicar no botão 'confirmar resposta'</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="cancelar()">Voltar</button>
+    <button type="button" class="btn btn-success" (click)="modal.close('Close click'); start()">Iniciar</button>
+  </div>
+</ng-template>
+
+<div>
+
+  <div *ngIf="loaded">
+
+    <div class="row justify-content-md-center header-questionary">
+      <p class="time-question"> 
+        <countdown #countdown  [config]="{leftTime: 90, demand:true}" (finished)="finishTest()">$!m!:$!s!</countdown> | {{questionary.job.title}} -
+        {{questionary.job.userCompany.name}}</p>
+    </div>  
+
+    <div class="scrolled-container col-md-10 offset-md-1">
+      <div class="card card-question-answers" *ngFor="let question of questionary?.questions">
+        <div class="card-question">
+          <div class="card-body">
+            <p class="card-text">
+              {{question.textQuestion}}
+            </p>
+          </div>
+        </div>
+        <div 
+            *ngFor="let item of question.itens"
+            (click)="onItemClicked(item,question)" 
+            [ngClass]="question.itemChosen === item ? 'item-chosen': 'item-not-chosen'"
+            class="card card-answer">
+          <div class="card-body">
+            <p class="card-text">
+              {{item.text}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" (click)="onBtnConfirmarClicked(question)" class="btn btn-success btn-answer">Confirmar Resposta</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" (click)="finishQuestionary()" class="btn btn-primary btn-finalizar">Enviar Respostas</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

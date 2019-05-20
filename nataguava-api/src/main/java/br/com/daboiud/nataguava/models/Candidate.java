@@ -1,5 +1,6 @@
 package br.com.daboiud.nataguava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Data
 public class Candidate {
 
     @Id
@@ -17,53 +19,11 @@ public class Candidate {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(
-            mappedBy = "candidate",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<ResultCandidateJob> resultCandidateJob;
-
     private String urlRepository;
 
-    @ManyToMany
-    @JoinTable(name = "job_candidate",
-            joinColumns = @JoinColumn(name = "candidate_id"),
-            inverseJoinColumns = @JoinColumn(name = "job_id")
-    )
+    @ManyToMany(mappedBy = "candidates")
+    @JsonIgnore
     private Set<Job> jobs;
 
     public Candidate() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<ResultCandidateJob> getResultCandidateJob() {
-        return resultCandidateJob;
-    }
-
-    public void setResultCandidateJob(List<ResultCandidateJob> resultCandidateJob) {
-        this.resultCandidateJob = resultCandidateJob;
-    }
-
-    public String getUrlRepository() {
-        return urlRepository;
-    }
-
-    public void setUrlRepository(String urlRepository) {
-        this.urlRepository = urlRepository;
-    }
 }
