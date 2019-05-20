@@ -49,10 +49,7 @@ public class JobController {
     @GetMapping(value = "/{jobId}/add-candidate/{userId}")
     public ResponseEntity<Job> registerCandidateToJob(@PathVariable("jobId") Long jobId, @PathVariable("userId") Long userId) throws Throwable {
         try {
-            Candidate candidade = this.candidateService.findByUserId(userId);
-            Job job = this.jobService.findById(jobId).orElseThrow(Exception::new);
-            job.addCandidate(candidade);
-            this.jobService.createOrUpdate(job);
+            Job job = this.candidateService.registerJob(userId, jobId);
             return ResponseEntity.ok(job);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

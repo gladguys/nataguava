@@ -12,6 +12,7 @@ import { Question } from 'src/app/models/question.model';
 import { ResultCandidateJob } from 'src/app/models/result-candidate-job.model';
 import { CandidateService } from 'src/app/services/candidate.service';
 import { switchMap } from 'rxjs/operators';
+import { AlertService } from 'src/app/components/shared/alert/alert.service';
 
 @Component({
   selector: 'app-questionary',
@@ -20,11 +21,13 @@ import { switchMap } from 'rxjs/operators';
 })
 export class QuestionaryComponent implements OnInit {
 
-  questionary: Questionary;
+  questionary: Questionary = new Questionary();
   loaded: boolean = false;
   @ViewChild("content") content: ElementRef;
   @ViewChild(CountdownComponent) countdown: CountdownComponent;
   result: ResultCandidateJob = new ResultCandidateJob();
+  hasTime: boolean = false;
+  isFake: boolean = true;
 
   jobId: number;
 
@@ -35,24 +38,45 @@ export class QuestionaryComponent implements OnInit {
     public router: Router,
     public sharedService: SharedService,
     public candidateService: CandidateService,
-    public resultCandidateJobService: ResultCandidateJobService
+    public resultCandidateJobService: ResultCandidateJobService,
+    public alertService: AlertService
   ) {
    }
 
   ngOnInit() {
-    
     this.jobId = parseInt(this.route.snapshot.paramMap.get('jobId'));
+
+    if(this.router.url === `/simulado/${this.jobId}`) {
+      this.isFake = true;
+      console.log("DEEEEEU");
+    } else {
+      this.isFake = false;
+    }
+
 
     this.spinner.show();
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
       this.loaded = true;
-      this.questionaryService.generate(this.jobId).subscribe(q => {
-        this.questionary = q;
-        this.spinner.hide();
-        this.openVerticallyCentered(this.content);
-      });
+      
+      if(this.isFake) {
+        this.questionaryService.generateSimulado(this.jobId).subscribe(q => {
+          this.hasTime = true;
+          this.questionary = q;
+          this.spinner.hide();
+          this.openVerticallyCentered(this.content);
+        });
+      } else {
+        this.questionaryService.generate(this.jobId).subscribe(q => {
+          this.hasTime = true;
+          this.questionary = q;
+          this.spinner.hide();
+          this.openVerticallyCentered(this.content);
+        });
+      }
+      
+  
     }, 3000);
   }
 
@@ -80,21 +104,40 @@ export class QuestionaryComponent implements OnInit {
     console.log(questao);
   }
 
+  getConfigsTime() {
+    return `{leftTime:${this.questionary.questions.length * 60}, demand:true}`;
+  }
+
   finishQuestionary(){
-    console.log(this.questionary);
     let counter = 0;
     this.questionary.questions.forEach(q => {
-      if(q.itemChosen.correct) counter++;
+      if(q.itemChosen && q.itemChosen.correct) counter++;
     })
-    console.log(counter);
-    this.candidateService.findByUserId(this.sharedService.getUserLogged().id)
+
+    if(this.isFake) {
+      this.popUpEndSimulado();
+    } else {
+      this.candidateService.findByUserId(this.sharedService.getUserLogged().id)
       .subscribe(candidate => {
         this.result.candidateId = candidate.id;
                               this.result.jobId = this.jobId;
                               this.result.result = counter;
-                              this.resultCandidateJobService.create(this.result).subscribe(r => console.log(r));
+                              this.resultCandidateJobService.create(this.result).subscribe(r => {
+
+                                this.popUpEndQuestionary();
+                              });
       })
+    }
       
   }
 
+  popUpEndQuestionary() {
+    this.alertService.success("Questionário salvo com sucesso.");
+    this.router.navigateByUrl("/");
+  }
+
+  popUpEndSimulado() {
+    this.alertService.success("Simulado finalizado com sucesso.");
+    this.router.navigateByUrl("/");
+  }
 }

@@ -15,6 +15,10 @@ export class QuestionaryService {
       return this.http.get<Questionary>(`${environment.API}/questionaries/${jobId}`);
   }
 
+  generateSimulado(jobId: number): Observable<Questionary> {
+    return this.http.get<Questionary>(`${environment.API}/questionaries/simulado/${jobId}`);
+}
+
   hasTaken(jobId: number): Observable<boolean> {
     return this.http.get<boolean>(`${environment.API}/questionaries/${jobId}/hasTaken`);
 }

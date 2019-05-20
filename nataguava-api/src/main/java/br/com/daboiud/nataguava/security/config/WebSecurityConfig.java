@@ -92,6 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET,"/api/jobs/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/users").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/companies").permitAll()
+				.antMatchers( "/api/questionaries/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/candidates").permitAll()
 				.antMatchers("/api/users/username/**").permitAll()
 				.antMatchers("/api/users/email/**").permitAll()

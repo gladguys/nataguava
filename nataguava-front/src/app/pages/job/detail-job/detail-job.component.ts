@@ -42,10 +42,12 @@ export class DetailJobComponent implements OnInit{
         .subscribe((job) => { 
           this.job = job; 
           this.buildStatusLabel();
-          this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
-            this.userCompany = company;
-            this.isOwner = company.id === this.job.userCompany.id ? true : false;
-          })
+          if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
+            this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
+              this.userCompany = company;
+              this.isOwner = company.id === this.job.userCompany.id ? true : false;
+            });
+          }
         })   
     }
   }
@@ -86,13 +88,25 @@ export class DetailJobComponent implements OnInit{
   }
 
   startQuiz() {
-    this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
-      if(!hasTaken) {
-        this.router.navigateByUrl(`/questionary/${this.job.id}`);
-      } else {
-        this.modalService.open(this.content, { centered: true });
-      }
-    })
+    if(this.sharedService.isUserLoggedIn()) {
+      this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
+        if(!hasTaken) {
+          this.router.navigateByUrl(`/questionary/${this.job.id}`);
+        } else {
+          this.modalService.open(this.content, { centered: true });
+        }
+      })
+    } else {
+      this.router.navigateByUrl("/login");
+    }
+  }
+
+  startSimulado() {
+    if(this.sharedService.isUserLoggedIn()) {
+    this.router.navigateByUrl(`/simulado/${this.job.id}`);
+    } else {
+      this.router.navigateByUrl("/login");
+    }
   }
 
   gotohome() {
