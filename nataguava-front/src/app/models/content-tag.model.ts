@@ -1,5 +1,5 @@
 export class ContentTag {
 
     public id: number;
-    public tagname: string;
+    public tagname: string;z
 }

@@ -97,12 +97,16 @@ export class DetailJobComponent implements OnInit{
         }
       })
     } else {
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl("/login");
     }
   }
 
   startSimulado() {
+    if(this.sharedService.isUserLoggedIn()) {
     this.router.navigateByUrl(`/simulado/${this.job.id}`);
+    } else {
+      this.router.navigateByUrl("/login");
+    }
   }
 
   gotohome() {

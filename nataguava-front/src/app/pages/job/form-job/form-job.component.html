@@ -24,17 +24,13 @@
               <div *ngIf="!!jobForm.get('title').errors.required">Título da vaga é obrigatório</div>
             </div>
           </div>
-          
+
           <div class="form-group col-md-2">
             <label class="labels-form" for="inputNumCandidatos">Nº Selecionáveis</label>
-            <input 
-              type="number" 
-              min=1
-              formControlName="numberOfBestCandidates"
-              class="form-control num-selecionaveis-form-job-input" 
-              id="inputNumCandidatos">
-          </div> 
-          
+            <input type="number" min=1 formControlName="numberOfBestCandidates"
+              class="form-control num-selecionaveis-form-job-input" id="inputNumCandidatos">
+          </div>
+
         </div>
 
         <div class="form-row">
@@ -53,23 +49,9 @@
           <div class="form-group col-md-12">
             <label class="labels-form" for="inputDesc">Questões por Temas</label>
             <div class="input-group">
-                <input
-                #inputTag 
-                type="text"
-                [(ngModel)]="tag"
-                [value]="tag.tagname"
-                [ngbTypeahead]="search"
-                [resultFormatter]="formatter" 
-                [ngModelOptions]="{standalone: true}"
-                class="form-control input-group mr-1" 
-                placeholder="Tema da questão"
-                id="tag">
-              <input 
-                  type="number"
-                  min="1" 
-                  [(ngModel)]="qtdQuestions" 
-                  [ngModelOptions]="{standalone: true}" 
-                  class="form-control col-md-1 mr-1">
+              <input type="text" class="form-control" [(ngModel)]="contentname" [ngModelOptions]="{standalone: true}" [ngbTypeahead]="search" />
+              <input type="number" min="1" [(ngModel)]="qtdQuestions" [ngModelOptions]="{standalone: true}"
+                class="form-control col-md-1 mr-1">
 
               <button class="btn btn-primary" type="button" (click)="addContent()">Adicionar
                 Questões</button>
@@ -91,20 +73,19 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
-                <label for="location" class="labels-form">Localização da Vaga</label>
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
-                  <input type="text" class="form-control" id="location"
-                    formControlName="location">
-                </div>
-              </div>
+          <div class="form-group col-md-12">
+            <label for="location" class="labels-form">Localização da Vaga</label>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
+              <input type="text" class="form-control" id="location" formControlName="location">
+            </div>
+          </div>
         </div>
-            
+
       </div>
       <div class="form-row pb-3 mr-1 ml-1">
         <div class="col-md-12 text-center">
-            <button [disabled]="submittingForm || jobForm?.invalid" type="submit"
+          <button [disabled]="submittingForm || jobForm?.invalid" type="submit"
             class="btn btn-primary col-md-12">Enviar</button>
         </div>
       </div>

@@ -69,7 +69,6 @@ public class QuestionaryController {
         Questionary questionary = this.questionaryService.generateByJobId(user, jobId);
         return ResponseEntity.ok(questionary);
 
-
     }
 
     @GetMapping(value = "/{jobId}/hasTaken")
