@@ -1,15 +1,17 @@
+import { ContentTag } from './../../../models/content-tag.model';
 import { AlertService } from './../../../components/shared/alert/alert.service';
 import { UserCompany } from './../../../models/user-company.model';
 import { SharedService } from './../../../services/shared.service';
 import { JobService } from './../../../services/job.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Job } from './../../../models/job.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
 import { Router } from '@angular/router';
 import { RecruterService } from 'src/app/services/recruter.service';
 import { Observable } from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import { ContentTagService } from 'src/app/services/content-tag.service';
 
 @Component({
   templateUrl: './form-job.component.html',
@@ -18,25 +20,25 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 export class FormJobComponent implements OnInit {
 
 
+  @ViewChild('inputTag') inputTag: ElementRef;
   job: Job = new Job();
   jobForm: FormGroup;
 
   contents: Content[] = [];
   qtdQuestions: number = 0;
-  contentTag: string = '';
 
   submittingForm: boolean = false;
 
-  tags = ["ANDROID", "ANGULAR","CSS", "DESIGN PATTERN","GWT", "HTML", "JAVA", "JAVASCRIPT","JDBC","JPA", "MYSQL", "PHP",
-          "POSTGRESQL", "PYTHON","RUBY", "RAILS", "REACT","SPRING FRAMEWORK","SQL" ,"SQL SERVER", "SWIFT", "TYPESCRIPT"];
-
+  tag: ContentTag = new ContentTag();
+  tags: ContentTag[] = [];
+  formatter = (result: ContentTag) => result.tagname.toUpperCase();
 
   search = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      map(term => term.length < 2 ? []
-        : this.tags.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+  text$.pipe(
+    debounceTime(200),
+    distinctUntilChanged(),
+    map(term => term.length < 2 ? []
+      : this.tags.filter(v => v.tagname.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
 
   constructor(public formBuilder: FormBuilder,
@@ -44,11 +46,14 @@ export class FormJobComponent implements OnInit {
     public router: Router,
     public sharedService: SharedService,
     public alertService: AlertService,
-    public recruterService: RecruterService) {
+    public recruterService: RecruterService,
+    public contentTagService: ContentTagService) {
   }
 
   ngOnInit() {
     this.loadJobForm();
+    this.contentTagService.getAll().subscribe(contents => this.tags = contents);
+    this.inputTag.nativeElement = "";
   }
 
 
@@ -64,9 +69,9 @@ export class FormJobComponent implements OnInit {
 
   addContent() {
 
-    this.contents.push({ contentTag: this.contentTag, qtQuestions: this.qtdQuestions });
+    this.contents.push({ contentTag: this.tag, qtQuestions: this.qtdQuestions });
     this.qtdQuestions = 0;
-    this.contentTag = '';
+    this.tag = new ContentTag();
   }
 
   removeContent(content: Content) {
@@ -87,6 +92,7 @@ export class FormJobComponent implements OnInit {
     this.recruterService.getByUserId(userId).subscribe((userCompany: UserCompany) => {
       jobToSave.userCompany = userCompany;
       
+      console.log(jobToSave);
       this.jobService.createOrUpdate(jobToSave).subscribe(jobSaved => {
         this.submittingForm = false;
         this.alertService.success("Vaga publicada com sucesso.");

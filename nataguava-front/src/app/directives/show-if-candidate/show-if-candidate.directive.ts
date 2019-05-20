@@ -19,7 +19,6 @@ export class ShowIfCandidateComponent implements OnInit {
     }
 
     isACandidateLogged(): boolean {
-        console.log(this.sharedService.getUserLogged().profileEnum, ProfileEnum.ROLE_CANDIDATE);
         if(this.sharedService.getUserLogged().profileEnum === ProfileEnum.ROLE_CANDIDATE) {
             return true;
         } else {

@@ -24,8 +24,8 @@ export class HeaderComponent implements OnInit {
   }
 
   goHome() {
-    if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
-      this.router.navigate["/home-company"];
+    if(this.sharedService.getUserLogged().profileEnum === ProfileEnum.ROLE_RECRUTER) {
+      this.router.navigateByUrl("/home-company");
     } else {
       this.router.navigateByUrl("/home-candidate");
     }

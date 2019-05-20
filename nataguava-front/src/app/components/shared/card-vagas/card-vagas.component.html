@@ -1,0 +1,16 @@
+<div class="card card-vagas-inscritas mb-3 offset-md-1 col-md-10">
+    <div class="vagas-andamento-container">
+      <h4 class="card-title title-vagas-andamento">{{titleCard}}</h4>
+      <div class="container-fluid">
+        <div class="mx-auto">
+          <guava-card-vaga 
+            style="margin-left:70px;" 
+            *ngFor="let job of jobs" 
+            (click)="goToDetail(job)"
+            [job]="job"> 
+        </guava-card-vaga>
+        </div>
+      </div>
+
+    </div>
+  </div>

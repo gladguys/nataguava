@@ -22,6 +22,7 @@ public class Question {
     )
     private Set<ItemQuestion> itens;
 
+    @ManyToOne
     private ContentTag tag;
 
 }

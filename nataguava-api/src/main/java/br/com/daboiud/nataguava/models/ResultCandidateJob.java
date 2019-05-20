@@ -1,5 +1,6 @@
 package br.com.daboiud.nataguava.models;
 
+import br.com.daboiud.nataguava.models.dtos.ResultCandidateJobDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class ResultCandidateJob {
 	private Long id;
 
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Job job;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -22,4 +23,13 @@ public class ResultCandidateJob {
 
 	private int result;
 
+	public ResultCandidateJobDto toDTO() {
+		ResultCandidateJobDto dto = new ResultCandidateJobDto();
+		dto.setId(this.id);
+		dto.setCandidateId(this.candidate.getId());
+		dto.setJobId(this.job.getId());
+		dto.setResult(this.result);
+
+		return dto;
+	}
 }

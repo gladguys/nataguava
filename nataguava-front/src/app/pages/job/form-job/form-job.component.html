@@ -53,13 +53,17 @@
           <div class="form-group col-md-12">
             <label class="labels-form" for="inputDesc">Questões por Temas</label>
             <div class="input-group">
-              <input 
-                  type="text" 
-                  [(ngModel)]="contentTag"
-                  [ngbTypeahead]="search" 
-                  [ngModelOptions]="{standalone: true}"
-                  class="form-control input-group mr-1" 
-                  placeholder="escolha um tema">
+                <input
+                #inputTag 
+                type="text"
+                [(ngModel)]="tag"
+                [value]="tag.tagname"
+                [ngbTypeahead]="search"
+                [resultFormatter]="formatter" 
+                [ngModelOptions]="{standalone: true}"
+                class="form-control input-group mr-1" 
+                placeholder="Tema da questão"
+                id="tag">
               <input 
                   type="number"
                   min="1" 
@@ -79,7 +83,7 @@
           <ul class="list-group col-md-6">
             <li *ngFor="let content of contents"
               class="list-group-item content-item d-flex justify-content-between align-items-center">
-              {{content.contentTag}}
+              {{content.contentTag.tagname}}
               <span class="badge badge-primary badge-pill text-right  mr-2">{{content.qtQuestions}}</span>
               <button class="btn btn-danger" type="button" (click)="removeContent(content)">x</button>
             </li>

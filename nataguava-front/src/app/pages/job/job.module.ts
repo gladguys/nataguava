@@ -6,6 +6,7 @@ import { DetailJobComponent } from './detail-job/detail-job.component';
 import { RouterModule } from '@angular/router';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show-if-candidate.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show
         ReactiveFormsModule,
         RouterModule,
         NgbTypeaheadModule,
-        ShowIfCandidateModule
+        ShowIfCandidateModule,
+        AngularFontAwesomeModule
     ],
     exports: [
         FormJobComponent,

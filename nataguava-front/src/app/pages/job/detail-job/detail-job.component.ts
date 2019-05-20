@@ -7,8 +7,10 @@ import { SharedService } from 'src/app/services/shared.service';
 import { Job } from './../../../models/job.model';
 import { JobService } from './../../../services/job.service';
 import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
+import { QuestionaryService } from 'src/app/services/questionary.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-detail-job',
@@ -21,13 +23,16 @@ export class DetailJobComponent implements OnInit{
   public job: Job = new Job();
   isOwner: boolean;
   userCompany: UserCompany = new UserCompany();
+  @ViewChild("content") content: ElementRef;
 
   constructor(public route: ActivatedRoute,
     public router: Router,
     public sharedService: SharedService,
     public alertService: AlertService,
     public companyService: CompanyService,
-    public jobService: JobService) { }
+    public jobService: JobService,
+    public modalService: NgbModal,
+    public questionaryService: QuestionaryService) { }
 
   ngOnInit() {
     const jobId = this.route.snapshot.paramMap.get('jobId');
@@ -78,5 +83,19 @@ export class DetailJobComponent implements OnInit{
       this.statusJobLabel = "(EM ANDAMENTO)";
     } 
     else this.statusJobLabel = "(ENCERRADO)";
+  }
+
+  startQuiz() {
+    this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
+      if(!hasTaken) {
+        this.router.navigateByUrl(`/questionary/${this.job.id}`);
+      } else {
+        this.modalService.open(this.content, { centered: true });
+      }
+    })
+  }
+
+  gotohome() {
+    this.router.navigateByUrl("/home-candidate");
   }
 }
