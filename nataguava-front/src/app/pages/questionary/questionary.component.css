@@ -37,6 +37,10 @@
     margin-bottom: 20px;
 }
 
+.label-waiting {
+    font-size: 20px; 
+    color: "white";
+}
 
 .item-not-chosen {
     opacity: 0.5;
