@@ -21,6 +21,9 @@
   <div *ngIf="isOwner" class="text-center">
     <button *ngIf="job.status != 'CLOSED'" class="btn btn-info" (click)="cancelJob()">Encerrar Vaga</button>
   </div>
+  <div class="link-editar" *ngIf="isOwner" class="text-center">
+    <button type="button" [routerLink]="['/form-job',job.id]" class="btn btn-link">Editar Vaga</button>
+  </div>
 </div>
 
 <div class="container mb-5">
