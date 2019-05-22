@@ -94,14 +94,6 @@ export class QuestionaryComponent implements OnInit {
     question.itemChosen = item;
   }
 
-  onBtnConfirmarClicked(questao) {
-    console.log(questao);
-  }
-
-  getConfigsTime(): string {
-    return `{leftTime:${this.questionary.questions.length * 60}, demand:true}`;
-  }
-
   finishQuestionary() {
     let counter = 0;
     this.questionary.questions.forEach(q => {
