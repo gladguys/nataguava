@@ -56,49 +56,7 @@
     </div>
 
     <div class="card card-historico mb-3">
-      <table class="table">
-        <thead>
-          <tr>
-            <th style="text-align: center; width: 20px" scope="col">Situação</th>
-            <th style="text-align: center" scope="col">Candidato</th>
-            <th style="text-align: center" scope="col">Email</th>
-            <th style="text-align: center" scope="col">Resultado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row-candidates">
-            <td style="text-align: center" class="label-table-value">
-              <fa style="color:goldenrod" name="trophy"></fa>
-            </td>
-            <td style="text-align: center" scope="row" class="label-table-value">João</td>
-            <td style="text-align: center" class="label-table-value">joao@gmail.com</td>
-            <td style="text-align: center" class="label-table-value">12/15</td>
-          </tr>
-
-          <tr class="row-candidates">
-            <td style="text-align: center" class="label-table-value">
-              <fa style="color:goldenrod" name="trophy"></fa>
-            </td>
-            <td style="text-align: center" scope="row" class="label-table-value">Gustavo</td>
-            <td style="text-align: center" class="label-table-value">gugu@gmail.com</td>
-            <td style="text-align: center" class="label-table-value">10/15</td>
-          </tr>
-
-          <tr class="row-candidates">
-            <td style="text-align: center" class="label-table-value">-</td>
-            <td style="text-align: center" scope="row" class="label-table-value">Wesley</td>
-            <td style="text-align: center" class="label-table-value">ws@gmail.com</td>
-            <td style="text-align: center" class="label-table-value">4/15</td>
-          </tr>
-          <tr class="row-candidates">
-            <td style="text-align: center" class="label-table-value">-</td>
-            <td style="text-align: center" scope="row" class="label-table-value">Denis</td>
-            <td style="text-align: center" class="label-table-value">denis@gmail.com</td>
-            <td style="text-align: center" class="label-table-value">3/15</td>
-          </tr>
-        </tbody>
-
-      </table>
+      <guava-job-ranking [resultCandidates]="job.resultCandidates"></guava-job-ranking>
     </div>
   </div>
 </div>

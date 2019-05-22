@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { ResultCandidateJob } from "src/app/models/result-candidate-job.model";
 
 @Component({
     selector: 'guava-job-ranking',
@@ -6,6 +7,8 @@ import { Component } from "@angular/core";
     styleUrls: ['job-ranking.component.css']
 })
 export class JobRankingComponent {
+
+    @Input() resultCandidates: ResultCandidateJob[];
 
     constructor() {}
 }
