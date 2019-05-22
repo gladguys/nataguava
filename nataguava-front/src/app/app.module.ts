@@ -1,3 +1,4 @@
+import { FormaterTime } from './pipes/formater-time.pipe';
 import { FormsModule } from '@angular/forms';
 import { CandidateModule } from './pages/candidate/candidate.module';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
@@ -38,7 +39,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   declarations: [
     AppComponent, 
     HeaderComponent, 
-    QuestionaryComponent
+    QuestionaryComponent,
+    FormaterTime
   ],
   exports:[
     HeaderComponent

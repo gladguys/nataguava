@@ -92,7 +92,7 @@ export class DetailJobComponent implements OnInit{
       this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
         if(!hasTaken) {
           this.router.navigateByUrl(`/questionary/${this.job.id}`);
-        } else {
+        } else {  
           this.modalService.open(this.content, { centered: true });
         }
       })

@@ -6,7 +6,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CountdownComponent } from 'ngx-countdown';
 import { ItemQuestion } from 'src/app/models/item-question.model';
 import { Question } from 'src/app/models/question.model';
 import { ResultCandidateJob } from 'src/app/models/result-candidate-job.model';
@@ -24,10 +23,9 @@ export class QuestionaryComponent implements OnInit {
   questionary: Questionary = new Questionary();
   loaded: boolean = false;
   @ViewChild("content") content: ElementRef;
-  @ViewChild(CountdownComponent) countdown: CountdownComponent;
   result: ResultCandidateJob = new ResultCandidateJob();
-  hasTime: boolean = false;
   isFake: boolean = true;
+  timer: number = 0;
 
   jobId: number;
 
@@ -40,15 +38,13 @@ export class QuestionaryComponent implements OnInit {
     public candidateService: CandidateService,
     public resultCandidateJobService: ResultCandidateJobService,
     public alertService: AlertService
-  ) {
-   }
+  ) { }
 
   ngOnInit() {
     this.jobId = parseInt(this.route.snapshot.paramMap.get('jobId'));
 
-    if(this.router.url === `/simulado/${this.jobId}`) {
+    if (this.router.url === `/simulado/${this.jobId}`) {
       this.isFake = true;
-      console.log("DEEEEEU");
     } else {
       this.isFake = false;
     }
@@ -59,24 +55,22 @@ export class QuestionaryComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
       this.loaded = true;
-      
-      if(this.isFake) {
+
+      if (this.isFake) {
         this.questionaryService.generateSimulado(this.jobId).subscribe(q => {
-          this.hasTime = true;
           this.questionary = q;
           this.spinner.hide();
           this.openVerticallyCentered(this.content);
         });
       } else {
         this.questionaryService.generate(this.jobId).subscribe(q => {
-          this.hasTime = true;
           this.questionary = q;
           this.spinner.hide();
           this.openVerticallyCentered(this.content);
         });
       }
-      
-  
+
+
     }, 3000);
   }
 
@@ -89,7 +83,7 @@ export class QuestionaryComponent implements OnInit {
   }
 
   start() {
-    this.countdown.begin();
+    this.startCountdown(this.questionary.questions.length * 120);
   }
 
   finishTest() {
@@ -100,35 +94,27 @@ export class QuestionaryComponent implements OnInit {
     question.itemChosen = item;
   }
 
-  onBtnConfirmarClicked(questao) {
-    console.log(questao);
-  }
-
-  getConfigsTime() {
-    return `{leftTime:${this.questionary.questions.length * 60}, demand:true}`;
-  }
-
-  finishQuestionary(){
+  finishQuestionary() {
     let counter = 0;
     this.questionary.questions.forEach(q => {
-      if(q.itemChosen && q.itemChosen.correct) counter++;
+      if (q.itemChosen && q.itemChosen.correct) counter++;
     })
 
-    if(this.isFake) {
+    if (this.isFake) {
       this.popUpEndSimulado();
     } else {
       this.candidateService.findByUserId(this.sharedService.getUserLogged().id)
-      .subscribe(candidate => {
-        this.result.candidateId = candidate.id;
-                              this.result.jobId = this.jobId;
-                              this.result.result = counter;
-                              this.resultCandidateJobService.create(this.result).subscribe(r => {
+        .subscribe(candidate => {
+          this.result.candidateId = candidate.id;
+          this.result.jobId = this.jobId;
+          this.result.result = counter;
+          this.resultCandidateJobService.create(this.result).subscribe(r => {
 
-                                this.popUpEndQuestionary();
-                              });
-      })
+            this.popUpEndQuestionary();
+          });
+        })
     }
-      
+
   }
 
   popUpEndQuestionary() {
@@ -140,4 +126,19 @@ export class QuestionaryComponent implements OnInit {
     this.alertService.success("Simulado finalizado com sucesso.");
     this.router.navigateByUrl("/");
   }
+
+  startCountdown(seconds) {
+    var counter = seconds;
+
+    var interval = setInterval(() => {
+      this.timer = counter;
+      counter--;
+      if (counter < 0) {
+
+        this.popUpEndSimulado();
+
+        clearInterval(interval);
+      };
+    }, 1000);
+  };
 }
