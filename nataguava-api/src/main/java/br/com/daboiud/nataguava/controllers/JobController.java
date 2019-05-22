@@ -19,6 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/jobs")
+@CrossOrigin(value = "*")
 public class JobController {
 
     private JobService jobService;
@@ -36,6 +37,18 @@ public class JobController {
 
     @PostMapping
     public ResponseEntity<Job> save(@RequestBody Job job) {
+        Job savedJob;
+        try {
+            savedJob = this.jobService.createOrUpdate(job);
+            return ResponseEntity.ok(savedJob);
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<Job> update(@RequestBody Job job) {
         Job savedJob;
         try {
             savedJob = this.jobService.createOrUpdate(job);
