@@ -63,7 +63,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     ShowIfCandidateModule,
     AdminModule,
     FormsModule,
-    ErrorsModule
+    ErrorsModule,
     NgxSpinnerModule,
     CountdownModule,
     AngularFontAwesomeModule

@@ -5,7 +5,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { Job } from './../../../models/job.model';
 import { JobService } from './../../../services/job.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
