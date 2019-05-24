@@ -47,12 +47,5 @@ public class NataguavaApiApplication {
 
             userCompanyService.createOrUpdate(userCompany);
         }
-
-
-
-
-
     }
-
-
 }

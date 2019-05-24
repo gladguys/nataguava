@@ -36,7 +36,6 @@ public class QuestionaryServiceImpl implements QuestionaryService {
 
         Set<Question> questions = new HashSet<>();
         //generate questions
-        Random random = new Random();
         job.getContents().forEach(c -> {
             ContentTag contentTag = c.getContentTag();
             List<Question> allQuestions = this.questionService.findByContentTag(contentTag);
