@@ -51,6 +51,10 @@
   </div>
 </div>
 
+<div *ngIf="isCandidate()">
+  <similar-jobs [job] = "job">
+  </similar-jobs>
+</div>
 
 <div *ngIf="isOwner" class="container">
   <div class="offset-md-1 col-md-8">
