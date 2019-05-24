@@ -1,9 +1,10 @@
 package br.com.daboiud.nataguava.controllers;
 
-import br.com.daboiud.nataguava.models.Candidate;
+import br.com.daboiud.nataguava.models.Content;
 import br.com.daboiud.nataguava.models.Job;
 import br.com.daboiud.nataguava.models.JobStatus;
 import br.com.daboiud.nataguava.models.UserCompany;
+import br.com.daboiud.nataguava.models.dtos.JobDTO;
 import br.com.daboiud.nataguava.security.jwt.JwtTokenUtil;
 import br.com.daboiud.nataguava.services.CandidateService;
 import br.com.daboiud.nataguava.services.JobService;
@@ -14,8 +15,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/jobs")
@@ -124,5 +127,17 @@ public class JobController {
 
     private boolean isTheOwnerOfTheJob(String usernameFromToken, Job jobToClose) {
         return usernameFromToken.equals(jobToClose.getUserCompany().getUser().getEmail());
+    }
+
+    @GetMapping(value = "/{contents}")
+    public ResponseEntity<List<Job>> getByTags(@PathVariable("contents") List<Content> contents) throws Throwable {
+         List<Job> jobs;
+
+         try {
+        	 jobs = this.jobService.findAllByTags(contents).stream().map(JobDTO::toObject).collect(Collectors.toList());
+        	 return ResponseEntity.ok(jobs);
+         } catch (Exception e) {
+        	 return ResponseEntity.badRequest().body(null);
+         }
     }
 }

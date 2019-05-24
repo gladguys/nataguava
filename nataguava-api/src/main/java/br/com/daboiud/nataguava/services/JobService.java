@@ -1,11 +1,13 @@
 package br.com.daboiud.nataguava.services;
 
+import br.com.daboiud.nataguava.models.Content;
 import br.com.daboiud.nataguava.models.Job;
+import br.com.daboiud.nataguava.models.dtos.JobDTO;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public interface JobService {
@@ -18,4 +20,5 @@ public interface JobService {
     List<Job> findAllActive();
 
     List<Job> findAllByFilter(String content, String place);
+    List<JobDTO> findAllByTags(List<Content> contents);
 }
