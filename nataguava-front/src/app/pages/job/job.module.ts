@@ -7,11 +7,14 @@ import { RouterModule } from '@angular/router';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show-if-candidate.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SharedModule } from 'src/app/components/shared/shared.module';
+import { SimilarJobComponent } from './similar-job/similar-job.component';
 
 @NgModule({
     declarations: [
         FormJobComponent,
-        DetailJobComponent
+        DetailJobComponent,
+        SimilarJobComponent
     ],imports: [
         CommonModule,
         FormsModule,
@@ -19,11 +22,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
         RouterModule,
         NgbTypeaheadModule,
         ShowIfCandidateModule,
-        AngularFontAwesomeModule
+        AngularFontAwesomeModule,
+        SharedModule
     ],
     exports: [
         FormJobComponent,
-        DetailJobComponent
+        DetailJobComponent,
+        SimilarJobComponent
     ]
 })
 export class JobModule {
