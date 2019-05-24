@@ -7,7 +7,6 @@ import { JobService } from './../../../services/job.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail-job',
@@ -41,11 +40,8 @@ export class DetailJobComponent implements OnInit{
             this.isOwner = company.id === this.job.userCompany.id ? true : false;
           })
         },
-
         err => {
-          if (err instanceof HttpErrorResponse) {
-            this.router.navigateByUrl("/**");
-          }
+          this.router.navigateByUrl("/**");
         })   
     }
   }
