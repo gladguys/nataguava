@@ -130,7 +130,7 @@ public class JobController {
     }
 
     @GetMapping(value = "/{contents}")
-    public ResponseEntity<List<Job>> getByTags(@PathVariable("contents") List<Content> contents) throws Throwable {
+    public ResponseEntity<List<Job>> getByTags(@PathVariable("contents") List<Content> contents) {
          List<Job> jobs;
 
          try {
