@@ -20,6 +20,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/jobs")
+@CrossOrigin(value = "*")
 public class JobController {
 
     private JobService jobService;
@@ -47,13 +48,22 @@ public class JobController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity<Job> update(@RequestBody Job job) {
+        Job savedJob;
+        try {
+            savedJob = this.jobService.createOrUpdate(job);
+            return ResponseEntity.ok(savedJob);
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/{jobId}/add-candidate/{userId}")
     public ResponseEntity<Job> registerCandidateToJob(@PathVariable("jobId") Long jobId, @PathVariable("userId") Long userId) throws Throwable {
         try {
-            Candidate candidade = this.candidateService.findByUserId(userId);
-            Job job = this.jobService.findById(jobId).orElseThrow(Exception::new);
-            job.addCandidate(candidade);
-            this.jobService.createOrUpdate(job);
+            Job job = this.candidateService.registerJob(userId, jobId);
             return ResponseEntity.ok(job);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

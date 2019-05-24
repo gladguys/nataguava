@@ -1,3 +1,5 @@
+import { ContentTag } from './../../../models/content-tag.model';
+import { ContentTagService } from './../../../services/content-tag.service';
 import { OnInit, Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ItemQuestion } from "src/app/models/item-question.model";
@@ -5,7 +7,6 @@ import { Question } from "src/app/models/question.model";
 import { QuestionService } from "src/app/services/question.service";
 import { Observable } from "rxjs";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
-import { Content } from "@angular/compiler/src/render3/r3_ast";
 
 @Component({
   templateUrl: './question-form.component.html',
@@ -14,23 +15,27 @@ import { Content } from "@angular/compiler/src/render3/r3_ast";
 export class QuestionFormComponent implements OnInit {
 
     questionForm: FormGroup;
-    tag: string = '';
-
-    tags = ["ANDROID", "ANGULAR","CSS", "DESIGN PATTERN","GWT", "HTML", "JAVA", "JAVASCRIPT","JDBC","JPA", "MYSQL", "PHP",
-          "POSTGRESQL", "PYTHON","RUBY", "RAILS", "REACT","SPRING FRAMEWORK","SQL" ,"SQL SERVER", "SWIFT", "TYPESCRIPT"];
+    tag: ContentTag = new ContentTag();
+    tags: ContentTag[] = [];
+    formatter = (result: ContentTag) => result.tagname.toUpperCase();
 
     search = (text$: Observable<string>) =>
       text$.pipe(
         debounceTime(200),
         distinctUntilChanged(),
         map(term => term.length < 2 ? []
-          : this.tags.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+          : this.tags.filter(v => v.tagname.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
 
     constructor(private formBuilder: FormBuilder,
-                private questionService: QuestionService) { }
+                private questionService: QuestionService,
+                private contentTagService: ContentTagService) { }
 
     ngOnInit() {
+
+      this.contentTagService.getAll().subscribe(contents => this.tags = contents);
+      
+
       this.questionForm = this.formBuilder.group({
         'title': ['', Validators.required],
         'item1': ['', Validators.required],
@@ -58,19 +63,19 @@ export class QuestionFormComponent implements OnInit {
         let item4  = new ItemQuestion();
         item4.text = this.questionForm.controls['item4'].value;
 
-        let itemCerto : string = this.questionForm.controls['rightAnswer'].value;
+        let itemCerto : number = this.questionForm.controls['rightAnswer'].value;
 
         switch(itemCerto) {
-          case '1':
+          case 1:
             item1.correct = true;
             break;
-          case '2':
+          case 2:
             item2.correct = true;
             break;
-          case '3':
+          case 3:
             item3.correct = true;
             break;
-          case '4':
+          case 4:
             item4.correct = true;
             break;
         }

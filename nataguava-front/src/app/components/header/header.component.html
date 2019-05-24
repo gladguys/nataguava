@@ -12,9 +12,8 @@
       </ul>
 
       <div class="navbar-right info-user">
-        <label *ngIf="(user$ | async) as user; else noUser">
-
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle label-name-user"></i></a>
+        <label class="label-user" *ngIf="(user$ | async) as user; else noUser">
+            Olá, {{user.email}} <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle label-name-user"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div (click)="goHome()" class="dropdown-item dropdown-minhas-vagas">Minhas Vagas</div>
               <div class="dropdown-item">Configurações</div>

@@ -23,6 +23,10 @@ export class CandidateService {
     }
   }
 
+  findByUserId(id: number):Observable<Candidate> {
+    return this.http.get<Candidate>(`${environment.API}/candidates/user/${id}`);
+  }
+
   findById(id: string) {
     return this.http.get(`${environment.API}/candidates/${id}`);
   }

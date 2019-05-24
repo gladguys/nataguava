@@ -12,6 +12,11 @@
     margin-top:10px;
 }
 
+.label-user {
+    display: flex;
+    align-items: center;
+}
+
 .label-name-user {
     color: white;
 }

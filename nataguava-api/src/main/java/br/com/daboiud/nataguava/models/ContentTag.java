@@ -1,21 +1,19 @@
 package br.com.daboiud.nataguava.models;
 
-public enum ContentTag {
+import lombok.Data;
 
-    JAVA,
-    JAVASCRIPT,
-    PHP, 
-    SQL, 
-    ANDROID, 
-    PYTHON, 
-    RUBY, 
-    RAILS, 
-    IONIC,
-    C_SHARP,
-    C_PLUS_PLUS, 
-    SPRING, 
-    JSF, 
-    ESTRUTURA_DE_DADOS,
-    REACT,
-    CLOJURE
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Data
+public class ContentTag {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+
+    private String tagname;
 }

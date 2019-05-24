@@ -1,3 +1,4 @@
+import { FormaterTime } from './pipes/formater-time.pipe';
 import { FormsModule } from '@angular/forms';
 import { CandidateModule } from './pages/candidate/candidate.module';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
@@ -12,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CountdownModule } from 'ngx-countdown';
 
 import {ButtonModule} from 'primeng/button';
  
@@ -31,12 +34,15 @@ import { ShowIfUserCompanyModule } from './directives/show-if-user-company/show-
 import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-candidate.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { ErrorsModule } from './errors/errors.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent, 
-    QuestionaryComponent
+    QuestionaryComponent,
+    FormaterTime
   ],
   exports:[
     HeaderComponent
@@ -58,6 +64,9 @@ import { ErrorsModule } from './errors/errors.module';
     AdminModule,
     FormsModule,
     ErrorsModule
+    NgxSpinnerModule,
+    CountdownModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     AuthService,

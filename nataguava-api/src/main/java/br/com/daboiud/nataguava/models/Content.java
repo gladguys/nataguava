@@ -12,7 +12,7 @@ public class Content {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private ContentTag ContentTag;
 
     private int qtQuestions;

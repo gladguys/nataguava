@@ -25,10 +25,14 @@ export const ROUTES: Routes = [
     {path: 'home-candidate', canActivate: [AuthGuard, CandidateGuard], component: HomeCandidadeComponent},
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
     {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
+    {path: 'form-job/:jobId', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},
     {path: 'job-detail/:jobId', component: DetailJobComponent },
     {path: 'questionary/:jobId', canActivate: [AuthGuard], component: QuestionaryComponent },
     {path: 'form-question', component: QuestionFormComponent },
     {path: '**', component: NotFoundComponent}
+    {path: 'questionary/:jobId', canActivate: [CandidateGuard, AuthGuard], component: QuestionaryComponent },
+    {path: 'simulado/:jobId', canActivate: [CandidateGuard, AuthGuard], component: QuestionaryComponent },
+    {path: 'form-question', component: QuestionFormComponent }
 ]
 
 export const routes:  ModuleWithProviders = RouterModule.forRoot(ROUTES);

@@ -13,3 +13,33 @@
     box-shadow: 0 25px 35px rgba(0,0,0,0.15);
     transform: scale(1.02, 1.02);   
 }
+
+.descricao {
+    color: dimgray;
+}
+.btns-vaga {
+    display: block;
+}
+
+
+.title-jobs-running {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-historico {
+    margin-top: 20px;
+}
+
+.label-table-value {
+    color: #3c8dbc;
+}
+.label-table-value-not-passed {
+    color: gray;
+}
+
+.row-candidates:hover {
+    transform: scale(1.01, 1.01);
+    box-shadow: 0 2px 5px #acd2e8;
+}
+
