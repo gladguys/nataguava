@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -111,15 +112,16 @@ public class JobController {
                                                  @RequestParam("place") String place) {
         List<Job> jobs;
         try {
-            jobs = this.jobService.findAllByFilter(content, place);return ResponseEntity.ok(jobs);
+            jobs = this.jobService.findAllByFilter(content, place);
+            return ResponseEntity.ok(jobs);
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> getById(@PathVariable("id") Long id) throws Throwable {
-           return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));
+    public ResponseEntity<Job> getById(@PathVariable("id") Long id) throws Throwable {
+       return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));
     }
 
     private boolean isTheOwnerOfTheJob(String usernameFromToken, Job jobToClose) {

@@ -14,13 +14,12 @@ export class ShowIfUserCompanyComponent implements OnInit {
     ){}
 
     ngOnInit() {
-            console.log("ddedede");
             !this.isACompanyLogged() &&
             this.renderer.setElementStyle(this.element.nativeElement, 'display', 'none');
     }
 
     isACompanyLogged(): boolean {
-        if(this.sharedService.getUserLogged().profileEnum === ProfileEnum.ROLE_RECRUTER) {
+        if(this.sharedService.getUserLogged() != null && this.sharedService.getUserLogged().profileEnum === ProfileEnum.ROLE_RECRUTER) {
             return true;
         } else {
             return false;
