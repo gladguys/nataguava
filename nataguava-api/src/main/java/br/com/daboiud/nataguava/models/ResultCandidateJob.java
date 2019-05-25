@@ -15,7 +15,7 @@ public class ResultCandidateJob {
 	private Long id;
 
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
 	private Job job;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -29,6 +29,7 @@ public class ResultCandidateJob {
 		dto.setCandidateId(this.candidate.getId());
 		dto.setJobId(this.job.getId());
 		dto.setResult(this.result);
+		dto.setCandidateName(this.candidate.getName());
 
 		return dto;
 	}

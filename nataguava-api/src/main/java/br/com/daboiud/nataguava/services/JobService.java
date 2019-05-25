@@ -1,6 +1,7 @@
 package br.com.daboiud.nataguava.services;
 
 import br.com.daboiud.nataguava.models.Job;
+import br.com.daboiud.nataguava.models.ResultCandidateJob;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

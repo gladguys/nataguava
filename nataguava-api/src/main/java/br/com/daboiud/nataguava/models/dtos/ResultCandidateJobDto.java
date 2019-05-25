@@ -11,12 +11,13 @@ public class ResultCandidateJobDto {
     private Long id;
     private Long jobId;
     private Long candidateId;
+    private String candidateName;
     private int result;
 
     public ResultCandidateJob toObject() {
         ResultCandidateJob resultCandidateJob = new ResultCandidateJob();
         Job job = new Job();
-        job.setId(this.id);
+        job.setId(this.jobId);
         Candidate candidate = new Candidate();
         candidate.setId(this.candidateId);
 
