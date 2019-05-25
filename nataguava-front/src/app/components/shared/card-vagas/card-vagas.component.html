@@ -3,8 +3,7 @@
       <h4 class="card-title title-vagas-andamento">{{titleCard}}</h4>
       <div class="container-fluid">
         <div class="mx-auto">
-          <guava-card-vaga 
-            style="margin-left:70px;" 
+          <guava-card-vaga  
             *ngFor="let job of jobs" 
             (click)="goToDetail(job)"
             [job]="job"> 

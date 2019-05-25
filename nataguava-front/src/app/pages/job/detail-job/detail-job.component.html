@@ -14,12 +14,38 @@
   </div>
 </ng-template>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Questionário está prestes a começar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Para iniciar, clique em 'Começar'</h5>
+        <h6>obs: Após clicar em Começar, o usuário não poderá refazer o questionário.</h6>
+        <label></label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Agora não</button>
+        <button type="button" (click)="startQuiz()" class="btn btn-success">Começar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="jumbotron">
   <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info">{{statusJobLabel}}</span>
   </div>
   <div class="subtitle-job-detail text-center">{{job.userCompany?.name}} - {{job.location}}</div>
   <div *ngIf="isOwner" class="text-center">
     <button *ngIf="job.status != 'CLOSED'" class="btn btn-info" (click)="cancelJob()">Encerrar Vaga</button>
+  </div>
+  <div class="link-editar" *ngIf="isOwner" class="text-center">
+    <button type="button" [routerLink]="['/form-job',job.id]" class="btn btn-link">Editar Vaga</button>
   </div>
 </div>
 
@@ -40,8 +66,13 @@
   </div>
   <div showIfCandidate class="row">
     <div class="col-md-12 mt-5 mb-4">
-      <button type="submit" (click)="startQuiz()" class="btn btn-success offset-md-1 col-md-8">Fazer
-        Questionário</button>
+      <button 
+        type="submit" 
+        data-toggle="modal" 
+        data-target="#exampleModal" 
+        class="btn btn-success offset-md-1 col-md-8">
+        Fazer Questionário
+      </button>
     </div>
     <div class="col-md-12 mt-2 mb-4">
       <button type="submit" (click)="startSimulado()" class="btn btn-link offset-md-1 col-md-8">Não confiante ainda?
