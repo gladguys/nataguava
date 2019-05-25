@@ -16,7 +16,7 @@
 }
 
 .login-logo-color {
-    color: white;
+    color: #de868f;
 }
 
 .input-login {
@@ -30,5 +30,13 @@
 
 .links-signup {
     margin-top: 30px;
+}
+
+.text-link {
+    cursor: pointer;
+}
+
+.text-link:hover {
+    color: darkgreen;
 }
 

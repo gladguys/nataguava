@@ -3,6 +3,7 @@ import { CompanyService } from './../../../services/company.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from "@angular/core";
 import { UserCompany } from 'src/app/models/user-company.model';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: 'signup-company.component.html',
@@ -12,7 +13,8 @@ export class SignupCompanyComponent {
     signupForm: FormGroup;
   
   constructor(private fb: FormBuilder,
-              private companyService: CompanyService) { }
+              private companyService: CompanyService,
+              private router: Router) { }
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -33,12 +35,10 @@ export class SignupCompanyComponent {
     userCompany.name = this.signupForm.controls['name'].value;
     userCompany.phone = this.signupForm.controls['phone'].value;
     
-    console.log(userCompany);
-
     this.companyService
             .createOrUpdate(userCompany)
             .subscribe((userCreated: User) =>{
-              console.log(userCreated);
+              this.router.navigateByUrl("/");
             });
     
   }

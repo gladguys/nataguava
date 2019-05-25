@@ -9,6 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResultCandidateJob } from 'src/app/models/result-candidate-job.model';
 
 @Component({
   selector: 'app-detail-job',
@@ -22,6 +23,8 @@ export class DetailJobComponent implements OnInit{
   isOwner: boolean;
   userCompany: UserCompany = new UserCompany();
   @ViewChild("content") content: ElementRef;
+  verRanking: boolean = false;
+  resultCandidatesJob: ResultCandidateJob[] = [];
 
   constructor(public route: ActivatedRoute,
     public router: Router,
@@ -39,6 +42,7 @@ export class DetailJobComponent implements OnInit{
         .findById(jobId)
         .subscribe((job) => { 
           this.job = job; 
+          this.resultCandidates();
           this.buildStatusLabel();
           this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
             this.userCompany = company;
@@ -49,6 +53,11 @@ export class DetailJobComponent implements OnInit{
           this.router.navigateByUrl("/**");
         })   
     }
+  }
+
+  resultCandidates() {
+    this.jobService.getResultCandidates(this.job.id).subscribe(res =>{ this.resultCandidatesJob = res; console.log(res) });
+
   }
 
   isCandidate() {

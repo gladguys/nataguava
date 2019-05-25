@@ -22,4 +22,5 @@ public class ResultCandidateJobController {
         ResultCandidateJob resultSaved =this.resultCandidateJobService.createOrUpdate(dto.toObject());
         return ResponseEntity.ok(resultSaved.toDTO());
     }
+
 }

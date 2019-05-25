@@ -12,5 +12,4 @@ export class Job {
     public userCompany: UserCompany;
     public status: string;
     public location: string;
-    public resultCandidateJob: Array<ResultCandidateJob>;
 }

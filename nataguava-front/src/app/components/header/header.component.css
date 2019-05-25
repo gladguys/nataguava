@@ -10,6 +10,7 @@
 
 .name-app {
     margin-top:10px;
+    color: #de868f;
 }
 
 .label-user {
@@ -23,6 +24,10 @@
 
 .logout-btn {
     margin-left: 6px;
+}
+
+.label-login {
+    cursor: pointer;
 }
 
 .dropdown {

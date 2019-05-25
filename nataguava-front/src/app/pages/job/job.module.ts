@@ -7,11 +7,13 @@ import { RouterModule } from '@angular/router';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show-if-candidate.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { JobRankingComponent } from './job-ranking/job-ranking.component';
 
 @NgModule({
     declarations: [
         FormJobComponent,
-        DetailJobComponent
+        DetailJobComponent,
+        JobRankingComponent
     ],imports: [
         CommonModule,
         FormsModule,

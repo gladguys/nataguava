@@ -19,6 +19,8 @@ public class Candidate {
     @JoinColumn(name="user_id")
     private User user;
 
+    private String name;
+
     private String urlRepository;
 
     @ManyToMany(mappedBy = "candidates")

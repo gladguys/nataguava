@@ -1,12 +1,11 @@
 package br.com.daboiud.nataguava.controllers;
 
-import br.com.daboiud.nataguava.models.Candidate;
-import br.com.daboiud.nataguava.models.Job;
-import br.com.daboiud.nataguava.models.JobStatus;
-import br.com.daboiud.nataguava.models.UserCompany;
+import br.com.daboiud.nataguava.models.*;
+import br.com.daboiud.nataguava.models.dtos.ResultCandidateJobDto;
 import br.com.daboiud.nataguava.security.jwt.JwtTokenUtil;
 import br.com.daboiud.nataguava.services.CandidateService;
 import br.com.daboiud.nataguava.services.JobService;
+import br.com.daboiud.nataguava.services.ResultCandidateJobService;
 import br.com.daboiud.nataguava.services.UserCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,14 +25,19 @@ public class JobController {
     private JobService jobService;
     private UserCompanyService userCompanyService;
     private CandidateService candidateService;
+    private ResultCandidateJobService resultCandidateJobService;
 
     @Autowired
     private JwtTokenUtil jwtUtil;
 
-    public JobController(JobService jobService, UserCompanyService userCompanyService, CandidateService candidateService) {
+    public JobController(JobService jobService,
+                         UserCompanyService userCompanyService,
+                         ResultCandidateJobService resultCandidateJobService,
+                         CandidateService candidateService) {
         this.jobService = jobService;
         this.userCompanyService = userCompanyService;
         this.candidateService = candidateService;
+        this.resultCandidateJobService = resultCandidateJobService;
     }
 
     @PostMapping
@@ -122,6 +126,11 @@ public class JobController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Job> getById(@PathVariable("id") Long id) throws Throwable {
        return ResponseEntity.ok(this.jobService.findById(id).orElseThrow(Exception::new));
+    }
+
+    @GetMapping(value = "/{jobId}/results")
+    public ResponseEntity<List<ResultCandidateJobDto>> getResults(@PathVariable("jobId") Long id) {
+        return ResponseEntity.ok(this.resultCandidateJobService.findByJobId(id));
     }
 
     private boolean isTheOwnerOfTheJob(String usernameFromToken, Job jobToClose) {
