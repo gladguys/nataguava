@@ -1,26 +1,31 @@
-<div class="card card-historico mb-3">
-    <table class="table">
-      <thead>
-        <tr>
-          <th style="text-align: center; width: 20px" scope="col">Situação</th>
-          <th style="text-align: center" scope="col">Candidato</th>
-          <th style="text-align: center" scope="col">Resultado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let res of resultCandidates; let pos = index" class="row-candidates">
-          <td *ngIf="pos < numberOfBestCandidates; else notQualified" style="text-align: center" class="label-table-value">
-            <fa style="color:goldenrod" name="trophy"></fa>
-          </td>
-          <ng-template #notQualified>
-            <td style="text-align: center" class="label-table-value">
-              <label>-</label>
-            </td>
-          </ng-template>
-          <td style="text-align: center" scope="row" class="label-table-value">{{res.candidateName}}</td>
-          <td style="text-align: center" class="label-table-value">{{res.result}}</td>
-        </tr>
-      </tbody>
+<div class="card card-historico mb-3" *ngIf="resultCandidates.length; else msgNoCandidates">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="text-align: center; width: 20px" scope="col">Situação</th>
+        <th style="text-align: center" scope="col">Candidato</th>
+        <th style="text-align: center" scope="col">Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
 
-    </table>
-  </div>
+      <tr *ngFor="let res of resultCandidates; let pos = index" class="row-candidates">
+        <td *ngIf="pos < numberOfBestCandidates; else notQualified" style="text-align: center"
+          class="label-table-value">
+          <fa style="color:goldenrod" name="trophy"></fa>
+        </td>
+        <ng-template #notQualified>
+          <td style="text-align: center" class="label-table-value">
+            <label>-</label>
+          </td>
+        </ng-template>
+        <td style="text-align: center" scope="row" class="label-table-value">{{res.candidateName}}</td>
+        <td style="text-align: center" class="label-table-value">{{res.result}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<ng-template #msgNoCandidates>
+  <label class="col-md-8 offset-md-2 mt-3 mb-3 text-center">Não há candidatos escritos nessa vaga.</label>
+</ng-template>

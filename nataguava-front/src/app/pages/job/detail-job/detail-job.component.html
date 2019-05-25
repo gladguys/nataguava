@@ -37,12 +37,14 @@
   </div>
 </div>
 
-<div class="jumbotron">
-  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info">{{statusJobLabel}}</span>
+
+
+<div class="jumbotron jumbotron-job">
+  <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info label-status">{{statusJobLabel}}</span>
   </div>
   <div class="subtitle-job-detail text-center">{{job.userCompany?.name}} - {{job.location}}</div>
   <div *ngIf="isOwner" class="text-center">
-    <button *ngIf="job.status != 'CLOSED'" class="btn btn-info" (click)="cancelJob()">Encerrar Vaga</button>
+    <button *ngIf="job.status != 'CLOSED'" class="btn btn-danger" (click)="cancelJob()">Encerrar Vaga</button>
   </div>
   <div class="link-editar" *ngIf="isOwner" class="text-center">
     <button type="button" [routerLink]="['/form-job',job.id]" class="btn btn-link">Editar Vaga</button>
@@ -88,9 +90,7 @@
       <h3>Resultado em Tempo Real</h3>
     </div>
 
-    <div class="card card-historico mb-3">
       <guava-job-ranking [resultCandidates]="resultCandidatesJob"
         [numberOfBestCandidates]="job.numberOfBestCandidates"></guava-job-ranking>
-    </div>
   </div>
 </div>

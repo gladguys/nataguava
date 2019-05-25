@@ -1,12 +1,4 @@
 <div class="mr-2 ml-2">
-  <div class="row">
-    <div class="col-md">
-      <h1 class="title-page h2 border-left pl-2">Nova Vaga</h1>
-    </div>
-    <div class="col-md">
-      <a routerLink="/home-company" class="btn btn-light float-right">Voltar</a>
-    </div>
-  </div>
 
   <form [formGroup]="jobForm" (submit)="save()">
     <div class="card col-md-10 offset-md-1">
@@ -82,7 +74,7 @@
           </div>
         </div>
 
-        <div class="form-row ml-2 mb-3">
+        <div class="form-row ml-2">
           <ul class="list-group col-md-6">
             <li *ngFor="let content of contents"
               class="list-group-item content-item d-flex justify-content-between align-items-center">
