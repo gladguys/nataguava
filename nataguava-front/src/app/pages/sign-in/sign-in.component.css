@@ -32,3 +32,11 @@
     margin-top: 30px;
 }
 
+.text-link {
+    cursor: pointer;
+}
+
+.text-link:hover {
+    color: darkgreen;
+}
+

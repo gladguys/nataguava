@@ -9,6 +9,6 @@ import { ResultCandidateJob } from "src/app/models/result-candidate-job.model";
 export class JobRankingComponent {
 
     @Input() resultCandidates: ResultCandidateJob[];
-
+    @Input() numberOfBestCandidates: number;
     constructor() {}
 }

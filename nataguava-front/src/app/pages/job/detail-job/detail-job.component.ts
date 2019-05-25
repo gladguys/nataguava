@@ -11,6 +11,7 @@ import { Component, OnInit, AfterContentInit, ElementRef, ViewChild } from '@ang
 import { CompanyService } from 'src/app/services/company.service';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResultCandidateJob } from 'src/app/models/result-candidate-job.model';
 
 @Component({
   selector: 'app-detail-job',
@@ -24,6 +25,8 @@ export class DetailJobComponent implements OnInit{
   isOwner: boolean;
   userCompany: UserCompany = new UserCompany();
   @ViewChild("content") content: ElementRef;
+  verRanking: boolean = false;
+  resultCandidatesJob: ResultCandidateJob[] = [];
 
   constructor(public route: ActivatedRoute,
     public router: Router,
@@ -41,6 +44,7 @@ export class DetailJobComponent implements OnInit{
         .findById(jobId)
         .subscribe((job) => { 
           this.job = job; 
+          this.resultCandidates();
           this.buildStatusLabel();
           if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
             this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
@@ -52,6 +56,10 @@ export class DetailJobComponent implements OnInit{
     }
   }
 
+  resultCandidates() {
+    this.jobService.getResultCandidates(this.job.id).subscribe(res =>{ this.resultCandidatesJob = res; console.log(res) });
+
+  }
 
   isCandidate() {
     if (!this.sharedService.getUserLogged()) return true;
