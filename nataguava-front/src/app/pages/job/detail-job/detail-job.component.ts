@@ -1,13 +1,11 @@
 import { UserCompany } from './../../../models/user-company.model';
-import { UserService } from './../../../services/user.service';
-import { map } from 'rxjs/operators';
 import { ProfileEnum } from './../../../models/enums/profileEnum';
 import { AlertService } from './../../../components/shared/alert/alert.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { Job } from './../../../models/job.model';
 import { JobService } from './../../../services/job.service';
-import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -46,12 +44,13 @@ export class DetailJobComponent implements OnInit{
           this.job = job; 
           this.resultCandidates();
           this.buildStatusLabel();
-          if(this.sharedService.getUserLogged().profileEnum == ProfileEnum.ROLE_RECRUTER) {
-            this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
-              this.userCompany = company;
-              this.isOwner = company.id === this.job.userCompany.id ? true : false;
-            });
-          }
+          this.companyService.findByUserId(this.sharedService.getUserLogged().id).subscribe(company => {
+            this.userCompany = company;
+            this.isOwner = company.id === this.job.userCompany.id ? true : false;
+          })
+        },
+        err => {
+          this.router.navigateByUrl("/**");
         })   
     }
   }
@@ -100,7 +99,7 @@ export class DetailJobComponent implements OnInit{
       this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
         if(!hasTaken) {
           this.router.navigateByUrl(`/questionary/${this.job.id}`);
-        } else {
+        } else {  
           this.modalService.open(this.content, { centered: true });
         }
       })

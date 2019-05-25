@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Job } from './../../../models/job.model';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecruterService } from 'src/app/services/recruter.service';
 import { Observable, Subject, merge } from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, filter} from 'rxjs/operators';
@@ -23,6 +23,7 @@ export class FormJobComponent implements OnInit {
 
   @ViewChild('instance') instance: NgbTypeahead;
   job: Job = new Job();
+  jobId: number;
   jobForm: FormGroup;
 
 
@@ -52,6 +53,7 @@ export class FormJobComponent implements OnInit {
   constructor(public formBuilder: FormBuilder,
     public jobService: JobService,
     public router: Router,
+    public route: ActivatedRoute,
     public sharedService: SharedService,
     public alertService: AlertService,
     public recruterService: RecruterService,
@@ -59,13 +61,32 @@ export class FormJobComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadJobForm();
+    this.buildJobForm();
     this.contentTagService.getAll().subscribe(contents => this.tags = contents);
     
+    const jobId = this.route.snapshot.paramMap.get('jobId');
+    if (jobId) {
+    this.loadJob(jobId); 
+    }
   }
 
 
-  loadJobForm() {
+  loadJob(jobId) {
+    this.jobService.findById(jobId).subscribe((job) => { 
+      this.jobId = job.id;
+      this.jobForm.patchValue({
+        'title': job.title,
+        'description': job.description,
+        'numberOfBestCandidates': job.numberOfBestCandidates,
+        'status': job.status,
+        'location': job.location
+      });
+      this.contents = job.contents;
+    });
+
+  }
+
+  buildJobForm() {
     this.jobForm = this.formBuilder.group({
       'title': ['', Validators.required],
       'description': ['', Validators.required],
@@ -111,6 +132,10 @@ export class FormJobComponent implements OnInit {
     let jobToSave = this.jobForm.getRawValue() as Job;
     jobToSave.contents = this.contents;
     jobToSave.status = "CREATED";
+
+    if(this.jobId) {
+      jobToSave.id = this.jobId;
+    }
 
     let userId = this.sharedService.getUserLogged().id;
     this.recruterService.getByUserId(userId).subscribe((userCompany: UserCompany) => {

@@ -1,3 +1,4 @@
+import { FormaterTime } from './pipes/formater-time.pipe';
 import { FormsModule } from '@angular/forms';
 import { CandidateModule } from './pages/candidate/candidate.module';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
@@ -32,13 +33,16 @@ import { AlertService } from './components/shared/alert/alert.service';
 import { ShowIfUserCompanyModule } from './directives/show-if-user-company/show-if-user-company.module';
 import { ShowIfCandidateModule } from './directives/show-if-candidate/show-if-candidate.module';
 import { AdminModule } from './pages/admin/admin.module';
+import { ErrorsModule } from './errors/errors.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     HeaderComponent, 
-    QuestionaryComponent
+    QuestionaryComponent,
+    FormaterTime
   ],
   exports:[
     HeaderComponent
@@ -59,6 +63,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     ShowIfCandidateModule,
     AdminModule,
     FormsModule,
+    ErrorsModule,
     NgxSpinnerModule,
     CountdownModule,
     AngularFontAwesomeModule

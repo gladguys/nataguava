@@ -17,6 +17,10 @@
 .descricao {
     color: dimgray;
 }
+.btns-vaga {
+    display: block;
+}
+
 
 .title-jobs-running {
     font-size: 16px;
