@@ -12,6 +12,7 @@ import { CompanyService } from 'src/app/services/company.service';
 import { QuestionaryService } from 'src/app/services/questionary.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ResultCandidateJob } from 'src/app/models/result-candidate-job.model';
+import { CandidateService } from 'src/app/services/candidate.service';
 
 @Component({
   selector: 'app-detail-job',
@@ -25,6 +26,7 @@ export class DetailJobComponent implements OnInit{
   isOwner: boolean;
   userCompany: UserCompany = new UserCompany();
   @ViewChild("content") content: ElementRef;
+  @ViewChild("twoJobsTakenModal") twoJobsTakenModal: ElementRef;
   verRanking: boolean = false;
   resultCandidatesJob: ResultCandidateJob[] = [];
 
@@ -34,6 +36,7 @@ export class DetailJobComponent implements OnInit{
     public alertService: AlertService,
     public companyService: CompanyService,
     public jobService: JobService,
+    public candidateService: CandidateService,
     public modalService: NgbModal,
     public questionaryService: QuestionaryService) { }
 
@@ -99,7 +102,13 @@ export class DetailJobComponent implements OnInit{
     if(this.sharedService.isUserLoggedIn()) {
       this.questionaryService.hasTaken(this.job.id).subscribe( hasTaken => {
         if(!hasTaken) {
-          this.router.navigateByUrl(`/questionary/${this.job.id}`);
+          this.candidateService.hasAlreadyTwoJobs(this.sharedService.getUserLogged().id).subscribe( hasAlreadyTwoJobs => {
+            if(hasAlreadyTwoJobs) {
+              this.modalService.open(this.twoJobsTakenModal, { centered: true });
+            } else {
+              this.router.navigateByUrl(`/questionary/${this.job.id}`);
+            }
+          })
         } else {  
           this.modalService.open(this.content, { centered: true });
         }

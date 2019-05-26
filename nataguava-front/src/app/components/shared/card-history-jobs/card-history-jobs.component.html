@@ -1,7 +1,8 @@
 <div class="card card-vagas-inscritas">
     <div class="job-history-container">
-      <h4 class="card-title title-jobs-running">Histórico de Vagas</h4>
-      <div class="card card-historico">
+        <h4 class="mt-2 titulo-card">Histórico de vagas</h4>
+        <hr/>
+      <div *ngIf="jobs.length; else noJobs" class="card card-historico">
         <table class="table">
           <thead>
             <tr>
@@ -23,5 +24,8 @@
           </tbody>
         </table>
       </div>
+      <ng-template #noJobs>
+          <label class="text-center"> Não há vagas registradas no seu histórico</label>
+        </ng-template>
     </div>
   </div>

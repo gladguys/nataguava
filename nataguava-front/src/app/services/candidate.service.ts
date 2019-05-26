@@ -42,4 +42,8 @@ export class CandidateService {
   delete(id: string) {
     return this.http.delete(`${environment.API}/candidates/${id}`);
   }
+
+  hasAlreadyTwoJobs(userId) {
+    return this.http.get(`${environment.API}/candidates/${userId}/number-jobs`)
+  }
 }

@@ -1,7 +1,40 @@
 <div class="col-md-10 offset-md-1">
-  <guava-card-vagas titleCard="Vagas Em Andamento" [jobs]="jobsAndamento">
-  </guava-card-vagas>
-
+  <!--   <guava-card-vagas titleCard="Vagas Em Andamento" [jobs]="jobsAndamento">
+  </guava-card-vagas> -->
+  <div class="card col-md-12">
+    <h4 class="mt-2 titulo-card">Suas vagas em andamento</h4>
+    <small class="subtitulo-card">O candidato só poderá concorrer a no máximo 2 vagas ao mesmo tempo.</small>
+    <hr/>
+    <ng-container *ngIf="job1 || job2; else noJobs">
+        <div class="row">
+            <div *ngIf="job1" class="card offset-md-1 col-md-4  mt-3 mb-5 card-candidato-job-1">
+              <div class="card-header text-center">OPÇÃO DE VAGA 1</div>
+              <small><i class="fa fa-clock" style="margin-right:10px"></i>Essa vaga finaliza no dia 01/06/2019</small>
+              <h3 class="mt-3 ml-3">{{job1.title}}</h3>
+              <label class="mt-1 ml-3"><i class="fa fa-building" style="margin-right:10px"></i>{{job1.userCompany.name}}</label>
+              <label class="mb-4 ml-3"><i class="fa fa-map-marker" style="margin-right:10px"></i>{{job1.location}}</label>
+              <div class="card-footer">
+                <button type="button" (click)="cancelarInscricao(job1)" class="btn btn-danger col-md-10 offset-md-1">Cancelar Opção</button>
+              </div>
+            </div>
+            <div *ngIf="job2" class="card col-md-4 offset-md-1 mt-3 mb-5 card-candidato-job-2">
+              <div class="card-header text-center">OPÇÃO DE VAGA 2</div>
+              <small>Essa vaga finaliza no dia 16/06/2019</small>
+              <h3 class="mt-3 ml-3">{{job2.title}}</h3>
+              <label class="mt-1 ml-3"><i class="fa fa-building" style="margin-right:10px"></i>{{job2.userCompany.name}}</label>
+              <label class="mt-1 mb-4 ml-3"><i class="fa fa-map-marker" style="margin-right:10px"></i>{{job2.location}}</label>
+              <div class="card-footer">
+                <button type="button" (click)="cancelarInscricao(job2)" class="btn btn-danger col-md-10 offset-md-1">Cancelar Opção</button>
+              </div>
+            </div>
+          </div>
+    </ng-container>
+    <ng-template #noJobs>
+      <label>Você não está inscrito em nenhuma vaga no momento</label>
+    </ng-template>
+  </div>
+  
   <guava-card-history class="mb-3 col-md-10 offset-md-1" [isCompany]="false" [jobs]="closedJobs">
   </guava-card-history>
 </div>
+

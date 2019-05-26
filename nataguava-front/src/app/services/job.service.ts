@@ -58,4 +58,7 @@ export class JobService {
     return this.http.get<Array<ResultCandidateJob>>(`${environment.API}/jobs/${jobId}/results`);
   }
 
+  cancelSubscriptionCandidate(jobId: number, userId: number) {
+    return this.http.get(`${environment.API}/jobs/${jobId}/users/${userId}/cancel`);
+  }
 }

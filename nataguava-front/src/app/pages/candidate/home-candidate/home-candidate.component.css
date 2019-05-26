@@ -1,0 +1,18 @@
+
+
+.card-candidato-job-1 {
+    padding: 15px;
+    background: #d4e2e6;
+}
+.card-candidato-job-2 {
+    padding: 15px;
+    background: #f7e7e7;
+}
+
+.titulo-card {
+    color: #3c8dbc;
+}
+
+.subtitulo-card {
+    color: gray;
+}
