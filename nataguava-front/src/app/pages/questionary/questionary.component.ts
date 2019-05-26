@@ -45,7 +45,6 @@ export class QuestionaryComponent implements OnInit {
 
     if (this.router.url === `/simulado/${this.jobId}`) {
       this.isFake = true;
-      console.log("simuladooooo");
     } else {
       console.log("realll");
       this.isFake = false;
