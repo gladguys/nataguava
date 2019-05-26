@@ -13,6 +13,7 @@ public class ResultCandidateJobDto {
     private Long candidateId;
     private String candidateName;
     private int result;
+    private int numQuestions;
 
     public ResultCandidateJob toObject() {
         ResultCandidateJob resultCandidateJob = new ResultCandidateJob();

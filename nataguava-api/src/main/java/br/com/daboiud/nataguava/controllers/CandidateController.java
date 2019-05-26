@@ -5,6 +5,7 @@ import br.com.daboiud.nataguava.models.Job;
 import br.com.daboiud.nataguava.models.ProfileEnum;
 import br.com.daboiud.nataguava.models.User;
 import br.com.daboiud.nataguava.services.CandidateService;
+import br.com.daboiud.nataguava.services.JobService;
 import br.com.daboiud.nataguava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,13 @@ import java.util.Set;
 @RequestMapping(value = "/api/candidates")
 public class CandidateController {
 
-    @Autowired
     private CandidateService candidateService;
+    private JobService jobService;
+
+    public CandidateController(CandidateService candidateService, JobService jobService) {
+        this.candidateService = candidateService;
+        this.jobService = jobService;
+    }
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody Candidate candidate) {
@@ -46,6 +52,20 @@ public class CandidateController {
     public ResponseEntity<Candidate> getUserCompanyByUser(@PathVariable("userId") Long userId) {
         try {
             Candidate userCompany = this.candidateService.findByUserId(userId);return ResponseEntity.ok(userCompany);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping(value = "/{userId}/number-jobs")
+    public ResponseEntity<Boolean> hasAlreadyTwoJobs(@PathVariable("userId") Long userId) {
+        try {
+            Candidate userCompany = this.candidateService.findByUserId(userId);
+            int qnt = this.jobService.qntJobsByCandidate(userCompany.getId());
+            if(qnt >= 2)
+                return ResponseEntity.ok(true);
+            else
+                return ResponseEntity.ok(false);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }

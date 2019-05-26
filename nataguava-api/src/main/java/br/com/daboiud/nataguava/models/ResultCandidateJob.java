@@ -30,6 +30,7 @@ public class ResultCandidateJob {
 		dto.setJobId(this.job.getId());
 		dto.setResult(this.result);
 		dto.setCandidateName(this.candidate.getName());
+		dto.setNumQuestions(this.job.getTotalQuestions());
 
 		return dto;
 	}

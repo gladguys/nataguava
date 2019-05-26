@@ -17,10 +17,9 @@ public class ResultCandidateJobController {
     }
 
     @PostMapping
-    public ResponseEntity<ResultCandidateJobDto> create(@RequestBody ResultCandidateJobDto dto) {
+    public ResponseEntity<ResultCandidateJobDto> create(@RequestBody ResultCandidateJobDto dto) throws Exception {
 
-        ResultCandidateJob resultSaved =this.resultCandidateJobService.createOrUpdate(dto.toObject());
-        return ResponseEntity.ok(resultSaved.toDTO());
+        return ResponseEntity.ok(this.resultCandidateJobService.createOrUpdate(dto.toObject()));
     }
 
 }

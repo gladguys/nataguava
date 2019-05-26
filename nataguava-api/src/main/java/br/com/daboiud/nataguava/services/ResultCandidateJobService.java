@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ResultCandidateJobService {
 
-    ResultCandidateJob createOrUpdate(ResultCandidateJob resultCandidateJob);
+    ResultCandidateJobDto createOrUpdate(ResultCandidateJob resultCandidateJob) throws Exception;
 
-    List<ResultCandidateJobDto> findByJobId(Long jobId);
+    List<ResultCandidateJobDto> findByJobId(Long jobId) throws Exception;
 
 }
