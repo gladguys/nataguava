@@ -37,8 +37,7 @@
 }
 
 .jumbotron {
-    background-image: url("../../../../assets/home-bg.jpg");
-    background-size: 70%;
+    background-image: url("../../../../assets/home-img.jpeg");
     background-position-y: 50%;
     opacity: 0.5;
     height: 285px;
