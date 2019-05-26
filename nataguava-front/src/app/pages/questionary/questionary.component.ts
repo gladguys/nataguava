@@ -46,13 +46,13 @@ export class QuestionaryComponent implements OnInit {
     if (this.router.url === `/simulado/${this.jobId}`) {
       this.isFake = true;
     } else {
+      console.log("realll");
       this.isFake = false;
     }
 
 
     this.spinner.show();
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
       this.spinner.hide();
       this.loaded = true;
 

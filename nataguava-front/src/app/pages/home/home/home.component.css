@@ -41,10 +41,12 @@
     background-size: 70%;
     background-position-y: 50%;
     opacity: 0.5;
+    height: 285px;
   }
 
   .btn-lupa {
-    background: white;
+    background: #388f25;
+    color: white;
     height: 46px;
     border-radius: 50px;
     border: 1px solid gray;

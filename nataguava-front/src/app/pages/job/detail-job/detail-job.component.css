@@ -3,7 +3,12 @@
 }
 
 .subtitle-job-detail {
-    color: dodgerblue;
+    color: darkgray;
+}
+
+.label-status {
+    font-style: italic;
+    color: darkgreen;
 }
 
 .tag-conteudo {
@@ -43,3 +48,7 @@
     box-shadow: 0 2px 5px #acd2e8;
 }
 
+.jumbotron-job {
+    background: white;
+    height: 205px;
+}

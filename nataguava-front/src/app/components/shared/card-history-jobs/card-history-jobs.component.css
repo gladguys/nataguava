@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+.titulo-card {
+    color: #3c8dbc;
+}
+
 .card-historico {
     margin: 20px;
 }

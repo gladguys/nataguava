@@ -129,11 +129,26 @@ public class JobController {
     }
 
     @GetMapping(value = "/{jobId}/results")
-    public ResponseEntity<List<ResultCandidateJobDto>> getResults(@PathVariable("jobId") Long id) {
+    public ResponseEntity<List<ResultCandidateJobDto>> getResults(@PathVariable("jobId") Long id) throws Exception {
         return ResponseEntity.ok(this.resultCandidateJobService.findByJobId(id));
+    }
+
+    @GetMapping(value = "/{jobId}/users/{userId}/cancel")
+    public ResponseEntity<String> cancelJobForCandidate(@PathVariable("jobId") Long jobId,
+                                                   @PathVariable("userId") Long userId) {
+
+       try {
+           Candidate candidate = this.candidateService.findByUserId(userId);
+           this.jobService.cancelJobForCandidate(jobId, candidate.getId());
+
+           return ResponseEntity.ok("canceled");
+       } catch (Exception e) {
+           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+       }
     }
 
     private boolean isTheOwnerOfTheJob(String usernameFromToken, Job jobToClose) {
         return usernameFromToken.equals(jobToClose.getUserCompany().getUser().getEmail());
     }
+
 }

@@ -50,4 +50,7 @@ public class Job {
     @Override
     public String toString() { return "";}
 
+    public int getTotalQuestions() {
+        return this.contents.stream().map( c -> c.getQtQuestions()).reduce(0, Integer::sum);
+    }
 }

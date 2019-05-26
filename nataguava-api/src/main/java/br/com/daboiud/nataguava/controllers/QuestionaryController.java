@@ -64,8 +64,6 @@ public class QuestionaryController {
         String usernameFromToken = jwtTokenUtil.getUsernameFromToken(authToken);
         User user = this.userService.findByEmail(usernameFromToken);
 
-        Candidate candidate = this.candidateService.findByUserId(user.getId());
-
         Questionary questionary = this.questionaryService.generateByJobId(user, jobId);
         return ResponseEntity.ok(questionary);
 

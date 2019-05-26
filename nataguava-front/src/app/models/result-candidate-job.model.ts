@@ -5,4 +5,5 @@ export class ResultCandidateJob {
     public candidateId: number;
     public candidateName: string;
     public result: number;
+    public numQuestions: number;
 }

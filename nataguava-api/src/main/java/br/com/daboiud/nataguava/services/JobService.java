@@ -19,4 +19,8 @@ public interface JobService {
     List<Job> findAllActive();
 
     List<Job> findAllByFilter(String content, String place);
+
+    int qntJobsByCandidate(Long candidateId);
+
+    void cancelJobForCandidate(Long jobId, Long id);
 }
