@@ -13,6 +13,8 @@ public class ItemQuestion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Lob
+    @Column(columnDefinition = "text")
     private String text;
 
     private boolean correct;

@@ -31,8 +31,11 @@ public class ResultCandidateJob {
 		dto.setResult(this.result);
 		dto.setCandidateName(this.candidate.getName());
 		dto.setNumQuestions(this.job.getTotalQuestions());
-		dto.setEmail(this.candidate.getUser().getEmail());
-		dto.setUrlRepo(this.candidate.getUrlRepository());
+		if(this.candidate.getUser() != null) {
+			dto.setEmail(this.candidate.getUser().getEmail());
+		}
+		if(this.candidate.getUrlRepository() != null)
+			dto.setUrlRepo(this.candidate.getUrlRepository());
 
 		return dto;
 	}

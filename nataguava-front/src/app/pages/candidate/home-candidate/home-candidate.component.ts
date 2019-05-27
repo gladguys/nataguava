@@ -3,6 +3,7 @@ import { SharedService } from './../../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import { AlertService } from 'src/app/components/shared/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './home-candidate.component.html',
@@ -19,7 +20,8 @@ export class HomeCandidadeComponent implements OnInit {
 
   constructor(private jobService: JobService,
     private sharedService: SharedService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private router: Router) { }
 
   ngOnInit() {
     this.loadMyJobs();
@@ -30,9 +32,6 @@ export class HomeCandidadeComponent implements OnInit {
       .subscribe(jobs => {
         this.job1 = jobs[0];
         this.job2 = jobs[1];
-
-        console.log(this.job1);
-        console.log(this.job2);
       });
   }
 
@@ -42,5 +41,9 @@ export class HomeCandidadeComponent implements OnInit {
     }, () => {
       this.loadMyJobs();
     })
+  }
+
+  goHome() {
+    this.router.navigateByUrl("/");
   }
 }

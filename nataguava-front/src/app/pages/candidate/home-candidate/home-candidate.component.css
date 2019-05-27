@@ -16,3 +16,7 @@
 .subtitulo-card {
     color: gray;
 }
+
+.card-place-job {
+    border: 1px dotted;
+}

@@ -14,6 +14,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Lob
+    @Column(columnDefinition = "text")
     private String textQuestion;
 
     @OneToMany(

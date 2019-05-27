@@ -7,26 +7,38 @@
     <hr/>
     <ng-container *ngIf="job1 || job2; else noJobs">
         <div class="row">
-            <div *ngIf="job1" class="card offset-md-1 col-md-4  mt-3 mb-5 card-candidato-job-1">
+            <div *ngIf="job1; else job1add" class="card offset-md-1 col-md-4  mt-3 mb-5 card-candidato-job-1">
               <div class="card-header text-center">OPÇÃO DE VAGA 1</div>
               <small><i class="fa fa-clock" style="margin-right:10px"></i>Essa vaga finaliza no dia 01/06/2019</small>
-              <h3 class="mt-3 ml-3">{{job1.title}}</h3>
+              <h4 class="mt-3 ml-3">{{job1.title}}</h4>
               <label class="mt-1 ml-3"><i class="fa fa-building" style="margin-right:10px"></i>{{job1.userCompany.name}}</label>
               <label class="mb-4 ml-3"><i class="fa fa-map-marker" style="margin-right:10px"></i>{{job1.location}}</label>
               <div class="card-footer">
                 <button type="button" (click)="cancelarInscricao(job1)" class="btn btn-danger col-md-10 offset-md-1">Cancelar Opção</button>
               </div>
             </div>
-            <div *ngIf="job2" class="card col-md-4 offset-md-1 mt-3 mb-5 card-candidato-job-2">
+            <ng-template #job1add>
+                <div class="card card-place-job col-md-4 offset-md-1 mt-3 mb-5">
+                  <label class="text-center mt-5">Opção de vaga 2 não ocupada ainda.</label>
+                  <button (click)="goHome()" class="btn btn-link">Procurar vaga</button>
+                </div>
+              </ng-template>
+            <div *ngIf="job2; else job2add" class="card col-md-4 offset-md-1 mt-3 mb-5 card-candidato-job-2">
               <div class="card-header text-center">OPÇÃO DE VAGA 2</div>
               <small>Essa vaga finaliza no dia 16/06/2019</small>
-              <h3 class="mt-3 ml-3">{{job2.title}}</h3>
+              <h4 class="mt-3 ml-3">{{job2.title}}</h4>
               <label class="mt-1 ml-3"><i class="fa fa-building" style="margin-right:10px"></i>{{job2.userCompany.name}}</label>
               <label class="mt-1 mb-4 ml-3"><i class="fa fa-map-marker" style="margin-right:10px"></i>{{job2.location}}</label>
               <div class="card-footer">
                 <button type="button" (click)="cancelarInscricao(job2)" class="btn btn-danger col-md-10 offset-md-1">Cancelar Opção</button>
               </div>
             </div>
+            <ng-template #job2add>
+              <div class="card card-place-job col-md-4 offset-md-1 mt-3 mb-5">
+                <label class="text-center mt-5">Opção de vaga 2 não ocupada ainda.</label>
+                <button (click)="goHome()" class="btn btn-link">Procurar vaga</button>
+              </div>
+            </ng-template>
           </div>
     </ng-container>
     <ng-template #noJobs>

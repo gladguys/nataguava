@@ -83,7 +83,7 @@ export class QuestionaryComponent implements OnInit {
   }
 
   start() {
-    this.startCountdown(this.questionary.questions.length * 120);
+    this.startCountdown(this.questionary.questions.length * 60);
   }
 
   finishTest() {
