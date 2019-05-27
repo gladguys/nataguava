@@ -1,3 +1,4 @@
+import { ProfileCandidateComponent } from './pages/candidate/profile-candidate/profile-candidate.component';
 import { CandidateGuard } from './components/shared/security/candidate-guard';
 import { HomeCandidadeComponent } from './pages/candidate/home-candidate/home-candidate.component';
 import { CompanyGuard } from './components/shared/security/company-guard';
@@ -22,6 +23,7 @@ export const ROUTES: Routes = [
     {path: 'signup-candidate', component: SignupCandidateComponent},
     {path: 'signup-company', component: SignupCompanyComponent},
     {path: 'home-company', canActivate: [AuthGuard, CompanyGuard], component: HomeCompanyComponent},
+    {path: 'candidate/:candidateId', canActivate: [AuthGuard, CompanyGuard], component: ProfileCandidateComponent},
     {path: 'home-candidate', canActivate: [AuthGuard, CandidateGuard], component: HomeCandidadeComponent},
     {path: 'signup-candidate', canActivate: [LoginAuthGuard], component: SignupCandidateComponent},
     {path: 'form-job', canActivate: [AuthGuard, CompanyGuard], component: FormJobComponent},

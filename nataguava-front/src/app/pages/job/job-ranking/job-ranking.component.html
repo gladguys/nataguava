@@ -5,6 +5,9 @@
         <th style="text-align: center; width: 20px" scope="col">Situação</th>
         <th style="text-align: center" scope="col">Candidato</th>
         <th style="text-align: center" scope="col">Resultado</th>
+        <th style="text-align: center" scope="col">Email</th>
+        <th style="text-align: center" scope="col">Repositório GIT</th>
+
       </tr>
     </thead>
     <tbody>
@@ -21,6 +24,17 @@
         </ng-template>
         <td style="text-align: center" scope="row" class="label-table-value">{{res.candidateName}}</td>
         <td style="text-align: center" class="label-table-value">{{res.result}}/{{res.numQuestions}}</td>
+        <td style="text-align: center" class="label-table-value">{{res.email}}</td>
+        <td style="text-align: center" class="label-table-value">{{res.urlRepo}}</td>
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Dados do Candidato</h4>
+            </div>
+            <div class="modal-body">
+              <guava-profile-candidate [candidateId]="res.candidateId"></guava-profile-candidate>
+            </div>
+          </ng-template>
       </tr>
     </tbody>
   </table>

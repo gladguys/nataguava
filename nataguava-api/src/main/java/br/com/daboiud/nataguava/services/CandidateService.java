@@ -16,4 +16,6 @@ public interface CandidateService {
     Candidate findByUserId(Long id);
 
     Job registerJob(Long userId, Long jobId) throws Exception;
+
+    Candidate findById(Long id) throws Exception;
 }

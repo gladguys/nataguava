@@ -48,6 +48,16 @@ public class CandidateController {
         }
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Candidate> getById(@PathVariable("id") Long id) {
+        try {
+            Candidate candidate = this.candidateService.findById(id);
+            return ResponseEntity.ok(candidate);
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/user/{userId}")
     public ResponseEntity<Candidate> getUserCompanyByUser(@PathVariable("userId") Long userId) {
         try {

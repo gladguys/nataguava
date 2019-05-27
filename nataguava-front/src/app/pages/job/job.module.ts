@@ -8,6 +8,8 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowIfCandidateModule } from 'src/app/directives/show-if-candidate/show-if-candidate.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JobRankingComponent } from './job-ranking/job-ranking.component';
+import { ProfileCandidateComponent } from '../candidate/profile-candidate/profile-candidate.component';
+import { CandidateModule } from '../candidate/candidate.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,8 @@ import { JobRankingComponent } from './job-ranking/job-ranking.component';
         RouterModule,
         NgbTypeaheadModule,
         ShowIfCandidateModule,
-        AngularFontAwesomeModule
+        AngularFontAwesomeModule,
+        CandidateModule
     ],
     exports: [
         FormJobComponent,

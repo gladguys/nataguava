@@ -6,4 +6,6 @@ export class ResultCandidateJob {
     public candidateName: string;
     public result: number;
     public numQuestions: number;
+    public urlRepo: string;
+    public email: string;
 }

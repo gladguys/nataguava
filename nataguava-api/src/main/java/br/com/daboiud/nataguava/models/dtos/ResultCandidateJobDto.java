@@ -12,6 +12,8 @@ public class ResultCandidateJobDto {
     private Long jobId;
     private Long candidateId;
     private String candidateName;
+    private String urlRepo;
+    private String email;
     private int result;
     private int numQuestions;
 

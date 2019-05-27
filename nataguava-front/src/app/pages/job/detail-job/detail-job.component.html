@@ -51,17 +51,12 @@
   </div>
 </div>
 
-
-
 <div class="jumbotron jumbotron-job">
   <div class=" text-center title-job-detail">{{job.title}} - <span class="text text-info label-status">{{statusJobLabel}}</span>
   </div>
   <div class="subtitle-job-detail text-center">{{job.userCompany?.name}} - {{job.location}}</div>
   <div *ngIf="isOwner" class="text-center">
     <button *ngIf="job.status != 'CLOSED'" class="btn btn-danger" (click)="cancelJob()">Encerrar Vaga</button>
-  </div>
-  <div class="link-editar" *ngIf="isOwner" class="text-center">
-    <button type="button" [routerLink]="['/form-job',job.id]" class="btn btn-link">Editar Vaga</button>
   </div>
   <div class="link-editar" *ngIf="isOwner" class="text-center">
     <button type="button" [routerLink]="['/form-job',job.id]" class="btn btn-link">Editar Vaga</button>

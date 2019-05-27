@@ -55,4 +55,9 @@ public class CandidateServiceImpl implements CandidateService {
         job.addCandidate(candidade);
         return this.jobService.createOrUpdate(job);
     }
+
+    @Override
+    public Candidate findById(Long id) throws Exception {
+        return this.candidateRepository.findById(id).orElseThrow(Exception::new);
+    }
 }

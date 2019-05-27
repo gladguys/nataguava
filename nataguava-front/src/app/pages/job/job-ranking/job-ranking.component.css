@@ -1,0 +1,8 @@
+.row-candidates:hover {
+        background: lightgray;
+        cursor: pointer;
+}
+
+row-candidates {
+    cursor: pointer;
+}

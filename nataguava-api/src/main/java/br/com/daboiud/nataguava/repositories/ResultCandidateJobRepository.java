@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ResultCandidateJobRepository extends JpaRepository<ResultCandidateJob, Long>, ResultCandidateJobRepositoryCustom {
 
-    @Query("select r from ResultCandidateJob r where r.job.id  = ?1")
+    @Query("select r from ResultCandidateJob r where r.job.id  = ?1 order by r.result desc")
     List<ResultCandidateJob> findByJobId(Long jobId);
 }
